@@ -12,7 +12,7 @@ namespace Дипломчик
 {
     public partial class Form1 : Form
     {
-        const int K= 0;
+        const int K= 2;
         public Form1()
         {
             InitializeComponent();
@@ -20,17 +20,23 @@ namespace Дипломчик
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (K==0)
+            if (K == 0)
             {
                 TB tb = new TB();
                 tb.ShowDialog(this);
                 tb.Dispose();
             }
-            else
+            if (K == 1)
             {
                 MP mp = new MP();
                 mp.ShowDialog(this);
                 mp.Dispose();
+            }
+            if (K == 2)
+            {
+                Form2 f2 = new Form2();
+                f2.ShowDialog(this);
+                f2.Dispose();
             }
         }
     }
