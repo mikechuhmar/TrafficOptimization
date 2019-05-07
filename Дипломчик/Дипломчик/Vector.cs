@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Дипломчик
 {
+    public delegate double Function(Vector x);
     public class Vector : IEnumerable
     {
         public List<double> elements;
