@@ -76,13 +76,22 @@ namespace Дипломчик
             C_text = tB8;
             richTextBox1 = rT1;
             Q_text = tB9;
+            C_T = Convert.ToDouble(C_text.Text);
+            Q = Convert.ToDouble(Q_text.Text);
+
+        }
+
+        public MplexMath_2(double C_T, ref System.Windows.Forms.RichTextBox rT1, double Q)
+        {
+            richTextBox1 = rT1;
+            this.C_T = C_T;
+            this.Q = Q;
 
         }
 
         public void MX(double[] GI)
         {
-            C_T = Convert.ToDouble(C_text.Text);
-            Q = Convert.ToDouble(Q_text.Text);
+            
             q_tkm1 = summ();
             Gi = GI;
             SUMM_Gi = Gi.Sum();
