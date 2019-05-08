@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="MP2.cs" />
     <Compile Include="MplexMath.cs" />
+    <Compile Include="OptimizationFunc.cs" />
     <Compile Include="ParticleSwarmAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
