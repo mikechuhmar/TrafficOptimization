@@ -68,6 +68,7 @@ namespace Дипломчик
         public double Q;
         public double t;
         public double[] Gi;
+        public bool hasRt;
 
 
         public MplexMath_2(ref System.Windows.Forms.TextBox tB8, ref System.Windows.Forms.RichTextBox rT1, ref System.Windows.Forms.TextBox tB9
@@ -78,7 +79,7 @@ namespace Дипломчик
             Q_text = tB9;
             C_T = Convert.ToDouble(C_text.Text);
             Q = Convert.ToDouble(Q_text.Text);
-
+            hasRt = true;
         }
 
         public MplexMath_2(double C_T, ref System.Windows.Forms.RichTextBox rT1, double Q)
@@ -86,7 +87,7 @@ namespace Дипломчик
             richTextBox1 = rT1;
             this.C_T = C_T;
             this.Q = Q;
-
+            hasRt = false;
         }
 
         public void MX(double[] GI)
@@ -96,12 +97,15 @@ namespace Дипломчик
             Gi = GI;
             SUMM_Gi = Gi.Sum();
 
-            richTextBox1.Text += "полученный трафик: ";
-            for (int j = 0; j < Gi.Count(); j++)
+            if (hasRt)
             {
-                richTextBox1.Text += Gi[j] + "; ";
+                richTextBox1.Text += "полученный трафик: ";
+                for (int j = 0; j < Gi.Count(); j++)
+                {
+                    richTextBox1.Text += Gi[j] + "; ";
+                }
+                richTextBox1.Text += '\n';
             }
-            richTextBox1.Text += '\n';
 
             if ((Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0)))) != 0)
                 ad_GI(Gi.Count(), Gi);
