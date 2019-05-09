@@ -123,13 +123,19 @@ namespace Дипломчик
                 if (gi[i] + summ() <= Q)
                 {
                     Enqueue(gi[i]);
-                    richTextBox1.Text += "пакет добавлен, размер: " + gi[i];
-                    richTextBox1.Text += '\n';
+                    if (hasRt)
+                    {
+                        richTextBox1.Text += "пакет добавлен, размер: " + gi[i];
+                        richTextBox1.Text += '\n';
+                    }
                 }
                 else
                 {
-                    richTextBox1.Text += "пакет отброшен";
-                    richTextBox1.Text += '\n';
+                    if (hasRt)
+                    {
+                        richTextBox1.Text += "пакет отброшен";
+                        richTextBox1.Text += '\n';
+                    }
                 }
             }
         }
@@ -150,8 +156,11 @@ namespace Дипломчик
             while ((Count != 0) && (Pop() <= Count_of_traf))
             {
                 Count_of_traf = Count_of_traf - Pop();
-                richTextBox1.Text += "вышедший пакет " + Pop();
-                richTextBox1.Text += '\n';
+                if (hasRt)
+                {
+                    richTextBox1.Text += "вышедший пакет " + Pop();
+                    richTextBox1.Text += '\n';
+                }
                 Dequeue();
             }
         }
