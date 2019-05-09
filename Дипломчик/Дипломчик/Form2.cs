@@ -210,6 +210,7 @@ namespace Дипломчик
 
         private void button4_Click(object sender, EventArgs e)
         {
+            dataList = new List<Data>();
             tbn = new TBMath_2();
             Random rand = new Random();
             
@@ -233,9 +234,12 @@ namespace Дипломчик
 
             for (int k = 0; k <= Time_To_Model; k++)
             {
+                Data data = new Data();
+                
                 progressBar1.Value++;
                 for (int z = 0; z <= TPe.Count-1; z++)
                 {
+                    
                     T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
                     Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
                     CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
@@ -256,14 +260,24 @@ namespace Дипломчик
                     ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["RoTk"].Points.AddXY(k, ch[2]);
 
                     Gi[z] = ch[0];
+                    
                     richTextBox2.Text += "Момент: " + k + "; TB№" + (TPe.Count - z) + " GTk = " + ch[0];
                     richTextBox2.Text += '\n';
 
+                    TBStruct tBStruct = new TBStruct(tbn.CIR, tbn.Nt, tbn.T, V, ch[3], ch[0], ch[4]);
+                    data.tBs.Add(tBStruct);
+
                 }
                 OPT=MXP.MX(Gi);
-                
+                data.mult = new MultStruct(MXP.Q, MXP.C_T, Gi, OPT[1], OPT[0]);
+                dataList.Add(data);
+                Console.WriteLine(dataList.Count);
             }
-
+            foreach (Data data in dataList)
+            {
+                Console.WriteLine(dataList.IndexOf(data));
+                Console.WriteLine(data.output());
+            }
             MessageBox.Show("Моделирование закончено");
         }
 
