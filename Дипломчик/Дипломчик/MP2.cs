@@ -86,9 +86,9 @@ namespace Дипломчик
             hasRt = true;
         }
 
-        public MplexMath_2(double C_T, ref System.Windows.Forms.RichTextBox rT1, double Q)
+        public MplexMath_2(double C_T, double Q)
         {
-            richTextBox1 = rT1;
+            //richTextBox1 = rT1;
             this.C_T = C_T;
             this.Q = Q;
             hasRt = false;

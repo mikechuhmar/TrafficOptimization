@@ -13,6 +13,7 @@ namespace Дипломчик
 {
     public partial class Form2 : Form
     {
+        public static List<Data> dataList;
         TBMath_2 tbn;
         MplexMath_2 MXP;
         Buff_2 BUF;
