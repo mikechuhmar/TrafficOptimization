@@ -25,34 +25,24 @@ namespace Дипломчик
         {
             double RoTk/*, RoTk_1*/;
             double I, GTk, UTk, V;
-            double[] ch = new double[4];
+            double[] ch = new double[5];
 
 
-            UTk = CIR * Tk * Nt;
+            UTk = CIR *Nt;
             RoTk = RoTk_1 + Math.Min(UTk, (T - RoTk_1));
-            //V = VTk(T,Nt);
             V = V1 /** Nt*/;
             if ((V /*/ Nt*/) <= (RoTk_1 + Math.Min(UTk, (T - RoTk_1))))
                 I = 1;
             else I = 0;
             GTk = V * I;
-            //richTextBox1.Text += "V =" + V + "; G =" + GTk + "; G/Nt =" + GTk / Nt + "; RoTk =" + RoTk + "; I =" + I + "; UTk =" + UTk + '\n';
             ch[0] = GTk;
             ch[1] = V;
-            ch[2] = RoTk * Nt;
-
-            RoTk = RoTk - GTk / Nt;
+            ch[2] = RoTk;
+            ch[4] = V - GTk;
+            RoTk = RoTk - GTk;
             RoTk_1 = RoTk;
 
-            ch[3] = RoTk_1;
-
-            /*
-            chart1.Series["GTk"].Points.AddXY(j, GTk);
-            chart1.Series["VTk"].Points.AddXY(j, V);
-            chart1.Series["RoTk"].Points.AddXY(j, RoTk * Nt);
-            */
-
-
+            ch[3] = RoTk_1;           
             return ch;
         }
 

@@ -70,6 +70,10 @@ namespace Дипломчик
         public double[] Gi;
         public bool hasRt;
 
+        public double[] OPT = new double[2];
+
+        public double L_tk;
+
 
         public MplexMath_2(ref System.Windows.Forms.TextBox tB8, ref System.Windows.Forms.RichTextBox rT1, ref System.Windows.Forms.TextBox tB9
             /*, ref System.Windows.Forms.DataVisualization.Charting.Chart c1*/)
@@ -90,9 +94,8 @@ namespace Дипломчик
             hasRt = false;
         }
 
-        public void MX(double[] GI)
+        public double[] MX(double[] GI)
         {
-            
             q_tkm1 = summ();
             Gi = GI;
             SUMM_Gi = Gi.Sum();
@@ -112,7 +115,12 @@ namespace Дипломчик
             Out_of_MX();
             q_tk = (Math.Max((q_tkm1 - C_T * t), 0)) + (Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0))));//текущая заполненность буффера
 
-
+            //вычисление Ltk
+            L_tk = SUMM_Gi - (Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0)))); //потери на мультиплексоре
+            //конец - вычисление Ltk
+            OPT[0] = L_tk;
+            OPT[1] = q_tk;
+            return OPT;
         }
 
         public void ad_GI(int k, double[] gi)//добавление массива TB

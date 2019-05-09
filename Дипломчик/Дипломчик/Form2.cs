@@ -218,7 +218,10 @@ namespace Дипломчик
             double Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[3]).Text);
             double V;
             double RoTk_1=0;
-            double[] ch = new double[4];
+            double[] ch = new double[5];
+            double R;
+
+            double[] OPT = new double[2];
 
             double[] Gi = new double[TPe.Count];
 
@@ -245,16 +248,19 @@ namespace Дипломчик
                     ((TextBox)TPe.ElementAt(z).Controls[9]).Text= Convert.ToString(ch[3]);
                     //RoTk_1 = ch[3];
 
+                    R = ch[4];//потери на z токенбакете
+
                     ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
                     ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
                     ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["RoTk"].Points.AddXY(k, ch[2]);
 
                     Gi[z] = ch[0];
-                    richTextBox2.Text+= z+"GTk"+ ch[0];
+                    richTextBox2.Text += "Момент: " + k + "; TB№" + (TPe.Count - z) + " GTk = " + ch[0];
                     richTextBox2.Text += '\n';
 
                 }
-                MXP.MX(Gi);
+                OPT=MXP.MX(Gi);
+                
             }
 
             MessageBox.Show("Моделирование закончено");
