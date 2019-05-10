@@ -71,7 +71,7 @@ namespace Дипломчик
             newTabPage.Text = "TB" + (TPe.Count()+1);
 
             TB_Interface TI = new TB_Interface();
-
+            /*
             TextBox Size_of_TB = new TextBox();
             Size_of_TB.Location = new Point(250, 30);
             Size_of_TB.Name = "Size_of_TB";
@@ -149,7 +149,7 @@ namespace Дипломчик
             Help_Ro.Visible = false;
 
 
-
+            */
             System.Windows.Forms.DataVisualization.Charting.Chart chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             //chart1.Anchor = (AnchorStyles.Right & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Top);
             chart1.Location = new Point(10, 150);
@@ -160,7 +160,7 @@ namespace Дипломчик
             chart1.Height = 550;
             //chart1.Size = new Size(150, 50);
             
-
+            /*
             chart1.ChartAreas.Add("area");
             chart1.ChartAreas["area"].AxisX.Minimum = 0;
             chart1.ChartAreas["area"].AxisX.Maximum = 100;
@@ -182,6 +182,7 @@ namespace Дипломчик
             chart1.Series["VTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Series["RoTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Legends.Add("legend");
+            */
             /*
             chart1.Series["T"].Points.AddXY(0,0);
             chart1.Series["T"].Points.AddXY(50, 10);
@@ -201,6 +202,8 @@ namespace Дипломчик
             newTabPage.Controls.Add(chart1);
             newTabPage.Controls.Add(Help_Ro);
             */
+            TI.Graf_TB();
+
             newTabPage.Controls.Add(TI.Size_of_TB);            //0
             newTabPage.Controls.Add(TI.Weight_of_one_token);   //1
             newTabPage.Controls.Add(TI.CIR);                   //2
