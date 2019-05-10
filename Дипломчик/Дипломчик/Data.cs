@@ -57,6 +57,7 @@ namespace Дипломчик
             {
                 str += mult.G[i] + " ";
             }
+            str += " q = " + mult.q + " L = " + mult.L;
             str += "\n";
             return str;
 
