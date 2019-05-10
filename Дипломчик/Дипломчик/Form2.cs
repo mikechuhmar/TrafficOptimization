@@ -217,6 +217,7 @@ namespace Дипломчик
             double T = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[0]).Text);
             double Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[1]).Text);
             double CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[2]).Text);
+            tbn = new TBMath_2(CIR, Nt, T);
             double Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[3]).Text);
             double V;
             double RoTk_1=0;
@@ -271,7 +272,7 @@ namespace Дипломчик
                 OPT=MXP.MX(Gi);
                 data.mult = new MultStruct(MXP.Q, MXP.C_T, Gi, OPT[1], OPT[0]);
                 dataList.Add(data);
-                Console.WriteLine(dataList.Count);
+                //Console.WriteLine(dataList.Count);
             }
             foreach (Data data in dataList)
             {
