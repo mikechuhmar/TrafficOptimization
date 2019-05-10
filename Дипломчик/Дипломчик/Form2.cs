@@ -69,7 +69,8 @@ namespace Дипломчик
         {
             TabPage newTabPage = new TabPage();
             newTabPage.Text = "TB" + (TPe.Count()+1);
-            
+
+            TB_Interface TI = new TB_Interface();
 
             TextBox Size_of_TB = new TextBox();
             Size_of_TB.Location = new Point(250, 30);
@@ -188,7 +189,7 @@ namespace Дипломчик
             chart1.Series["T"].Points.AddXY(200, 1);
             //chart1.Series["T"].Points.Clear();
             */
-
+            /*
             newTabPage.Controls.Add(Size_of_TB);
             newTabPage.Controls.Add(Weight_of_one_token);
             newTabPage.Controls.Add(CIR);
@@ -199,9 +200,28 @@ namespace Дипломчик
             newTabPage.Controls.Add(Interval_L);
             newTabPage.Controls.Add(chart1);
             newTabPage.Controls.Add(Help_Ro);
+            */
+            newTabPage.Controls.Add(TI.Size_of_TB);            //0
+            newTabPage.Controls.Add(TI.Weight_of_one_token);   //1
+            newTabPage.Controls.Add(TI.CIR);                   //2
+            newTabPage.Controls.Add(TI.Interval);              //3
+            newTabPage.Controls.Add(TI.Size_of_TB_L);          //4
+            newTabPage.Controls.Add(TI.Weight_of_one_token_L); //5
+            newTabPage.Controls.Add(TI.CIR_L);                 //6
+            newTabPage.Controls.Add(TI.Interval_L);            //7
+            newTabPage.Controls.Add(TI.chart1);                //8
+            newTabPage.Controls.Add(TI.Help_Ro);               //9
+            newTabPage.Controls.Add(TI.RTB);                   //10
+            newTabPage.Controls.Add(TI.Weight_of_one_token_ED);//11
+            newTabPage.Controls.Add(TI.Size_of_TB_ED);         //12
+            newTabPage.Controls.Add(TI.CIR_ED);                //13
+            newTabPage.Controls.Add(TI.Generated_S);           //14
+            newTabPage.Controls.Add(TI.Generated_To);          //15
+            newTabPage.Controls.Add(TI.Generated_To_T);        //16
+            newTabPage.Controls.Add(TI.Generated_S_T);         //17
+            newTabPage.Controls.Add(TI.Generated_ED);          //18
 
 
-            
             Enqueue(newTabPage);
             tabControl1.TabPages.Add(TPe.ElementAt(0));
             textBox1.Text = Convert.ToString(TPe.Count());
@@ -222,6 +242,9 @@ namespace Дипломчик
             double RoTk_1=0;
             double[] ch = new double[5];
             double R;
+
+
+            int Gen_Hight, Gen_Low;
 
             double[] OPT = new double[2];
 
@@ -248,7 +271,10 @@ namespace Дипломчик
                     if (k==0) RoTk_1 = T / 2;
                     else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
 
-                    V = rand.Next(0, Convert.ToInt32(T) / 2);
+                    Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
+                    Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
+
+                    V = rand.Next(Gen_Low, Gen_Hight);
                     ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
                     ((TextBox)TPe.ElementAt(z).Controls[9]).Text= Convert.ToString(ch[3]);
                     //RoTk_1 = ch[3];

@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="TBMath.cs" />
     <Compile Include="TBmath_2.cs" />
+    <Compile Include="TB_Interface.cs" />
     <Compile Include="Vector.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
