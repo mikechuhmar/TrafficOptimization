@@ -42,6 +42,16 @@ namespace Дипломчик
             TabPage last = TPe.Last.Value;
             return last;
         }
+        public TabPage Dequeue_F()//Удаляет последний помещенный элемент из очереди и возвращает его. 
+        {
+            if (TPe.Count == 0)
+            {
+                throw new InvalidOperationException("The queue is empty");
+            }
+            TabPage last = TPe.First.Value;
+            TPe.RemoveFirst();
+            return last;
+        }
         public int Count
         {
             get
@@ -58,6 +68,8 @@ namespace Дипломчик
             
             MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4);
             BUF = new Buff_2();
+            button2.Enabled = false;
+            Start_modelling.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -67,6 +79,9 @@ namespace Дипломчик
 
         private void button3_Click(object sender, EventArgs e)
         {
+            button2.Enabled = true;
+            Start_modelling.Enabled = true;
+
             TabPage newTabPage = new TabPage();
             newTabPage.Text = "TB" + (TPe.Count()+1);
 
@@ -313,13 +328,16 @@ namespace Дипломчик
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Random rand = new Random();
-            int j = 0;
-            while (j < 100)
+            if (Count != 0)
             {
-                richTextBox1.Text += rand.Next(0, 5000);
-                richTextBox1.Text += '\n';
-                j++;
+                tabControl1.TabPages.RemoveAt(TPe.Count());
+                Dequeue_F();
+                textBox1.Text = Convert.ToString(TPe.Count());
+                if (Count == 0)
+                {
+                    button2.Enabled = false;
+                    Start_modelling.Enabled = false;
+                }
             }
         }
     }
