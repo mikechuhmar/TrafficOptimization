@@ -69,13 +69,13 @@ namespace Дипломчик
             GTk = V * I;
             ch[0] = GTk;
             ch[1] = V;
-            ch[2] = RoTk * Nt;
-            RoTk = RoTk - GTk / Nt;
-            ch[3] = RoTk;       
+            ch[2] = RoTk;
+            ch[4] = V - GTk;
+            RoTk = RoTk - GTk;
+            var RoTk_1 = RoTk;
 
-
+            ch[3] = RoTk_1;
             return ch;
-        }
         
     }
 }
