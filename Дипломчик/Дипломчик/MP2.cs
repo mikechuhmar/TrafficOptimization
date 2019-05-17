@@ -63,11 +63,16 @@ namespace Дипломчик
         public System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         public double q_tk;
         public double q_tkm1;
+        double _C = double.MaxValue;
+        double _Q = double.MaxValue;
         public double C_T
         {
             get
             {
-                return Convert.ToDouble(C_text.Text);
+                if (_C == double.MaxValue)
+                    return Convert.ToDouble(C_text.Text);
+                else
+                    return _C;
             }
         }
 
@@ -76,7 +81,10 @@ namespace Дипломчик
         {
             get
             {
-                return Convert.ToDouble(Q_text.Text);
+                if (_Q == double.MaxValue)
+                    return Convert.ToDouble(Q_text.Text);
+                else
+                    return _Q;
             }
         }
         public double t;
@@ -94,18 +102,20 @@ namespace Дипломчик
             C_text = tB8;
             richTextBox1 = rT1;
             Q_text = tB9;
+           
             //C_T = Convert.ToDouble(C_text.Text);
             //Q = Convert.ToDouble(Q_text.Text);
             hasRt = true;
         }
 
-        //public MplexMath_2(double C_T, double Q)
-        //{
-        //    //richTextBox1 = rT1;
-        //    this.C_T = C_T;
-        //    this.Q = Q;
-        //    hasRt = false;
-        //}
+        public MplexMath_2(double C_T, double Q)
+        {
+
+            //richTextBox1 = rT1;
+            this._C = C_T;
+            this._Q = Q;
+            hasRt = false;
+        }
 
         public double[] MX(double[] GI)
         {
