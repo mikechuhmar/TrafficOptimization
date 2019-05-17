@@ -11,9 +11,10 @@ using System.Windows.Forms;
 
 namespace Дипломчик
 {
+
     public partial class Form2 : Form
     {
-        public static List<Data> dataList;
+        
         TBMath_2 tbn;
         MplexMath_2 MXP;
         Buff_2 BUF;
@@ -66,7 +67,7 @@ namespace Дипломчик
         private void Form2_Load(object sender, EventArgs e)
         {
             
-            MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4);
+            
             BUF = new Buff_2();
             button2.Enabled = false;
             Start_modelling.Enabled = false;
@@ -248,7 +249,11 @@ namespace Дипломчик
 
         private void button4_Click(object sender, EventArgs e)
         {
-            dataList = new List<Data>();
+            MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4);
+            Console.WriteLine(MXP.Q_text.Text);
+            Console.WriteLine(MXP.Q);
+
+            Static.dataList = new List<Data>();
             tbn = new TBMath_2();
             Random rand = new Random();
             
@@ -281,12 +286,17 @@ namespace Дипломчик
                 progressBar1.Value++;
                 for (int z = 0; z <= TPe.Count-1; z++)
                 {
+                    TBStruct tBStruct = new TBStruct();
+
+                    data.tBs.Add(new TBStruct());
                     
                     T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
                     Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
                     CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
                     Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
-
+                    tBStruct.addInit(CIR, Nt, T);
+                    data.tBs[data.tBs.Count - 1] = tBStruct;
+                    Console.WriteLine(data.tBs.Last().CIR);
                     if (k==0) RoTk_1 = T / 2;
                     else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
 
@@ -294,6 +304,8 @@ namespace Дипломчик
                     Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
 
                     V = rand.Next(Gen_Low, Gen_Hight);
+                    tBStruct.addInput(V);
+                    data.tBs[data.tBs.Count - 1] = tBStruct;
                     ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
                     ((TextBox)TPe.ElementAt(z).Controls[9]).Text= Convert.ToString(ch[3]);
                     //RoTk_1 = ch[3];
@@ -309,18 +321,22 @@ namespace Дипломчик
                     richTextBox2.Text += "Момент: " + k + "; TB№" + (TPe.Count - z) + " GTk = " + ch[0];
                     richTextBox2.Text += '\n';
 
-                    TBStruct tBStruct = new TBStruct(tbn.CIR, tbn.Nt, tbn.T, V, ch[3], ch[0], ch[4]);
-                    data.tBs.Add(tBStruct);
+                    tBStruct.addDecision(ch[0], ch[2], ch[4]);
+                    data.tBs[data.tBs.Count - 1] = tBStruct;
+
 
                 }
-                OPT=MXP.MX(Gi);
-                data.mult = new MultStruct(MXP.Q, MXP.C_T, Gi, OPT[1], OPT[0]);
-                dataList.Add(data);
+                data.mult = new MultStruct();
+                data.mult.addInit(MXP.Q, MXP.C_T);
+                data.mult.addInput(Gi);
+                OPT = MXP.MX(Gi);
+                data.mult.addDecision(OPT[1], OPT[0]);
+                Static.dataList.Add(data);
                 //Console.WriteLine(dataList.Count);
             }
-            foreach (Data data in dataList)
+            foreach (Data data in Static.dataList)
             {
-                Console.WriteLine(dataList.IndexOf(data));
+                //Console.WriteLine(dataList.IndexOf(data));
                 Console.WriteLine(data.output());
             }
             MessageBox.Show("Моделирование закончено");
