@@ -17,7 +17,6 @@ namespace Дипломчик
             this.CIR = CIR;
             this.Nt = Nt;
             this.T = T;
-            Console.WriteLine(this.CIR);
         }
         public void addInput(double V)
         {

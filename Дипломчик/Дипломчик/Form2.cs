@@ -414,7 +414,9 @@ namespace Дипломчик
             swatch.Stop();
 
             //MessageBox.Show("Моделирование закончено");
-            MessageBox.Show(swatch.Elapsed.ToString());
+            double inPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.V));
+            double outPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.dataList.Sum(x => x.mult.L);
+            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages);
             Static.prev_dataList = new List<Data>(Static.dataList);
             cbPrevData.Enabled = true;
             
