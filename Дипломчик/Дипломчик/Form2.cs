@@ -336,7 +336,7 @@ namespace Дипломчик
             }
             foreach (Data data in Static.dataList)
             {
-                //Console.WriteLine(dataList.IndexOf(data));
+                Console.WriteLine(Static.dataList.IndexOf(data));
                 Console.WriteLine(data.output());
             }
             MessageBox.Show("Моделирование закончено");
