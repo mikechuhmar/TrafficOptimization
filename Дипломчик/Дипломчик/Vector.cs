@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Дипломчик
 {
-    
+
     public class Vector : IEnumerable
     {
         public List<double> elements;
@@ -42,6 +42,10 @@ namespace Дипломчик
         {
             elements = new List<double>();
         }
+        public Vector(int amount)
+        {
+            elements = new List<double>(amount);
+        }
         public Vector(Vector vector, double d)
         {
             elements = new List<double>();
@@ -75,10 +79,11 @@ namespace Дипломчик
             string str = "";
             foreach (var element in elements)
             {
-                str += element.ToString() + " ";
+                str += (element - element % 0.001).ToString() + "    ";
             }
             return str;
         }
+
         public Vector InnerProduct(Vector vector)
         {
             List<double> answerElements = new List<double>(vector.Count);
@@ -93,6 +98,26 @@ namespace Дипломчик
         {
             return elements.Sum();
         }
+        //Прегрузки операторов
+        public static Vector operator +(Vector a, Vector b)
+        {
+            Vector answ = new Vector(a);
+            for (int i = 0; i < a.Count; i++)
+            {
+                answ[i] = a[i] + b[i];
+            }
+            return answ;
+        }
+        public static Vector operator -(Vector a, Vector b)
+        {
+            Vector answ = new Vector(a);
+            for (int i = 0; i < a.Count; i++)
+            {
+                answ[i] = a[i] - b[i];
+            }
+            return answ;
+        }
+
         public bool IsEquivalent(Vector vector)
         {
             bool var = true;
