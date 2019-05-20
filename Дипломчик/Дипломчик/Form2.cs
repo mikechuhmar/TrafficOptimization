@@ -71,6 +71,7 @@ namespace Дипломчик
             BUF = new Buff_2();
             button2.Enabled = false;
             Start_modelling.Enabled = false;
+            cbPrevData.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -249,6 +250,14 @@ namespace Дипломчик
 
         private void button4_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
+
+            richTextBox2.Clear();
+            
+            System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
+            swatch.Start();
+
+            Static.dataList = new List<Data>();
             MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4);
             Console.WriteLine(MXP.Q_text.Text);
             Console.WriteLine(MXP.Q);
@@ -279,67 +288,136 @@ namespace Дипломчик
             
             int Time_To_Model = Convert.ToInt16(textBox3.Text);
 
-            for (int k = 0; k <= Time_To_Model; k++)
+            if (!cbPrevData.Checked)
             {
-                Data data = new Data();
-                
-                progressBar1.Value++;
-                for (int z = 0; z <= TPe.Count-1; z++)
+                for (int k = 0; k <= Time_To_Model; k++)
                 {
-                    TBStruct tBStruct = new TBStruct();
+                    Data data = new Data();
 
-                    data.tBs.Add(new TBStruct());
-                    
-                    T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
-                    Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
-                    CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
-                    Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
-                    tBStruct.addInit(CIR, Nt, T);
-                    data.tBs[data.tBs.Count - 1] = tBStruct;
-                    Console.WriteLine(data.tBs.Last().CIR);
-                    if (k==0) RoTk_1 = T / 2;
-                    else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
+                    progressBar1.Value++;
+                    for (int z = 0; z <= TPe.Count - 1; z++)
+                    {
+                        TBStruct tBStruct = new TBStruct();
 
-                    Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
-                    Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
+                        data.tBs.Add(new TBStruct());
 
-                    V = rand.Next(Gen_Low, Gen_Hight);
-                    tBStruct.addInput(V);
-                    data.tBs[data.tBs.Count - 1] = tBStruct;
-                    ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
-                    ((TextBox)TPe.ElementAt(z).Controls[9]).Text= Convert.ToString(ch[3]);
-                    //RoTk_1 = ch[3];
+                        T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
+                        Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+                        CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
+                        Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
+                        tBStruct.addInit(CIR, Nt, T);
+                        data.tBs[data.tBs.Count - 1] = tBStruct;
+                        Console.WriteLine(data.tBs.Last().CIR);
+                        if (k == 0) RoTk_1 = T / 2;
+                        else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
 
-                    R = ch[4];//потери на z токенбакете
+                        Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
+                        Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
 
-                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
-                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
-                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["RoTk"].Points.AddXY(k, ch[2]);
+                        V = rand.Next(Gen_Low, Gen_Hight);
+                        tBStruct.addInput(V);
+                        data.tBs[data.tBs.Count - 1] = tBStruct;
+                        ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
+                        ((TextBox)TPe.ElementAt(z).Controls[9]).Text = Convert.ToString(ch[3]);
+                        //RoTk_1 = ch[3];
 
-                    Gi[z] = ch[0];
-                    
-                    richTextBox2.Text += "Момент: " + k + "; TB№" + (TPe.Count - z) + " GTk = " + ch[0];
-                    richTextBox2.Text += '\n';
+                        R = ch[4];//потери на z токенбакете
 
-                    tBStruct.addDecision(ch[0], ch[2], ch[4]);
-                    data.tBs[data.tBs.Count - 1] = tBStruct;
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["RoTk"].Points.AddXY(k, ch[2]);
+
+                        Gi[z] = ch[0];
+
+                        richTextBox2.Text += "Момент: " + k + "; TB№" + (TPe.Count - z) + " GTk = " + ch[0];
+                        richTextBox2.Text += '\n';
+
+                        tBStruct.addDecision(ch[0], ch[2], ch[4]);
+                        data.tBs[data.tBs.Count - 1] = tBStruct;
 
 
+                    }
+                    data.mult = new MultStruct();
+                    data.mult.addInit(MXP.Q, MXP.C_T);
+                    data.mult.addInput(Gi);
+                    OPT = MXP.MX(Gi);
+                    data.mult.addDecision(OPT[1], OPT[0]);
+                    Static.dataList.Add(data);
+                    cbPrevData.Show();
+                    //Console.WriteLine(dataList.Count);
                 }
-                data.mult = new MultStruct();
-                data.mult.addInit(MXP.Q, MXP.C_T);
-                data.mult.addInput(Gi);
-                OPT = MXP.MX(Gi);
-                data.mult.addDecision(OPT[1], OPT[0]);
-                Static.dataList.Add(data);
-                //Console.WriteLine(dataList.Count);
+            }
+            else
+            {
+                for (int k = 0; k <= Time_To_Model; k++)
+                {
+                    Data data = new Data();
+
+                    progressBar1.Value++;
+                    for (int z = 0; z <= TPe.Count - 1; z++)
+                    {
+                        TBStruct tBStruct = new TBStruct();
+
+                        data.tBs.Add(new TBStruct());
+
+                        T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
+                        Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+                        CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
+                        Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
+                        tBStruct.addInit(CIR, Nt, T);
+                        data.tBs[data.tBs.Count - 1] = tBStruct;
+                        Console.WriteLine(data.tBs.Last().CIR);
+                        if (k == 0) RoTk_1 = T / 2;
+                        else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
+
+                        Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
+                        Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
+
+                        V = Static.prev_dataList[k].tBs[z].V;
+                        tBStruct.addInput(V);
+                        data.tBs[data.tBs.Count - 1] = tBStruct;
+                        ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
+                        ((TextBox)TPe.ElementAt(z).Controls[9]).Text = Convert.ToString(ch[3]);
+                        //RoTk_1 = ch[3];
+
+                        R = ch[4];//потери на z токенбакете
+
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["RoTk"].Points.AddXY(k, ch[2]);
+
+                        Gi[z] = ch[0];
+
+                        richTextBox2.Text += "Момент: " + k + "; TB№" + (TPe.Count - z) + " GTk = " + ch[0];
+                        richTextBox2.Text += '\n';
+
+                        tBStruct.addDecision(ch[0], ch[2], ch[4]);
+                        data.tBs[data.tBs.Count - 1] = tBStruct;
+
+
+                    }
+                    data.mult = new MultStruct();
+                    data.mult.addInit(MXP.Q, MXP.C_T);
+                    data.mult.addInput(Gi);
+                    OPT = MXP.MX(Gi);
+                    data.mult.addDecision(OPT[1], OPT[0]);
+                    Static.dataList.Add(data);
+                    cbPrevData.Show();
+                    //Console.WriteLine(dataList.Count);
+                }
             }
             foreach (Data data in Static.dataList)
             {
                 Console.WriteLine(Static.dataList.IndexOf(data));
                 Console.WriteLine(data.output());
             }
-            MessageBox.Show("Моделирование закончено");
+            swatch.Stop();
+
+            //MessageBox.Show("Моделирование закончено");
+            MessageBox.Show(swatch.Elapsed.ToString());
+            Static.prev_dataList = new List<Data>(Static.dataList);
+            cbPrevData.Enabled = true;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
