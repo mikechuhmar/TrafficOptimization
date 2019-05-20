@@ -43,7 +43,11 @@ namespace Дипломчик
         }
         public void addInput(double[] G)
         {
-            this.G = G;
+            this.G = new double[G.Length];
+            for (int i = 0; i<G.Length; i++)
+                this.G[i] = G[i];
+            
+            
         }
         public void addDecision(double q, double L)
         {
