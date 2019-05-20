@@ -8,7 +8,7 @@ public delegate double Function(Vector x);
 public class Functions
 {
 
-
+    
 
     public static double J(Vector vector)
     {
