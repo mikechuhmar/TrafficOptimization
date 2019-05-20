@@ -9,15 +9,35 @@ namespace Дипломчик
     public class GeneticAlgorithm
     {
         Function func;
+        GenVectorFunction genVectorFunction;
         int amChromosomes, amGenes, amPopulations;
         List<Vector> population;
+        public Vector default_genVectorFunction()
+        {
+            Random rnd = new Random();
+            Vector chromosome = new Vector();
+            for (int j = 0; j < amGenes; j++)
+            {
+                double gen = rnd.Next(0, 100);
+                chromosome.Add(gen);
+            }
+            return chromosome;
+        }
+        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction)
+        {
+            this.amChromosomes = amChromosomes;
+            this.amGenes = amGenes;
+            this.amPopulations = amPopulations;
+            this.func = func;
+            this.genVectorFunction = genVectorFunction;
+        }
         public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func)
         {
             this.amChromosomes = amChromosomes;
             this.amGenes = amGenes;
             this.amPopulations = amPopulations;
             this.func = func;
-
+            this.genVectorFunction = default_genVectorFunction;
         }
         public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Vector startPop, Function func)
         {

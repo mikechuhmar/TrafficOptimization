@@ -12,15 +12,19 @@ namespace Дипломчик
         public double V;
         public double Ro, G, R;
         
-        public void addInit(double CIR, double Nt, double T)
+        public void addInit(double T)
         {
-            this.CIR = CIR;
-            this.Nt = Nt;
+            
             this.T = T;
         }
         public void addInput(double V)
         {
             this.V = V;
+        }
+        public void addOptimized(double CIR, double Nt)
+        {
+            this.CIR = CIR;
+            this.Nt = Nt;
         }
         public void addDecision(double G, double Ro, double R)
         {

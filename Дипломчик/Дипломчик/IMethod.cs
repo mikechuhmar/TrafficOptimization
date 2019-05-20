@@ -8,6 +8,7 @@ namespace Дипломчик
 {
     interface IMethod
     {
+        
         Vector Result();
     }
 }
