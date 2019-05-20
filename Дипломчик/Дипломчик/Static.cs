@@ -9,6 +9,7 @@ namespace Дипломчик
     public static class Static
     {
         public static List<Data> dataList;
-        public static Data currentData; 
+        public static Data currentData;
+        public static List<Data> prev_dataList = null;
     }
 }
