@@ -6,25 +6,28 @@ using System.Threading.Tasks;
 
 namespace Дипломчик
 {
-    public class SwarmParticlesAlgorithm
+    class SwarmParticlesAlgorithm: Method
     {
         int amParticles;
-        int amCoords;
         int amSteps;
         double a1, a2;
-        Function func;
         Vector groupBest;
         List<Vector> particlesBest;
         List<Vector> points;
         List<Vector> speeds;
-        public SwarmParticlesAlgorithm(int amParticles, int amCoords, int amSteps, double a1, double a2, Function func)
+        public SwarmParticlesAlgorithm(int amParticles, int amParams, int amSteps, double a1, double a2, Function func, GenVectorFunction genVectorFunction) : base(amParams, func, genVectorFunction)
         {
             this.amParticles = amParticles;
-            this.amCoords = amCoords;
             this.amSteps = amSteps;
             this.a1 = a1;
             this.a2 = a2;
-            this.func = func;
+        }
+        public SwarmParticlesAlgorithm(int amParticles, int amParams, int amSteps, double a1, double a2, Function func) : base(amParams, func)
+        {
+            this.amParticles = amParticles;
+            this.amSteps = amSteps;
+            this.a1 = a1;
+            this.a2 = a2;
         }
         void CreateStartPoints()
         {
@@ -34,16 +37,11 @@ namespace Дипломчик
             Random rnd = new Random();
             for (int i = 0; i < amParticles; i++)
             {
-                points.Add(new Vector());
-                speeds.Add(new Vector());
-                particlesBest.Add(new Vector());
-                for (int j = 0; j < amCoords; j++)
-                {
-                    double value = rnd.Next(-100, 100);
-                    points[i].Add(value);
-                    speeds[i].Add(value);
-                    particlesBest[i].Add(value);
-                }
+                
+                points.Add(new Vector(genVectorFunction(rand)));
+                speeds.Add(new Vector(genVectorFunction(rand)));
+                particlesBest.Add(new Vector(genVectorFunction(rand)));
+                
             }
             var query = points.OrderBy(x => func(x));
             groupBest = new Vector(query.First());
@@ -54,7 +52,7 @@ namespace Дипломчик
             Random rnd = new Random();
             for (int i = 0; i < amParticles; i++)
             {
-                for (int j = 0; j < amCoords; j++)
+                for (int j = 0; j < amParams; j++)
                 {
                     speeds[i][j] = speeds[i][j] + a1 * rnd.NextDouble() * (particlesBest[i][j] - points[i][j]) + a2 * rnd.NextDouble() * (groupBest[j] - points[i][j]);
                 }

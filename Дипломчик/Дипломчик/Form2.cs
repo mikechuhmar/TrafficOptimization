@@ -293,6 +293,7 @@ namespace Дипломчик
                 data.tBs = new List<TBStruct>(TPe.Count);
                 Vector vector = new Vector();
                 progressBar1.Value++;
+                //Инициализация структур маркерных корзин и мультиплексора
                 for (int z = 0; z <= TPe.Count - 1; z++)
                 {
                     
@@ -321,17 +322,7 @@ namespace Дипломчик
                 data.mult.addInit(MXP.Q, MXP.C_T);
                 Static.dataList.Add(data);
                 Console.WriteLine("ooo");
-                //foreach (TBStruct tBStruct in data.tBs)
-                //{
-
-                //    Console.WriteLine(tBStruct.V);
-                //}
-
-
-
-                /////////
-
-                /////////
+                
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
                     GeneticAlgorithm algorithm = new GeneticAlgorithm(8, TPe.Count * 2, 100, Functions.J, Functions.genVector);
@@ -340,7 +331,14 @@ namespace Дипломчик
                     //Console.WriteLine("J = " + Functions.J(vector));
                     //Console.Write(vector.ToString());
                 }
-
+                if (comboBoxMethod.SelectedIndex == 2)
+                {
+                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(8, TPe.Count * 2, 100, 2, 2, Functions.J, Functions.genVector);
+                    vector = algorithm.result();
+                    //Console.WriteLine("k = " + k);
+                    //Console.WriteLine("J = " + Functions.J(vector));
+                    //Console.Write(vector.ToString());
+                }
                 for (int z = 0, v = 0; z <= TPe.Count - 1; z++, v+=2)
                 {
                     
@@ -359,7 +357,7 @@ namespace Дипломчик
                         CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
                         Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
                     }
-                    if (comboBoxMethod.SelectedIndex == 1)
+                    else
                     {
                         CIR = vector[v];
                         Nt = vector[v + 1];
@@ -417,9 +415,9 @@ namespace Дипломчик
             //    Console.WriteLine(data.output());
             //    Console.WriteLine(data.J);
             //}
+
             swatch.Stop();
 
-            //MessageBox.Show("Моделирование закончено");
             double inPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.V));
             double outPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.dataList.Sum(x => x.mult.L);
             MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages);

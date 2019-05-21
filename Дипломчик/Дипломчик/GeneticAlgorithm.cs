@@ -6,48 +6,34 @@ using System.Threading.Tasks;
 
 namespace Дипломчик
 {
-    public class GeneticAlgorithm
+    class GeneticAlgorithm: Method
     {
-        Function func;
-        GenVectorFunction genVectorFunction;
-        int amChromosomes, amGenes, amPopulations;
-        List<Vector> population;
-        Random rand = new Random();
-        public Vector default_genVectorFunction(Random rand)
+        int amChromosomes, amPopulations;
+        int amGenes
         {
-            Random rnd = new Random();
-            Vector chromosome = new Vector();
-            for (int j = 0; j < amGenes; j++)
+            get
             {
-                double gen = rnd.Next(0, 100);
-                chromosome.Add(gen);
+                return amParams;
             }
-            return chromosome;
+            set
+            {
+                amParams = value;
+            }
         }
-        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction)
-        {
-            this.amChromosomes = amChromosomes;
-            this.amGenes = amGenes;
-            this.amPopulations = amPopulations;
-            this.func = func;
-            this.genVectorFunction = genVectorFunction;
-        }
-        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func)
-        {
-            this.amChromosomes = amChromosomes;
-            this.amGenes = amGenes;
-            this.amPopulations = amPopulations;
-            this.func = func;
-            this.genVectorFunction = default_genVectorFunction;
-        }
-        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Vector startPop, Function func)
-        {
-            this.amChromosomes = amChromosomes;
-            this.amGenes = amGenes;
-            this.amPopulations = amPopulations;
-            this.func = func;
 
+        List<Vector> population;
+        
+        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction): base(amGenes, func, genVectorFunction)
+        {
+            this.amChromosomes = amChromosomes;
+            this.amPopulations = amPopulations;
         }
+        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func): base(amGenes, func)
+        {
+            this.amChromosomes = amChromosomes;
+            this.amPopulations = amPopulations;
+        }
+        
         void CreateStartPopulation()
         {
             Random rnd = new Random();
@@ -129,13 +115,13 @@ namespace Дипломчик
             for (i = 0; i < amPopulations; i++)
             {
                 Vector prevMin = population.First();
-                Console.WriteLine(i.ToString());
-                Console.WriteLine(prevMin.ToString());
-                foreach (var p in population)
-                {
-                    Console.WriteLine(p.ToString());
-                    Console.WriteLine(func(p).ToString());
-                }
+                //Console.WriteLine(i.ToString());
+                //Console.WriteLine(prevMin.ToString());
+                //foreach (var p in population)
+                //{
+                //    Console.WriteLine(p.ToString());
+                //    Console.WriteLine(func(p).ToString());
+                //}
                 Selection();
                 Crossover();
                 Mutation();
