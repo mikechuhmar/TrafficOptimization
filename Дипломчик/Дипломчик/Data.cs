@@ -8,14 +8,16 @@ namespace Дипломчик
 {
     public struct TBStruct
     {
-        public double CIR, Nt, T;
+        public double CIR, Nt, T, Ro_prev;
         public double V;
         public double Ro, G, R;
         
-        public void addInit(double T)
+        public void addInit(double T, double Ro_prev)
         {
             
             this.T = T;
+            this.Ro_prev = Ro_prev;
+
         }
         public void addInput(double V)
         {
@@ -63,7 +65,7 @@ namespace Дипломчик
     {
         public List<TBStruct> tBs;
         public MultStruct mult;
-        public double J;
+        public double J = double.MinValue;
         public Data()
         {
             tBs = new List<TBStruct>();
@@ -74,7 +76,7 @@ namespace Дипломчик
             int tb_i = 1;
             foreach (TBStruct tB in tBs)
             {
-                str += "TB №" + tb_i + ": \n" + "CIR = " + tB.CIR + " Nt = " + tB.Nt + " T =  " + tB.T + " V =  " + tB.V + " Ro = " + tB.Ro + " G = " + tB.G + " R = " + tB.R + "\n";
+                str += "TB №" + tb_i + ": \n" + "Ro_prev = " + tB.Ro_prev + " CIR = " + tB.CIR + " Nt = " + tB.Nt + " T =  " + tB.T + " V =  " + tB.V + " Ro = " + tB.Ro + " G = " + tB.G + " R = " + tB.R + "\n";
                 tb_i++;
             }
             str += "Multiplexor: \n" + "Q = " + mult.Q + " C = " + mult.C + " G = ";

@@ -12,7 +12,8 @@ namespace Дипломчик
         GenVectorFunction genVectorFunction;
         int amChromosomes, amGenes, amPopulations;
         List<Vector> population;
-        public Vector default_genVectorFunction()
+        Random rand = new Random();
+        public Vector default_genVectorFunction(Random rand)
         {
             Random rnd = new Random();
             Vector chromosome = new Vector();
@@ -53,12 +54,9 @@ namespace Дипломчик
             population = new List<Vector>();
             for (int i = 0; i < amChromosomes; i++)
             {
-                Vector chromosome = new Vector();
-                for (int j = 0; j < amGenes; j++)
-                {
-                    double gen = rnd.Next(0, 100);
-                    chromosome.Add(gen);
-                }
+
+                Vector chromosome = genVectorFunction(rand);
+                
                 population.Add(chromosome);
             }
         }
@@ -131,7 +129,13 @@ namespace Дипломчик
             for (i = 0; i < amPopulations; i++)
             {
                 Vector prevMin = population.First();
-                Console.WriteLine(i.ToString() + ":");
+                Console.WriteLine(i.ToString());
+                Console.WriteLine(prevMin.ToString());
+                foreach (var p in population)
+                {
+                    Console.WriteLine(p.ToString());
+                    Console.WriteLine(func(p).ToString());
+                }
                 Selection();
                 Crossover();
                 Mutation();
