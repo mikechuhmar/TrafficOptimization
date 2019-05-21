@@ -139,7 +139,7 @@ namespace Дипломчик
             q_tk = (Math.Max((q_tkm1 - C_T * t), 0)) + (Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0))));//текущая заполненность буффера
 
             //вычисление Ltk
-            L_tk = SUMM_Gi - (Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0)))); //потери на мультиплексоре
+            L_tk = SUMM_Gi - Math.Min((SUMM_Gi), (Q - Math.Max((q_tkm1 - C_T * t), 0))); //потери на мультиплексоре
             //конец - вычисление Ltk
             OPT[0] = L_tk;
             OPT[1] = q_tk;
