@@ -301,7 +301,9 @@ namespace Дипломчик
                     
 
                     T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
-                    tBStruct.addInit(T);
+                    if (k == 0) RoTk_1 = T / 2;
+                    else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
+                    tBStruct.addInit(T, RoTk_1);
                     //data.tBs[z] = tBStruct;
                     Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
                     Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
@@ -312,8 +314,11 @@ namespace Дипломчик
                         V = Static.prev_dataList[k].tBs[z].V;
                     //Console.WriteLine(V);
                     tBStruct.addInput(V);
+                    
                     data.tBs.Add(tBStruct);
                 }
+                data.mult = new MultStruct();
+                data.mult.addInit(MXP.Q, MXP.C_T);
                 Static.dataList.Add(data);
                 Console.WriteLine("ooo");
                 //foreach (TBStruct tBStruct in data.tBs)
@@ -321,27 +326,25 @@ namespace Дипломчик
 
                 //    Console.WriteLine(tBStruct.V);
                 //}
-                Console.WriteLine("1");
-                for (int z = 0, v = 0; z <= TPe.Count - 1; z++, v += 2)
-                {
 
-                    Console.WriteLine(data.tBs[z].V);
+
+
+                /////////
+
+                /////////
+                if (comboBoxMethod.SelectedIndex == 1)
+                {
+                    GeneticAlgorithm algorithm = new GeneticAlgorithm(8, TPe.Count * 2, 100, Functions.J, Functions.genVector);
+                    vector = algorithm.result();
+                    //Console.WriteLine("k = " + k);
+                    //Console.WriteLine("J = " + Functions.J(vector));
+                    //Console.Write(vector.ToString());
                 }
 
-
-                /////////
-               
-                /////////
-                //if (comboBoxMethod.SelectedIndex == 1)
-                //{
-                //    GeneticAlgorithm algorithm = new GeneticAlgorithm(8, TPe.Count * 2, 100, Functions.J, Functions.genVector);
-                //    vector = algorithm.result();
-                //}
-                Console.WriteLine("3");
                 for (int z = 0, v = 0; z <= TPe.Count - 1; z++, v+=2)
                 {
                     
-                    Console.WriteLine(data.tBs[z].V);
+                    
 
                     TBStruct tBStruct = data.tBs[z];
 
@@ -350,6 +353,7 @@ namespace Дипломчик
                     V = tBStruct.V;
                     //Console.WriteLine(z);
                     //Console.WriteLine(V);
+
                     if (comboBoxMethod.SelectedIndex == 0)
                     {
                         CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
@@ -362,8 +366,7 @@ namespace Дипломчик
                     }
                     tBStruct.addOptimized(CIR, Nt);
                     data.tBs[z] = tBStruct;
-                    if (k == 0) RoTk_1 = T / 2;
-                    else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
+                    
 
                     
 
@@ -397,21 +400,23 @@ namespace Дипломчик
                 //    Console.WriteLine("kkk");
                 //    Console.WriteLine(tBStruct.V);
                 //}
-                data.mult = new MultStruct();
-                data.mult.addInit(MXP.Q, MXP.C_T);
+                
                 data.mult.addInput(Gi);
                 OPT = MXP.MX(Gi);
                 data.mult.addDecision(OPT[1], OPT[0]);
-                
+                //Console.WriteLine(Static.dataList.IndexOf(data));
+                Console.WriteLine(data.output());
+                Console.WriteLine(data.J);
                 cbPrevData.Show();
             }
 
             
-            foreach (Data data in Static.dataList)
-            {
-                Console.WriteLine(Static.dataList.IndexOf(data));
-                Console.WriteLine(data.output());
-            }
+            //foreach (Data data in Static.dataList)
+            //{
+            //    Console.WriteLine(Static.dataList.IndexOf(data));
+            //    Console.WriteLine(data.output());
+            //    Console.WriteLine(data.J);
+            //}
             swatch.Stop();
 
             //MessageBox.Show("Моделирование закончено");
