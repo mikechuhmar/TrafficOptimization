@@ -16,7 +16,7 @@ namespace Дипломчик
         {
             Location = new D.Point(250, 30),
             Name = "Size_of_TB",
-            Text = "1000",
+            Text = "500",
             Size = new D.Size(50, 22)
         };
 
@@ -32,7 +32,7 @@ namespace Дипломчик
         {
             Location = new D.Point(250, 60),
             Name = "Weight_of_one_token",
-            Text = "20",
+            Text = "100",
             Size = new D.Size(50, 22)
         };
 
@@ -48,7 +48,7 @@ namespace Дипломчик
         {
             Location = new D.Point(250, 90),
             Name = "CIR",
-            Text = "100",
+            Text = "2",
             Size = new D.Size(50, 22)
         };
 
@@ -129,7 +129,7 @@ namespace Дипломчик
         {
             Location = new D.Point(200, 120),
             Name = "Generated_S_T",
-            Text = "0",
+            Text = "200",
             Size = new D.Size(50, 22)
         };
         public F.TextBox Generated_To_T = new F.TextBox()///
