@@ -63,7 +63,8 @@ namespace Дипломчик
         {
             InitializeComponent();
         }
-
+        TabPage GAPage;
+        TabPage SPAPage;
         private void Form2_Load(object sender, EventArgs e)
         {
             
@@ -73,6 +74,10 @@ namespace Дипломчик
             Start_modelling.Enabled = false;
             cbPrevData.Enabled = false;
             comboBoxMethod.SelectedIndex = 0;
+            GAPage = tabControl1.TabPages[1];
+            SPAPage = tabControl1.TabPages[2];
+            GAPage.Parent = null;
+            SPAPage.Parent = null;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -325,19 +330,13 @@ namespace Дипломчик
                 
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
-                    GeneticAlgorithm algorithm = new GeneticAlgorithm(20, TPe.Count * 2, 100, Functions.J, Functions.genVector);
+                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), TPe.Count * 2, int.Parse(tbGA2.Text), Functions.J, Functions.genVector);
                     vector = new Vector(algorithm.result());
-                    //Console.WriteLine("k = " + k);
-                    //Console.WriteLine("J = " + Functions.J(vector));
-                    //Console.Write(vector.ToString());
                 }
                 if (comboBoxMethod.SelectedIndex == 2)
                 {
-                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(8, TPe.Count * 2, 3, 2, 2, Functions.J, Functions.genVector);
+                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), TPe.Count * 2, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector);
                     vector = new Vector(algorithm.result());
-                    //Console.WriteLine("k = " + k);
-                    //Console.WriteLine("J = " + Functions.J(vector));
-                    //Console.Write(vector.ToString());
                 }
                 for (int z = 0, v = 0; z <= TPe.Count - 1; z++, v+=2)
                 {
@@ -439,6 +438,21 @@ namespace Дипломчик
                     button2.Enabled = false;
                     Start_modelling.Enabled = false;
                 }
+            }
+        }
+
+        private void comboBoxMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxMethod.SelectedIndex == 1)
+            {
+                GAPage.Parent = tabControl1;
+                SPAPage.Parent = null;
+            }
+
+            if (comboBoxMethod.SelectedIndex == 2)
+            {
+                SPAPage.Parent = tabControl1;
+                GAPage.Parent = null;
             }
         }
     }

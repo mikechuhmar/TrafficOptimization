@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -52,10 +52,26 @@
             this.cbPrevData = new System.Windows.Forms.CheckBox();
             this.comboBoxMethod = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbGA1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbGA2 = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbSPA2 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbSPA1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbSPA4 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbSPA3 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -64,6 +80,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -141,16 +159,16 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(6, 137);
             this.chart1.Name = "chart1";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart1.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(585, 147);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
@@ -272,6 +290,7 @@
             this.comboBoxMethod.Name = "comboBoxMethod";
             this.comboBoxMethod.Size = new System.Drawing.Size(121, 24);
             this.comboBoxMethod.TabIndex = 17;
+            this.comboBoxMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxMethod_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -281,6 +300,140 @@
             this.label5.Size = new System.Drawing.Size(141, 17);
             this.label5.TabIndex = 18;
             this.label5.Text = "Метод оптимизации";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.tbGA2);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.tbGA1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(893, 508);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Генетический алгоритм";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tbGA1
+            // 
+            this.tbGA1.Location = new System.Drawing.Point(454, 117);
+            this.tbGA1.Name = "tbGA1";
+            this.tbGA1.Size = new System.Drawing.Size(100, 22);
+            this.tbGA1.TabIndex = 0;
+            this.tbGA1.Text = "10";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(192, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(186, 17);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Число особей в популяции";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(192, 161);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(161, 17);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Количество поколений";
+            // 
+            // tbGA2
+            // 
+            this.tbGA2.Location = new System.Drawing.Point(454, 161);
+            this.tbGA2.Name = "tbGA2";
+            this.tbGA2.Size = new System.Drawing.Size(100, 22);
+            this.tbGA2.TabIndex = 2;
+            this.tbGA2.Text = "100";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.tbSPA4);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.tbSPA3);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.tbSPA2);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.tbSPA1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(893, 508);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Алгоритм роя частиц";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(238, 146);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(153, 17);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Количество итераций";
+            // 
+            // tbSPA2
+            // 
+            this.tbSPA2.Location = new System.Drawing.Point(500, 146);
+            this.tbSPA2.Name = "tbSPA2";
+            this.tbSPA2.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA2.TabIndex = 6;
+            this.tbSPA2.Text = "100";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(238, 102);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 17);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Число частиц";
+            // 
+            // tbSPA1
+            // 
+            this.tbSPA1.Location = new System.Drawing.Point(500, 102);
+            this.tbSPA1.Name = "tbSPA1";
+            this.tbSPA1.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA1.TabIndex = 4;
+            this.tbSPA1.Text = "10";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(238, 234);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 17);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "alfa2";
+            // 
+            // tbSPA4
+            // 
+            this.tbSPA4.Location = new System.Drawing.Point(500, 234);
+            this.tbSPA4.Name = "tbSPA4";
+            this.tbSPA4.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA4.TabIndex = 10;
+            this.tbSPA4.Text = "1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(238, 190);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 17);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "alfa1";
+            // 
+            // tbSPA3
+            // 
+            this.tbSPA3.Location = new System.Drawing.Point(500, 190);
+            this.tbSPA3.Name = "tbSPA3";
+            this.tbSPA3.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA3.TabIndex = 8;
+            this.tbSPA3.Text = "1";
             // 
             // Form2
             // 
@@ -297,6 +450,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -324,5 +481,19 @@
         private System.Windows.Forms.CheckBox cbPrevData;
         private System.Windows.Forms.ComboBox comboBoxMethod;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbGA2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbGA1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbSPA2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbSPA1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbSPA4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbSPA3;
     }
 }
