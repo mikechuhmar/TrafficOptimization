@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -50,6 +50,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbPrevData = new System.Windows.Forms.CheckBox();
+            this.comboBoxMethod = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -70,6 +72,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.comboBoxMethod);
             this.tabPage1.Controls.Add(this.cbPrevData);
             this.tabPage1.Controls.Add(this.richTextBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -137,16 +141,16 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(6, 137);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(585, 147);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
@@ -198,7 +202,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(63, 22);
             this.textBox3.TabIndex = 5;
-            this.textBox3.Text = "100";
+            this.textBox3.Text = "2";
             // 
             // Start_modelling
             // 
@@ -257,6 +261,26 @@
             this.cbPrevData.Text = "Использовать значения пакетов трафика\r\n из предыдущего моделирования";
             this.cbPrevData.UseVisualStyleBackColor = true;
             // 
+            // comboBoxMethod
+            // 
+            this.comboBoxMethod.FormattingEnabled = true;
+            this.comboBoxMethod.Items.AddRange(new object[] {
+            "Нет",
+            "Генетический алгоритм"});
+            this.comboBoxMethod.Location = new System.Drawing.Point(693, 303);
+            this.comboBoxMethod.Name = "comboBoxMethod";
+            this.comboBoxMethod.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxMethod.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(693, 268);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 17);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Метод оптимизации";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -297,5 +321,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.CheckBox cbPrevData;
+        private System.Windows.Forms.ComboBox comboBoxMethod;
+        private System.Windows.Forms.Label label5;
     }
 }
