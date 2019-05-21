@@ -1,14 +1,30 @@
 ﻿
 using Дипломчик;
 using System.Linq;
+using System;
+
 public delegate double Function(Vector x);
 
-
+public delegate Vector GenVectorFunction();
 
 public class Functions
 {
 
-    
+    public static Vector genVector()
+    {
+        Random rand = new Random();
+        Data data = Static.dataList.Last();
+        Vector vector = new Vector();
+
+        for(int i = 0; i < data.tBs.Count; i++)
+        {
+            int CIR = rand.Next(1, (int)data.tBs[i].V);
+            vector.Add(CIR);
+            int Nt = rand.Next(1 / CIR, (int)data.tBs[i].V / CIR);
+            vector.Add(Nt);
+        }
+        return vector;
+    }
 
     public static double J(Vector vector)
     {
