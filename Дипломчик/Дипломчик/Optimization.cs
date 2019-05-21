@@ -18,11 +18,11 @@ public class Functions
 
         for(int i = 0; i < data.tBs.Count; i++)
         {
-            //int CIR = rand.Next(1, (int)data.tBs[i].V);
-            int CIR = rand.Next(1, 1000);
+            int CIR = rand.Next(1, (int)data.tBs[i].T);
+            //int CIR = rand.Next(1, 1000);
             vector.Add(CIR);
-            //int Nt = rand.Next(1 / CIR, (int)data.tBs[i].V / CIR);
-            int Nt = rand.Next(1, 1000);
+            int Nt = rand.Next(1, (int)data.tBs[i].T / CIR);
+            //int Nt = rand.Next(1, 1000);
             vector.Add(Nt);
         }
         return vector;

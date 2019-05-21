@@ -325,16 +325,16 @@ namespace Дипломчик
                 
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
-                    GeneticAlgorithm algorithm = new GeneticAlgorithm(8, TPe.Count * 2, 100, Functions.J, Functions.genVector);
-                    vector = algorithm.result();
+                    GeneticAlgorithm algorithm = new GeneticAlgorithm(20, TPe.Count * 2, 100, Functions.J, Functions.genVector);
+                    vector = new Vector(algorithm.result());
                     //Console.WriteLine("k = " + k);
                     //Console.WriteLine("J = " + Functions.J(vector));
                     //Console.Write(vector.ToString());
                 }
                 if (comboBoxMethod.SelectedIndex == 2)
                 {
-                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(8, TPe.Count * 2, 100, 2, 2, Functions.J, Functions.genVector);
-                    vector = algorithm.result();
+                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(8, TPe.Count * 2, 3, 2, 2, Functions.J, Functions.genVector);
+                    vector = new Vector(algorithm.result());
                     //Console.WriteLine("k = " + k);
                     //Console.WriteLine("J = " + Functions.J(vector));
                     //Console.Write(vector.ToString());

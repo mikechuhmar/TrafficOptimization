@@ -115,7 +115,7 @@ namespace Дипломчик
             for (i = 0; i < amPopulations; i++)
             {
                 Vector prevMin = population.First();
-                //Console.WriteLine(i.ToString());
+                //Console.WriteLine("\n" + i.ToString() + ":");
                 //Console.WriteLine(prevMin.ToString());
                 //foreach (var p in population)
                 //{
