@@ -18,8 +18,9 @@ namespace Дипломчик
         TBMath_2 tbn;
         MplexMath_2 MXP;
         Buff_2 BUF;
-
+        bool GA = false, SPA = false;
         public LinkedList<TabPage> TPe = new LinkedList<TabPage>();
+        //public List<TabPage> TPe = new List<TabPage>();
         public void Enqueue(TabPage value)//Добавляет элемент в очередь.
         {
             TPe.AddFirst(value);
@@ -87,6 +88,8 @@ namespace Дипломчик
 
         private void button3_Click(object sender, EventArgs e)
         {
+            GAPage.Parent = null;
+            SPAPage.Parent = null;
             button2.Enabled = true;
             Start_modelling.Enabled = true;
 
@@ -251,6 +254,10 @@ namespace Дипломчик
             Enqueue(newTabPage);
             tabControl1.TabPages.Add(TPe.ElementAt(0));
             textBox1.Text = Convert.ToString(TPe.Count());
+            if (GA)
+                GAPage.Parent = tabControl1;
+            if (SPA)
+                SPAPage.Parent = tabControl1;
         }
 
 
@@ -430,14 +437,24 @@ namespace Дипломчик
         {
             if (Count != 0)
             {
-                tabControl1.TabPages.RemoveAt(TPe.Count());
+                
+                GAPage.Parent = null;
+                SPAPage.Parent = null;
                 Dequeue_F();
+                tabControl1.TabPages.RemoveAt(TPe.Count() + 1);
+                //tabControl1.TabPages.Remove(TPe.Last());
+                
+                
                 textBox1.Text = Convert.ToString(TPe.Count());
                 if (Count == 0)
                 {
                     button2.Enabled = false;
                     Start_modelling.Enabled = false;
                 }
+                if(GA)
+                    GAPage.Parent = tabControl1;
+                if (SPA)
+                    SPAPage.Parent = tabControl1;
             }
         }
 
@@ -446,12 +463,16 @@ namespace Дипломчик
             if (comboBoxMethod.SelectedIndex == 1)
             {
                 GAPage.Parent = tabControl1;
+                GA = true;
+                SPA = false;
                 SPAPage.Parent = null;
             }
 
             if (comboBoxMethod.SelectedIndex == 2)
             {
                 SPAPage.Parent = tabControl1;
+                SPA = true;
+                GA = false;
                 GAPage.Parent = null;
             }
         }
