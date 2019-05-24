@@ -514,6 +514,8 @@ namespace Дипломчик
 
         private void button4_Click_1(object sender, EventArgs e)
         {
+            GAPage.Parent = null;
+            SPAPage.Parent = null;
             button1.Enabled = true;
             Start_modelling.Enabled = true;
 
@@ -561,6 +563,8 @@ namespace Дипломчик
 
             if ((Count != 0) && (ind != -1))
             {
+                //GAPage.Parent = null;
+                //SPAPage.Parent = null;
                 tabControl1.TabPages.RemoveAt(indp);
                 TPe.Remove(TPe.ElementAt(ind));
                 LB_COUNT = LB_COUNT - 1;
@@ -573,6 +577,10 @@ namespace Дипломчик
                 {
                     button1.Enabled = false;
                 }
+                //if (GA)
+                //    GAPage.Parent = tabControl1;
+                //if (SPA)
+                //    SPAPage.Parent = tabControl1;
             }
             textBox5.Text = Convert.ToString(Count_Of_Page("LB"));
         }
