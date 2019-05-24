@@ -14,7 +14,9 @@ namespace Дипломчик
 
     public partial class Form2 : Form
     {
-        
+
+        int LB_COUNT = 0;
+
         TBMath_2 tbn;
         MplexMath_2 MXP;
         Buff_2 BUF;
@@ -79,6 +81,9 @@ namespace Дипломчик
             SPAPage = tabControl1.TabPages[2];
             GAPage.Parent = null;
             SPAPage.Parent = null;
+            button1.Enabled = false;
+            textBox5.Enabled = false;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -94,140 +99,22 @@ namespace Дипломчик
             Start_modelling.Enabled = true;
 
             TabPage newTabPage = new TabPage();
-            newTabPage.Text = "TB" + (TPe.Count()+1);
+            newTabPage.Text = "TB" + (Count_Of_Page("TB") + 1);
 
             TB_Interface TI = new TB_Interface();
+           
             /*
-            TextBox Size_of_TB = new TextBox();
-            Size_of_TB.Location = new Point(250, 30);
-            Size_of_TB.Name = "Size_of_TB";
-            Size_of_TB.Text = "1000";
-            Size_of_TB.Width = 100;
-            Size_of_TB.Height = 30;
-            Size_of_TB.Size = new Size(115, 22);
-
-            Label Size_of_TB_L = new Label();
-            Size_of_TB_L.Location = new Point(20, 30);
-            Size_of_TB_L.Name = "Size_of_TB_L";
-            Size_of_TB_L.Text = "Максимальный объем Token Bucket";
-            Size_of_TB_L.Width = 100;
-            Size_of_TB_L.Height = 30;
-            Size_of_TB_L.Size = new Size(200, 22);
-
-            TextBox Weight_of_one_token = new TextBox();
-            Weight_of_one_token.Location = new Point(250, 60);
-            Weight_of_one_token.Name = "Weight_of_one_token";
-            Weight_of_one_token.Text = "20";
-            Weight_of_one_token.Width = 100;
-            Weight_of_one_token.Height = 30;
-            Weight_of_one_token.Size = new Size(115, 22);
-
-            Label Weight_of_one_token_L = new Label();
-            Weight_of_one_token_L.Location = new Point(20, 60);
-            Weight_of_one_token_L.Name = "Weight_of_one_token_L";
-            Weight_of_one_token_L.Text = "Вес одного токена";
-            Weight_of_one_token_L.Width = 100;
-            Weight_of_one_token_L.Height = 30;
-            Weight_of_one_token_L.Size = new Size(200, 22);
-
-            TextBox CIR = new TextBox();
-            CIR.Location = new Point(250, 90);
-            CIR.Name = "CIR";
-            CIR.Text = "100";
-            CIR.Width = 100;
-            CIR.Height = 30;
-            CIR.Size = new Size(115, 22);
-
-            Label CIR_L = new Label()
-            {
-                Location = new Point(20, 90),
-                Name = "CIR_L",
-                Text = "Скорость поступления токенов",
-                Width = 100,
-                Height = 30,
-                Size = new Size(200, 22)
-            };
-
-            TextBox Interval = new TextBox();
-            Interval.Location = new Point(250, 120);
-            Interval.Name = "Interval";
-            Interval.Text = "1";
-            Interval.Width = 100;
-            Interval.Height = 30;
-            Interval.Size = new Size(115, 22);
-
-            Label Interval_L = new Label();
-            Interval_L.Location = new Point(20, 120);
-            Interval_L.Name = "Interval_L";
-            Interval_L.Text = "Интервал рассмотрения";
-            Interval_L.Width = 100;
-            Interval_L.Height = 30;
-            Interval_L.Size = new Size(200, 22);
-
-
-            TextBox Help_Ro = new TextBox();
-            Help_Ro.Location = new Point(0, 0);
-            Help_Ro.Name = "Help_Ro";
-            //Help_Ro.Text = "1000";
-            Help_Ro.Width = 100;
-            Help_Ro.Height = 30;
-            Help_Ro.Size = new Size(115, 22);
-            Help_Ro.Visible = false;
-
-
-            */
             System.Windows.Forms.DataVisualization.Charting.Chart chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             //chart1.Anchor = (AnchorStyles.Right & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Top);
             chart1.Location = new Point(10, 150);
             chart1.Name = "chart1";
-            chart1.Anchor = (AnchorStyles.Right /*| AnchorStyles.Bottom */| AnchorStyles.Left | AnchorStyles.Top);
+            chart1.Anchor = (AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
             chart1.Margin = new Padding(5,5,5,5);
             chart1.Width = 170;
             chart1.Height = 550;
             //chart1.Size = new Size(150, 50);
+            */
             
-            /*
-            chart1.ChartAreas.Add("area");
-            chart1.ChartAreas["area"].AxisX.Minimum = 0;
-            chart1.ChartAreas["area"].AxisX.Maximum = 100;
-            chart1.ChartAreas["area"].AxisX.Interval = 2;
-            chart1.ChartAreas["area"].AxisY.Minimum = 0;
-            chart1.ChartAreas["area"].AxisY.Maximum = 20000;
-            chart1.ChartAreas["area"].AxisY.Interval = 500;
-
-
-            chart1.Series.Add("GTk");
-            chart1.Series.Add("VTk");
-            chart1.Series.Add("RoTk");
-
-            chart1.Series["GTk"].Color = Color.Red;
-            chart1.Series["VTk"].Color = Color.Green;
-            chart1.Series["RoTk"].Color = Color.Blue;
-
-            chart1.Series["GTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["VTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["RoTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Legends.Add("legend");
-            */
-            /*
-            chart1.Series["T"].Points.AddXY(0,0);
-            chart1.Series["T"].Points.AddXY(50, 10);
-            chart1.Series["T"].Points.AddXY(100, 10);
-            chart1.Series["T"].Points.AddXY(200, 1);
-            //chart1.Series["T"].Points.Clear();
-            */
-            /*
-            newTabPage.Controls.Add(Size_of_TB);
-            newTabPage.Controls.Add(Weight_of_one_token);
-            newTabPage.Controls.Add(CIR);
-            newTabPage.Controls.Add(Interval);
-            newTabPage.Controls.Add(Size_of_TB_L);
-            newTabPage.Controls.Add(Weight_of_one_token_L);
-            newTabPage.Controls.Add(CIR_L);
-            newTabPage.Controls.Add(Interval_L);
-            newTabPage.Controls.Add(chart1);
-            newTabPage.Controls.Add(Help_Ro);
-            */
             TI.Graf_TB();
 
             //Предыдущее
@@ -275,7 +162,7 @@ namespace Дипломчик
 
             Enqueue(newTabPage);
             tabControl1.TabPages.Add(TPe.ElementAt(0));
-            textBox1.Text = Convert.ToString(TPe.Count());
+            textBox1.Text = Convert.ToString(Count_Of_Page("TB"));
             if (GA)
                 GAPage.Parent = tabControl1;
             if (SPA)
@@ -318,11 +205,22 @@ namespace Дипломчик
             double[] OPT = new double[2];
 
             double[] Gi = new double[TPe.Count];
+            LinkedList<double> Gi_f = new LinkedList<double>();
 
             progressBar1.Maximum = Convert.ToInt16(textBox3.Text)+1;
             progressBar1.Value = 0;
             
             int Time_To_Model = Convert.ToInt16(textBox3.Text);
+
+            bool flag = true;
+            double RoTk_LB = 0;
+
+            LinkedList<double>[] masp = new LinkedList<double>[LB_COUNT];///////
+            for (int ikj = 0; ikj < LB_COUNT; ikj++)
+            {
+                //LinkedList<double> k = new LinkedList<double>();
+                masp[ikj] = new LinkedList<double>();
+            }
 
             for (int k = 0; k <= Time_To_Model; k++)
             {
@@ -330,6 +228,10 @@ namespace Дипломчик
                 data.tBs = new List<TBStruct>(TPe.Count);
                 Vector vector = new Vector();
                 progressBar1.Value++;
+
+                int lb_count = LB_COUNT;
+                Gi_f.Clear();
+
                 //Инициализация структур маркерных корзин и мультиплексора
                 for (int z = 0; z <= TPe.Count - 1; z++)
                 {
@@ -521,16 +423,29 @@ namespace Дипломчик
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (Count != 0)
+            int ind = Index_Of_Page_OnList("TB");
+            int indp = Index_Of_Page_OnTab("TB");
+            if ((Count != 0)&& (ind != -1))
             {
                 
                 GAPage.Parent = null;
                 SPAPage.Parent = null;
-                Dequeue_F();
-                tabControl1.TabPages.RemoveAt(TPe.Count() + 1);
+                //Dequeue_F();
+                //tabControl1.TabPages.RemoveAt(TPe.Count() + 1);
                 //tabControl1.TabPages.Remove(TPe.Last());
-                
-                
+
+                tabControl1.TabPages.RemoveAt(indp);
+                TPe.Remove(TPe.ElementAt(ind));
+                if (Count == 0)
+                {
+                    button2.Enabled = false;
+                    Start_modelling.Enabled = false;
+                }
+                if (Count_Of_Page("TB") == 0)
+                {
+                    button2.Enabled = false;
+                }
+
                 textBox1.Text = Convert.ToString(TPe.Count());
                 if (Count == 0)
                 {
@@ -562,5 +477,117 @@ namespace Дипломчик
                 GAPage.Parent = null;
             }
         }
+
+        public int Index_Of_Page_OnList(string vs)
+        {
+            string IP = vs + Count_Of_Page(vs);
+            int index_of_P = -1;
+            for (int i = Count - 1; i >= 0; i--)
+            {
+                string st = Convert.ToString(TPe.ElementAt(i).Text);
+
+                if (st == IP)
+                    index_of_P = i;
+                //richTextBox2.Text += IP + "/ " + st + "/ " + index_of_P + "/" + i + ";";
+                //richTextBox2.Text += '\n';
+
+            }
+            return index_of_P;
+        }
+
+        public int Index_Of_Page_OnTab(string vs)
+        {
+            string IP = vs + Count_Of_Page(vs);
+            int index_of_P = -1;
+            for (int i = tabControl1.TabPages.Count - 1; i >= 0; i--)
+            {
+                string st = Convert.ToString(tabControl1.TabPages[i].Text);
+
+                if (st == IP)
+                    index_of_P = i;
+                //richTextBox2.Text += IP + "* " + st + "* " + index_of_P + "*" + i + ";";
+                //richTextBox2.Text += '\n';
+
+            }
+            return index_of_P;
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+            Start_modelling.Enabled = true;
+
+
+            LB_COUNT = LB_COUNT + 1;
+
+            TabPage newTabPage = new TabPage();
+            newTabPage.Text = "LB" + (Count_Of_Page("LB") + 1);
+
+
+            LB_Inretface LI = new LB_Inretface();
+
+            LI.Graf_LB();
+
+
+            newTabPage.Controls.Add(LI.Size_of_TB);            //0
+            newTabPage.Controls.Add(LI.Weight_of_one_token);   //1
+            newTabPage.Controls.Add(LI.CIR);                   //2
+            newTabPage.Controls.Add(LI.Interval);              //3
+            newTabPage.Controls.Add(LI.Size_of_TB_L);          //4
+            newTabPage.Controls.Add(LI.Weight_of_one_token_L); //5
+            newTabPage.Controls.Add(LI.CIR_L);                 //6
+            newTabPage.Controls.Add(LI.Interval_L);            //7
+            newTabPage.Controls.Add(LI.chart1);                //8
+            newTabPage.Controls.Add(LI.Help_Ro);               //9
+            newTabPage.Controls.Add(LI.RTB);                   //10
+            newTabPage.Controls.Add(LI.Weight_of_one_token_ED);//11
+            newTabPage.Controls.Add(LI.Size_of_TB_ED);         //12
+            newTabPage.Controls.Add(LI.CIR_ED);                //13
+            newTabPage.Controls.Add(LI.Generated_S);           //14
+            newTabPage.Controls.Add(LI.Generated_To);          //15
+            newTabPage.Controls.Add(LI.Generated_To_T);        //16
+            newTabPage.Controls.Add(LI.Generated_S_T);         //17
+            newTabPage.Controls.Add(LI.Generated_ED);          //18
+
+            Enqueue(newTabPage);
+            tabControl1.TabPages.Add(TPe.ElementAt(0));
+            textBox5.Text = Convert.ToString(Count_Of_Page("LB"));
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            int ind = Index_Of_Page_OnList("LB");
+            int indp = Index_Of_Page_OnTab("LB");
+
+            if ((Count != 0) && (ind != -1))
+            {
+                tabControl1.TabPages.RemoveAt(indp);
+                TPe.Remove(TPe.ElementAt(ind));
+                LB_COUNT = LB_COUNT - 1;
+                if (Count == 0)
+                {
+                    button1.Enabled = false;
+                    Start_modelling.Enabled = false;
+                }
+                if (Count_Of_Page("LB") == 0)
+                {
+                    button1.Enabled = false;
+                }
+            }
+            textBox5.Text = Convert.ToString(Count_Of_Page("LB"));
+        }
+
+        public int Count_Of_Page(string vs)
+        {
+            int Count_of_P = 0;
+            for (int i = Count - 1; i >= 0; i--)
+            {
+                string st = Convert.ToString(TPe.ElementAt(i).Text);
+                if (st.Contains(vs))
+                    Count_of_P += 1;
+            }
+            return Count_of_P;
+        }
+
     }
 }

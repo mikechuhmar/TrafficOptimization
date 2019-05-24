@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Дипломчик
 {
-    public partial class Form1 : Form
+    public partial class Start_Form : Form
     {
         const int K= 2;
-        public Form1()
+        public Start_Form()
         {
             InitializeComponent();
         }
@@ -37,6 +37,7 @@ namespace Дипломчик
                 Form2 f2 = new Form2();
                 f2.ShowDialog(this);
                 f2.Dispose();
+                Close();
             }
         }
     }

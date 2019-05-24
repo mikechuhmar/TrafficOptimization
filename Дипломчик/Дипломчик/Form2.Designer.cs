@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxMethod = new System.Windows.Forms.ComboBox();
+            this.cbPrevData = new System.Windows.Forms.CheckBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -49,23 +52,24 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbPrevData = new System.Windows.Forms.CheckBox();
-            this.comboBoxMethod = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tbGA1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tbGA2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbGA1 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbSPA2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbSPA1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tbSPA4 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbSPA3 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbSPA2 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbSPA1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,6 +94,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBox5);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.comboBoxMethod);
             this.tabPage1.Controls.Add(this.cbPrevData);
@@ -110,6 +118,38 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(693, 268);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 17);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Метод оптимизации";
+            // 
+            // comboBoxMethod
+            // 
+            this.comboBoxMethod.FormattingEnabled = true;
+            this.comboBoxMethod.Items.AddRange(new object[] {
+            "Нет",
+            "Генетический алгоритм",
+            "Алгоритм роя частиц"});
+            this.comboBoxMethod.Location = new System.Drawing.Point(693, 303);
+            this.comboBoxMethod.Name = "comboBoxMethod";
+            this.comboBoxMethod.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxMethod.TabIndex = 17;
+            this.comboBoxMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxMethod_SelectedIndexChanged);
+            // 
+            // cbPrevData
+            // 
+            this.cbPrevData.AutoSize = true;
+            this.cbPrevData.Location = new System.Drawing.Point(343, 168);
+            this.cbPrevData.Name = "cbPrevData";
+            this.cbPrevData.Size = new System.Drawing.Size(307, 38);
+            this.cbPrevData.TabIndex = 16;
+            this.cbPrevData.Text = "Использовать значения пакетов трафика\r\n из предыдущего моделирования";
+            this.cbPrevData.UseVisualStyleBackColor = true;
             // 
             // richTextBox2
             // 
@@ -159,16 +199,16 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(6, 137);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(585, 147);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
@@ -234,7 +274,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(168, 77);
+            this.button3.Location = new System.Drawing.Point(71, 72);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 51);
             this.button3.TabIndex = 3;
@@ -244,9 +284,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(71, 76);
+            this.button2.Location = new System.Drawing.Point(168, 71);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(77, 52);
+            this.button2.Size = new System.Drawing.Size(87, 52);
             this.button2.TabIndex = 2;
             this.button2.Text = "Удалить TB";
             this.button2.UseVisualStyleBackColor = true;
@@ -255,9 +295,9 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(154, 37);
+            this.textBox1.Location = new System.Drawing.Point(168, 39);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 22);
+            this.textBox1.Size = new System.Drawing.Size(51, 22);
             this.textBox1.TabIndex = 1;
             // 
             // label1
@@ -268,38 +308,6 @@
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "число TB";
-            // 
-            // cbPrevData
-            // 
-            this.cbPrevData.AutoSize = true;
-            this.cbPrevData.Location = new System.Drawing.Point(343, 168);
-            this.cbPrevData.Name = "cbPrevData";
-            this.cbPrevData.Size = new System.Drawing.Size(307, 38);
-            this.cbPrevData.TabIndex = 16;
-            this.cbPrevData.Text = "Использовать значения пакетов трафика\r\n из предыдущего моделирования";
-            this.cbPrevData.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxMethod
-            // 
-            this.comboBoxMethod.FormattingEnabled = true;
-            this.comboBoxMethod.Items.AddRange(new object[] {
-            "Нет",
-            "Генетический алгоритм",
-            "Алгоритм роя частиц"});
-            this.comboBoxMethod.Location = new System.Drawing.Point(693, 303);
-            this.comboBoxMethod.Name = "comboBoxMethod";
-            this.comboBoxMethod.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxMethod.TabIndex = 17;
-            this.comboBoxMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxMethod_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(693, 268);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 17);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Метод оптимизации";
             // 
             // tabPage2
             // 
@@ -314,23 +322,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Генетический алгоритм";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tbGA1
-            // 
-            this.tbGA1.Location = new System.Drawing.Point(454, 117);
-            this.tbGA1.Name = "tbGA1";
-            this.tbGA1.Size = new System.Drawing.Size(100, 22);
-            this.tbGA1.TabIndex = 0;
-            this.tbGA1.Text = "10";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(192, 117);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(186, 17);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Число особей в популяции";
             // 
             // label7
             // 
@@ -349,6 +340,23 @@
             this.tbGA2.TabIndex = 2;
             this.tbGA2.Text = "100";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(192, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(186, 17);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Число особей в популяции";
+            // 
+            // tbGA1
+            // 
+            this.tbGA1.Location = new System.Drawing.Point(454, 117);
+            this.tbGA1.Name = "tbGA1";
+            this.tbGA1.Size = new System.Drawing.Size(100, 22);
+            this.tbGA1.TabIndex = 0;
+            this.tbGA1.Text = "10";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label10);
@@ -366,6 +374,40 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Алгоритм роя частиц";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(238, 234);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 17);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "alfa2";
+            // 
+            // tbSPA4
+            // 
+            this.tbSPA4.Location = new System.Drawing.Point(500, 234);
+            this.tbSPA4.Name = "tbSPA4";
+            this.tbSPA4.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA4.TabIndex = 10;
+            this.tbSPA4.Text = "1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(238, 190);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 17);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "alfa1";
+            // 
+            // tbSPA3
+            // 
+            this.tbSPA3.Location = new System.Drawing.Point(500, 190);
+            this.tbSPA3.Name = "tbSPA3";
+            this.tbSPA3.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA3.TabIndex = 8;
+            this.tbSPA3.Text = "1";
             // 
             // label8
             // 
@@ -401,39 +443,41 @@
             this.tbSPA1.TabIndex = 4;
             this.tbSPA1.Text = "10";
             // 
-            // label10
+            // button1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(238, 234);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 17);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "alfa2";
+            this.button1.Location = new System.Drawing.Point(168, 168);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 46);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Удалить LB";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // tbSPA4
+            // button4
             // 
-            this.tbSPA4.Location = new System.Drawing.Point(500, 234);
-            this.tbSPA4.Name = "tbSPA4";
-            this.tbSPA4.Size = new System.Drawing.Size(100, 22);
-            this.tbSPA4.TabIndex = 10;
-            this.tbSPA4.Text = "1";
+            this.button4.Location = new System.Drawing.Point(71, 168);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(87, 46);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "Добавить LB";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
-            // label11
+            // label12
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(238, 190);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 17);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "alfa1";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(80, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 17);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "число LB";
             // 
-            // tbSPA3
+            // textBox5
             // 
-            this.tbSPA3.Location = new System.Drawing.Point(500, 190);
-            this.tbSPA3.Name = "tbSPA3";
-            this.tbSPA3.Size = new System.Drawing.Size(100, 22);
-            this.tbSPA3.TabIndex = 8;
-            this.tbSPA3.Text = "1";
+            this.textBox5.Location = new System.Drawing.Point(168, 140);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(51, 22);
+            this.textBox5.TabIndex = 22;
             // 
             // Form2
             // 
@@ -495,5 +539,9 @@
         private System.Windows.Forms.TextBox tbSPA4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbSPA3;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button1;
     }
 }

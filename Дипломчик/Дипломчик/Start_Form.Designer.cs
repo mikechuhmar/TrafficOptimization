@@ -1,6 +1,6 @@
 ﻿namespace Дипломчик
 {
-    partial class Form1
+    partial class Start_Form
     {
         /// <summary>
         /// Обязательная переменная конструктора.
