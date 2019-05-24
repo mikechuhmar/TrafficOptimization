@@ -34,6 +34,34 @@ namespace Дипломчик
             this.R = R;
         }
     }
+    public struct LBStruct
+    {
+        public double T, U;
+        public double V;
+        public double Ro, G, R;
+        public LinkedList<double> B, G_f;
+
+        public void addInit(double T, double U, LinkedList<double> B)
+        {
+            this.U = U;
+            this.T = T;
+            this.B = new LinkedList<double>(B);
+        }
+        public void addInput(double V)
+        {
+            this.V = V;
+        }
+        public void addOptimized(double U)
+        {
+            this.U = U;
+        }
+        public void addDecision(double G, double Ro, double R)
+        {
+            this.G = G;
+            this.R = R;
+            this.G_f = new LinkedList<double>(G_f);
+        }
+    }
     public struct MultStruct
     {
         public double Q, C;
@@ -63,11 +91,13 @@ namespace Дипломчик
     public class Data
     {
         public List<TBStruct> tBs;
+        public List<LBStruct> lBs;
         public MultStruct mult;
         public double J = double.MinValue;
         public Data()
         {
             tBs = new List<TBStruct>();
+            lBs = new List<LBStruct>();
         }
         public string output()
         {
