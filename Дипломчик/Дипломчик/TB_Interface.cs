@@ -28,23 +28,38 @@ namespace Дипломчик
             Size = new D.Size(200, 22)
         };
 
-        public F.TextBox Weight_of_one_token = new F.TextBox()
-        {
-            Location = new D.Point(250, 60),
-            Name = "Weight_of_one_token",
-            Text = "100",
-            Size = new D.Size(50, 22)
-        };
+        //public F.TextBox Weight_of_one_token = new F.TextBox()
+        //{
+        //    Location = new D.Point(250, 60),
+        //    Name = "Weight_of_one_token",
+        //    Text = "100",
+        //    Size = new D.Size(50, 22)
+        //};
 
-        public F.Label Weight_of_one_token_L = new F.Label()
-        {
-            Location = new D.Point(20, 60),
-            Name = "Weight_of_one_token_L",
-            Text = "Вес одного токена",
-            Size = new D.Size(200, 22)
-        };
+        //public F.Label Weight_of_one_token_L = new F.Label()
+        //{
+        //    Location = new D.Point(20, 60),
+        //    Name = "Weight_of_one_token_L",
+        //    Text = "Вес одного токена",
+        //    Size = new D.Size(200, 22)
+        //};
 
-        public F.TextBox CIR = new F.TextBox()
+        //public F.TextBox CIR = new F.TextBox()
+        //{
+        //    Location = new D.Point(250, 90),
+        //    Name = "CIR",
+        //    Text = "2",
+        //    Size = new D.Size(50, 22)
+        //};
+
+        //public F.Label CIR_L = new F.Label()
+        //{
+        //    Location = new D.Point(20, 90),
+        //    Name = "CIR_L",
+        //    Text = "Скорость поступления токенов",
+        //    Size = new D.Size(200, 22)
+        //};
+        public F.TextBox U = new F.TextBox()
         {
             Location = new D.Point(250, 90),
             Name = "CIR",
@@ -52,14 +67,13 @@ namespace Дипломчик
             Size = new D.Size(50, 22)
         };
 
-        public F.Label CIR_L = new F.Label()
+        public F.Label U_L = new F.Label()
         {
             Location = new D.Point(20, 90),
             Name = "CIR_L",
             Text = "Скорость поступления токенов",
             Size = new D.Size(200, 22)
         };
-
         public F.TextBox Interval = new F.TextBox()
         {
             Location = new D.Point(250, 120),
@@ -100,17 +114,18 @@ namespace Дипломчик
         {
             Location = new D.Point(320, 90),
             Name = "CIR_ED",
-            Text = "ШТ/сек",
+            Text = "бит/сек",
             Size = new D.Size(30, 30)
         };
 
-        public F.Label Weight_of_one_token_ED = new F.Label()
-        {
-            Location = new D.Point(320, 60),
-            Name = "Weight_of_one_token_ED",
-            Text = "бит",
-            Size = new D.Size(30, 22)
-        };
+        //public F.Label Weight_of_one_token_ED = new F.Label()
+        //{
+        //    Location = new D.Point(320, 60),
+        //    Name = "Weight_of_one_token_ED",
+        //    Text = "бит",
+        //    Size = new D.Size(30, 22),
+        //    Visible = false,
+        //};
         public F.Label Generated_S = new F.Label()////
         {
             Location = new D.Point(20, 120),

@@ -230,25 +230,47 @@ namespace Дипломчик
             */
             TI.Graf_TB();
 
-            newTabPage.Controls.Add(TI.Size_of_TB);            //0
-            newTabPage.Controls.Add(TI.Weight_of_one_token);   //1
-            newTabPage.Controls.Add(TI.CIR);                   //2
-            newTabPage.Controls.Add(TI.Interval);              //3
-            newTabPage.Controls.Add(TI.Size_of_TB_L);          //4
-            newTabPage.Controls.Add(TI.Weight_of_one_token_L); //5
-            newTabPage.Controls.Add(TI.CIR_L);                 //6
-            newTabPage.Controls.Add(TI.Interval_L);            //7
-            newTabPage.Controls.Add(TI.chart1);                //8
-            newTabPage.Controls.Add(TI.Help_Ro);               //9
-            newTabPage.Controls.Add(TI.RTB);                   //10
-            newTabPage.Controls.Add(TI.Weight_of_one_token_ED);//11
-            newTabPage.Controls.Add(TI.Size_of_TB_ED);         //12
-            newTabPage.Controls.Add(TI.CIR_ED);                //13
-            newTabPage.Controls.Add(TI.Generated_S);           //14
-            newTabPage.Controls.Add(TI.Generated_To);          //15
-            newTabPage.Controls.Add(TI.Generated_To_T);        //16
-            newTabPage.Controls.Add(TI.Generated_S_T);         //17
-            newTabPage.Controls.Add(TI.Generated_ED);          //18
+            //Предыдущее
+
+            //newTabPage.Controls.Add(TI.Size_of_TB);            //0
+            ////newTabPage.Controls.Add(TI.Weight_of_one_token);   //1
+            ////newTabPage.Controls.Add(TI.CIR);                   //2
+            //newTabPage.Controls.Add(TI.CIR);                   //2
+            //newTabPage.Controls.Add(TI.Interval);              //3
+            //newTabPage.Controls.Add(TI.Size_of_TB_L);          //4
+            ////newTabPage.Controls.Add(TI.Weight_of_one_token_L); //5
+            //newTabPage.Controls.Add(TI.CIR_L);                 //6
+            //newTabPage.Controls.Add(TI.Interval_L);            //7
+            //newTabPage.Controls.Add(TI.chart1);                //8
+            //newTabPage.Controls.Add(TI.Help_Ro);               //9
+            //newTabPage.Controls.Add(TI.RTB);                   //10
+            //newTabPage.Controls.Add(TI.Weight_of_one_token_ED);//11
+            //newTabPage.Controls.Add(TI.Size_of_TB_ED);         //12
+            //newTabPage.Controls.Add(TI.CIR_ED);                //13
+            //newTabPage.Controls.Add(TI.Generated_S);           //14
+            //newTabPage.Controls.Add(TI.Generated_To);          //15
+            //newTabPage.Controls.Add(TI.Generated_To_T);        //16
+            //newTabPage.Controls.Add(TI.Generated_S_T);         //17
+            //newTabPage.Controls.Add(TI.Generated_ED);          //18
+
+            //Новое
+
+            newTabPage.Controls.Add(TI.Size_of_TB);            //0            
+            newTabPage.Controls.Add(TI.U);                   //1
+            newTabPage.Controls.Add(TI.Interval);              //2
+            newTabPage.Controls.Add(TI.Size_of_TB_L);          //3
+            newTabPage.Controls.Add(TI.U_L);                 //4
+            newTabPage.Controls.Add(TI.Interval_L);            //5
+            newTabPage.Controls.Add(TI.chart1);                //6
+            newTabPage.Controls.Add(TI.Help_Ro);               //7
+            newTabPage.Controls.Add(TI.RTB);                   //8
+            newTabPage.Controls.Add(TI.Size_of_TB_ED);         //9
+            newTabPage.Controls.Add(TI.CIR_ED);                //10
+            newTabPage.Controls.Add(TI.Generated_S);           //11
+            newTabPage.Controls.Add(TI.Generated_To);          //12
+            newTabPage.Controls.Add(TI.Generated_To_T);        //13
+            newTabPage.Controls.Add(TI.Generated_S_T);         //14
+            newTabPage.Controls.Add(TI.Generated_ED);          //15
 
 
             Enqueue(newTabPage);
@@ -278,10 +300,13 @@ namespace Дипломчик
             Random rand = new Random();
             
             double T = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[0]).Text);
-            double Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[1]).Text);
-            double CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[2]).Text);
-            tbn = new TBMath_2(CIR, Nt, T);
-            double Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[3]).Text);
+            //double Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[1]).Text);
+            //double CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[2]).Text);
+            double U = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[1]).Text);
+            //tbn = new TBMath_2(CIR, Nt, T);
+            tbn = new TBMath_2(U, T);
+            //double Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[3]).Text);
+            double Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[2]).Text);
             double V;
             double RoTk_1=0;
             double[] ch = new double[5];
@@ -315,12 +340,16 @@ namespace Дипломчик
 
                     T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
                     if (k == 0) RoTk_1 = T / 2;
-                    else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
+                    //else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[9]).Text);
+                    else RoTk_1 = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[7]).Text);
                     tBStruct.addInit(T, RoTk_1);
                     //data.tBs[z] = tBStruct;
-                    Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
-                    Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
-                    
+                    //Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
+                    //Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
+
+                    Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[13]).Text);
+                    Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[14]).Text);
+
                     if (!cbPrevData.Checked)
                         V = rand.Next(Gen_Low, Gen_Hight);
                     else
@@ -337,55 +366,118 @@ namespace Дипломчик
                 
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
-                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), TPe.Count * 2, int.Parse(tbGA2.Text), Functions.J, Functions.genVector);
+                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), TPe.Count, int.Parse(tbGA2.Text), Functions.J, Functions.genVector);
                     vector = new Vector(algorithm.result());
                 }
                 if (comboBoxMethod.SelectedIndex == 2)
                 {
-                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), TPe.Count * 2, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector);
+                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), TPe.Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector);
                     vector = new Vector(algorithm.result());
                 }
-                for (int z = 0, v = 0; z <= TPe.Count - 1; z++, v+=2)
+
+                //Старое
+
+                //for (int z = 0, v = 0; z <= TPe.Count - 1; z++, v+=2)
+                //{
+
+
+
+                //    TBStruct tBStruct = data.tBs[z];
+
+                //    T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
+                //    Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
+                //    V = tBStruct.V;
+                //    //Console.WriteLine(z);
+                //    //Console.WriteLine(V);
+
+                //    if (comboBoxMethod.SelectedIndex == 0)
+                //    {
+                //        CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
+                //        Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+                //    }
+                //    else
+                //    {
+                //        CIR = vector[v];
+                //        Nt = vector[v + 1];
+                //    }
+                //    tBStruct.addOptimized(CIR, Nt);
+                //    data.tBs[z] = tBStruct;
+
+
+
+
+
+
+
+                //    ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
+                //    ((TextBox)TPe.ElementAt(z).Controls[9]).Text = Convert.ToString(ch[3]);
+                //    //RoTk_1 = ch[3];
+
+                //    R = ch[4];//потери на z токенбакете
+
+                //    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
+                //    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
+                //    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["RoTk"].Points.AddXY(k, ch[2]);
+
+                //    Gi[z] = ch[0];
+
+                //    richTextBox2.Text += "Момент: " + k + "; TB№" + (TPe.Count - z) + " GTk = " + ch[0];
+                //    richTextBox2.Text += '\n';
+
+                //    tBStruct.addDecision(ch[0], ch[3], ch[4]);
+                //    //RoTk_1 = ch[3];
+                //    data.tBs[z] = tBStruct;
+
+
+                //}
+                //Console.WriteLine("ooo");
+                //foreach (TBStruct tBStruct in data.tBs)
+                //{
+                //    Console.WriteLine("kkk");
+                //    Console.WriteLine(tBStruct.V);
+                //}
+
+                //Новое
+
+                for (int z = 0; z <= TPe.Count - 1; z++)
                 {
-                    
-                    
+
+
 
                     TBStruct tBStruct = data.tBs[z];
 
                     T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
-                    Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
+                    Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
                     V = tBStruct.V;
-                    //Console.WriteLine(z);
-                    //Console.WriteLine(V);
 
                     if (comboBoxMethod.SelectedIndex == 0)
                     {
-                        CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
-                        Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+                        U = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+                        
                     }
                     else
                     {
-                        CIR = vector[v];
-                        Nt = vector[v + 1];
+                        U = vector[z];
                     }
-                    tBStruct.addOptimized(CIR, Nt);
+                    tBStruct.addOptimized(U);
                     data.tBs[z] = tBStruct;
-                    
 
-                    
 
-                    
-                    
-                    
-                    ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
-                    ((TextBox)TPe.ElementAt(z).Controls[9]).Text = Convert.ToString(ch[3]);
+
+
+
+
+
+                    //ch = tbn.M(CIR, Tk, T, Nt, RoTk_1, V);
+                    ch = tbn.M(Tk, T, U, RoTk_1, V);
+                    ((TextBox)TPe.ElementAt(z).Controls[7]).Text = Convert.ToString(ch[3]);
                     //RoTk_1 = ch[3];
 
                     R = ch[4];//потери на z токенбакете
 
-                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
-                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
-                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["RoTk"].Points.AddXY(k, ch[2]);
+                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["GTk"].Points.AddXY(k, ch[0]);
+                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["VTk"].Points.AddXY(k, ch[1]);
+                    ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["RoTk"].Points.AddXY(k, ch[2]);
 
                     Gi[z] = ch[0];
 
@@ -398,13 +490,7 @@ namespace Дипломчик
 
 
                 }
-                //Console.WriteLine("ooo");
-                //foreach (TBStruct tBStruct in data.tBs)
-                //{
-                //    Console.WriteLine("kkk");
-                //    Console.WriteLine(tBStruct.V);
-                //}
-                
+
                 data.mult.addInput(Gi);
                 OPT = MXP.MX(Gi);
                 data.mult.addDecision(OPT[1], OPT[0]);

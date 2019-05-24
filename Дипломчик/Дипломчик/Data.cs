@@ -8,7 +8,7 @@ namespace Дипломчик
 {
     public struct TBStruct
     {
-        public double CIR, Nt, T, Ro_prev;
+        public double T, U, Ro_prev;
         public double V;
         public double Ro, G, R;
         
@@ -23,10 +23,9 @@ namespace Дипломчик
         {
             this.V = V;
         }
-        public void addOptimized(double CIR, double Nt)
+        public void addOptimized(double U)
         {
-            this.CIR = CIR;
-            this.Nt = Nt;
+            this.U = U;
         }
         public void addDecision(double G, double Ro, double R)
         {
@@ -76,7 +75,7 @@ namespace Дипломчик
             int tb_i = 1;
             foreach (TBStruct tB in tBs)
             {
-                str += "TB №" + tb_i + ": \n" + "Ro_prev = " + tB.Ro_prev + " CIR = " + tB.CIR + " Nt = " + tB.Nt + " T =  " + tB.T + " V =  " + tB.V + " Ro = " + tB.Ro + " G = " + tB.G + " R = " + tB.R + "\n";
+                str += "TB №" + tb_i + ": \n" + "Ro_prev = " + tB.Ro_prev + " U = " + tB.U + " T =  " + tB.T + " V =  " + tB.V + " Ro = " + tB.Ro + " G = " + tB.G + " R = " + tB.R + "\n";
                 tb_i++;
             }
             str += "Multiplexor: \n" + "Q = " + mult.Q + " C = " + mult.C + " G = ";
