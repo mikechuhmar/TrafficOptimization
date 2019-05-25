@@ -211,7 +211,7 @@ namespace Дипломчик
                 int lb_count = LB_COUNT;
                 Gi_f.Clear();
 
-                //Инициализация структур маркерных корзин и мультиплексора
+                //Инициализация структур маркерных корзин, текущих вёдер и мультиплексора
                 for (int z = 0, t = 0, l = 0; z <= TPe.Count - 1; z++)
                 {
                     if (TPe.ElementAt(z).Text.Contains("TB"))
