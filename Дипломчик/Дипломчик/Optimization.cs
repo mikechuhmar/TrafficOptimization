@@ -2,6 +2,7 @@
 using Дипломчик;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 
 public delegate double Function(Vector x);
 
@@ -23,6 +24,13 @@ public class Functions
             vector.Add(U);
             
         }
+        for (int i = 0; i < data.lBs.Count; i++)
+        {
+            int U = rand.Next(1, (int)data.lBs[i].T);
+
+            vector.Add(U);
+
+        }
         return vector;
     }
 
@@ -32,9 +40,9 @@ public class Functions
         
         double alfa = 5, beta = 2, gamma = 1;
         double res = 0;
-        double[] G = new double[data.tBs.Count];
-        double[] R = new double[data.tBs.Count];
-        for (int i = 0; i < vector.Count - 1; i++)
+        double[] G = new double[Static.LB_Count + Static.TB_Count];
+        double[] R = new double[Static.LB_Count + Static.TB_Count];
+        for (int i = 0; i < Static.TB_Count; i++)
         {
             double U = vector[i];
             TBStruct tBStruct = data.tBs[i];
@@ -52,6 +60,24 @@ public class Functions
             data.tBs[i] = tBStruct;
             G[i] = M[0];
             
+
+        }
+        for (int i = 0; i < Static.LB_Count; i++)
+        {
+            double U = vector[i + Static.LB_Count];
+            LBStruct lBStruct = data.lBs[i];
+            double T = lBStruct.T;
+            double V = lBStruct.V;
+            LinkedList<double> B = new LinkedList<double>(lBStruct.B);
+            LinkedList<double> G_f = new LinkedList<double>(lBStruct.G_f);
+            Leaky_Bucket_Algoritm lB = new Leaky_Bucket_Algoritm();
+            int indexLastData = Static.dataList.Count - 1;
+            
+            double[] M = lB.LM(U, 1, T, 1, V, ref B, ref G_f);
+            lBStruct.addDecision(M[0], M[3]);
+            data.lBs[i] = lBStruct;
+            G[i + Static.TB_Count] = M[0];
+
 
         }
         MplexMath_2 mplex = new MplexMath_2(data.mult.C, data.mult.Q);

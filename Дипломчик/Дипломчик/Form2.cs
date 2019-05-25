@@ -15,13 +15,13 @@ namespace Дипломчик
     public partial class Form2 : Form
     {
 
-        int LB_COUNT = 0;
-
+        public static int LB_COUNT = 0;
+        public static int TB_COUNT = 0;
         TBMath_2 tbn;
         MplexMath_2 MXP;
         Buff_2 BUF;
         bool GA = false, SPA = false;
-        public LinkedList<TabPage> TPe = new LinkedList<TabPage>();
+        public static LinkedList<TabPage> TPe = new LinkedList<TabPage>();
         //public List<TabPage> TPe = new List<TabPage>();
         public void Enqueue(TabPage value)//Добавляет элемент в очередь.
         {
@@ -117,29 +117,7 @@ namespace Дипломчик
             
             TI.Graf_TB();
 
-            //Предыдущее
-
-            //newTabPage.Controls.Add(TI.Size_of_TB);            //0
-            ////newTabPage.Controls.Add(TI.Weight_of_one_token);   //1
-            ////newTabPage.Controls.Add(TI.CIR);                   //2
-            //newTabPage.Controls.Add(TI.CIR);                   //2
-            //newTabPage.Controls.Add(TI.Interval);              //3
-            //newTabPage.Controls.Add(TI.Size_of_TB_L);          //4
-            ////newTabPage.Controls.Add(TI.Weight_of_one_token_L); //5
-            //newTabPage.Controls.Add(TI.CIR_L);                 //6
-            //newTabPage.Controls.Add(TI.Interval_L);            //7
-            //newTabPage.Controls.Add(TI.chart1);                //8
-            //newTabPage.Controls.Add(TI.Help_Ro);               //9
-            //newTabPage.Controls.Add(TI.RTB);                   //10
-            //newTabPage.Controls.Add(TI.Weight_of_one_token_ED);//11
-            //newTabPage.Controls.Add(TI.Size_of_TB_ED);         //12
-            //newTabPage.Controls.Add(TI.CIR_ED);                //13
-            //newTabPage.Controls.Add(TI.Generated_S);           //14
-            //newTabPage.Controls.Add(TI.Generated_To);          //15
-            //newTabPage.Controls.Add(TI.Generated_To_T);        //16
-            //newTabPage.Controls.Add(TI.Generated_S_T);         //17
-            //newTabPage.Controls.Add(TI.Generated_ED);          //18
-
+            
             //Новое
 
             newTabPage.Controls.Add(TI.Size_of_TB);            //0            
@@ -167,6 +145,7 @@ namespace Дипломчик
                 GAPage.Parent = tabControl1;
             if (SPA)
                 SPAPage.Parent = tabControl1;
+            //MessageBox.Show(Static.TB_Count.ToString());
         }
 
 
@@ -233,7 +212,7 @@ namespace Дипломчик
                 Gi_f.Clear();
 
                 //Инициализация структур маркерных корзин и мультиплексора
-                for (int z = 0, t = 0; z <= TPe.Count - 1; z++)
+                for (int z = 0, t = 0, l = 0; z <= TPe.Count - 1; z++)
                 {
                     if (TPe.ElementAt(z).Text.Contains("TB"))
                     {
@@ -256,12 +235,38 @@ namespace Дипломчик
                         if (!cbPrevData.Checked)
                             V = rand.Next(Gen_Low, Gen_Hight);
                         else
-                            V = Static.prev_dataList[k].tBs[k].V;
+                            V = Static.prev_dataList[k].tBs[t].V;
                         //Console.WriteLine(V);
                         tBStruct.addInput(V);
 
                         data.tBs.Add(tBStruct);
                         t++;
+                    }
+                    if (TPe.ElementAt(z).Text.Contains("LB"))
+                    {
+
+                        LBStruct lBStruct = new LBStruct();
+                        T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
+                        //Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+                        //double CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
+                        Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
+
+                        lBStruct.addInit(T, masp[lb_count - 1], Gi_f);
+
+                        Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
+                        Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
+
+                        //((RichTextBox)TPe.ElementAt(z).Controls[10]).Text += "Шаг: " + k;
+                        if (!cbPrevData.Checked)
+                            V = rand.Next(Gen_Low, Gen_Hight);
+                        else
+                            V = Static.prev_dataList[k].lBs[l].V;
+
+                        lBStruct.addInput(V);
+
+                        data.lBs.Add(lBStruct);
+                        l++;
+                        
                     }
                     
                 }
@@ -285,7 +290,7 @@ namespace Дипломчик
 
                 //Вычисление выходящего трафика и потерь
                 
-                for (int z = 0, t = 0; z <= TPe.Count - 1; z++)
+                for (int z = 0, t = 0, l = 0; z <= TPe.Count - 1; z++)
                 {
 
 
@@ -337,18 +342,29 @@ namespace Дипломчик
                     }
                     if (TPe.ElementAt(z).Text.Contains("LB"))
                     {
-                        T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
-                        //Nt = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
-                        double CIR = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
-                        Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
 
-                        Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
-                        Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
+                        LBStruct lBStruct = data.lBs[l];
+
+                        
+                        T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
+                        Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
+                        V = lBStruct.V;
+                        if (comboBoxMethod.SelectedIndex == 0)
+                        {
+                            U = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+
+                        }
+                        else
+                        {
+                            U = vector[l];
+                        }
+
+                        lBStruct.addOptimized(U);
+                        data.lBs[l] = lBStruct;
+                        Leaky_Bucket_Algoritm lbn = new Leaky_Bucket_Algoritm();
+                        ch = lbn.LM(U, Tk, T, RoTk_LB, V, ref masp[lb_count - 1], ref Gi_f);
 
                         ((RichTextBox)TPe.ElementAt(z).Controls[10]).Text += "Шаг: " + k;
-                        V = rand.Next(Gen_Low, Gen_Hight);
-                        Leaky_Bucket_Algoritm lbn = new Leaky_Bucket_Algoritm();
-                        ch = lbn.LM(CIR, Tk, T, RoTk_LB, V, ref masp[lb_count - 1], ref Gi_f);
 
                         //richTextBox2.Text += "индекс передаваемого элемента "+(lb_count - 1);
                         //richTextBox2.Text += '\n';
@@ -365,6 +381,10 @@ namespace Дипломчик
 
 
                         Gi[z] = ch[0];
+                        lBStruct.addDecision(ch[0], ch[3]);
+                        //RoTk_1 = ch[3];
+                        data.lBs[l] = lBStruct;
+                        l++;
                         //Gi_f.AddLast(ch[0]);
                         richTextBox2.Text += /*"Шаг: " + k + */"LB" + (TPe.Count - z) + " GTk = " + ch[0];
                         richTextBox2.Text += '\n';
@@ -540,6 +560,7 @@ namespace Дипломчик
                 GAPage.Parent = tabControl1;
             if (SPA)
                 SPAPage.Parent = tabControl1;
+            //MessageBox.Show(Static.LB_Count.ToString());
         }
 
         private void button1_Click_1(object sender, EventArgs e)

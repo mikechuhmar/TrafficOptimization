@@ -41,11 +41,11 @@ namespace Дипломчик
         public double Ro, G, R;
         public LinkedList<double> B, G_f;
 
-        public void addInit(double T, double U, LinkedList<double> B)
+        public void addInit(double T, LinkedList<double> B, LinkedList<double> G_f)
         {
-            this.U = U;
             this.T = T;
             this.B = new LinkedList<double>(B);
+            this.G_f = new LinkedList<double>(G_f);
         }
         public void addInput(double V)
         {
@@ -55,11 +55,11 @@ namespace Дипломчик
         {
             this.U = U;
         }
-        public void addDecision(double G, double Ro, double R)
+        public void addDecision(double G,  double R)
         {
             this.G = G;
             this.R = R;
-            this.G_f = new LinkedList<double>(G_f);
+            
         }
     }
     public struct MultStruct
