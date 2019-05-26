@@ -133,13 +133,13 @@ namespace Дипломчик
                 richTextBox1.Text += '\n';
             }
 
-            if ((Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0)))) != 0)
+            if (Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0)) != 0)
                 ad_GI(Gi.Count(), Gi);
             Out_of_MX();
-            q_tk = (Math.Max((q_tkm1 - C_T * t), 0)) + (Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0))));//текущая заполненность буффера
+            q_tk = Math.Max(q_tkm1 - C_T * t, 0) + Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0));//текущая заполненность буффера
 
             //вычисление Ltk
-            L_tk = SUMM_Gi - Math.Min((SUMM_Gi), (Q - Math.Max((q_tkm1 - C_T * t), 0))); //потери на мультиплексоре
+            L_tk = SUMM_Gi - Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0)); //потери на мультиплексоре
             //конец - вычисление Ltk
             OPT[0] = L_tk;
             OPT[1] = q_tk;
