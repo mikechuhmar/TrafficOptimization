@@ -159,7 +159,8 @@ namespace Дипломчик
             swatch.Start();
 
             Static.dataList = new List<Data>();
-            MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4);
+            MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4, ref chart1);
+            MXP.Graph();
 
             Static.dataList = new List<Data>();
             tbn = new TBMath_2();

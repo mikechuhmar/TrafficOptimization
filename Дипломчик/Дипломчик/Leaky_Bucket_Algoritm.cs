@@ -17,6 +17,7 @@ namespace Дипломчик
         {
             double GTk = 0;
             double[] ch = new double[4];
+            double F;
 
             if ((vs.ToArray().Sum() + V1) < T)
             {
@@ -37,23 +38,25 @@ namespace Дипломчик
             double V_Out_Here = V_Out;
             if (vs.Count != 0)
             {
-                while ((vs.Count != 0) && (V_Out_Here > 0))
+                //while ((vs.Count != 0) && (V_Out_Here > 0))
+                //{
+                if (vs.Last.Value <= V_Out)
                 {
-                    if (vs.Last.Value <= V_Out)
-                    {
-                        GTk += vs.Last.Value;
-                        Gi_f.AddLast(vs.Last.Value);
-                        V_Out = V_Out - vs.Last.Value;
-                        vs.RemoveLast();
-                    }
-                    else
-                    {
-                        vs.Last.Value = vs.Last.Value - V_Out;
-                        GTk += V_Out;
-                        Gi_f.AddLast(V_Out);
-                        V_Out_Here = V_Out_Here - V_Out;
-                    }
+                    GTk += vs.Last.Value;
+                    Gi_f.AddLast(vs.Last.Value);
+                    V_Out = V_Out - vs.Last.Value;
+                    vs.RemoveLast();
                 }
+                else
+                {
+                    F = vs.Last.Value - V_Out;
+                    vs.RemoveLast();
+                    vs.AddLast(F);
+                    GTk += V_Out;
+                    Gi_f.AddLast(V_Out);
+                    V_Out_Here = V_Out_Here - V_Out;
+                }
+                //}
             }
 
             ch[0] = GTk;
