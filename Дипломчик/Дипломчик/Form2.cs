@@ -416,7 +416,9 @@ namespace Дипломчик
 
             double inPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.V));
             double outPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.dataList.Sum(x => x.mult.L);
-            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages);
+            double delay = Static.dataList.Sum(x => x.mult.q);
+            double L = outPackages + delay;
+            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages + "\nЗадержки: " + delay + "\nL: " + L);
             Static.prev_dataList = new List<Data>(Static.dataList);
             Static.dataList = new List<Data>();
             cbPrevData.Enabled = true;
