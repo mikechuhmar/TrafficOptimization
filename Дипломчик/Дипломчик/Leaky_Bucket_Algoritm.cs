@@ -35,11 +35,12 @@ namespace Дипломчик
                 }
             }
             */
+            int y = 20;
             double V_Out_Here = V_Out;
             if (vs.Count != 0)
             {
-                //while ((vs.Count != 0) && (V_Out_Here > 0))
-                //{
+                while ((vs.Count != 0) && (V_Out_Here > 0))
+                {
                 if (vs.Last.Value <= V_Out)
                 {
                     GTk += vs.Last.Value;
@@ -49,14 +50,18 @@ namespace Дипломчик
                 }
                 else
                 {
-                    F = vs.Last.Value - V_Out;
-                    vs.RemoveLast();
-                    vs.AddLast(F);
-                    GTk += V_Out;
-                    Gi_f.AddLast(V_Out);
-                    V_Out_Here = V_Out_Here - V_Out;
+                        if ((V_Out > y) && (vs.Last.Value > y))
+                        {
+                            F = vs.Last.Value - V_Out;
+                            vs.RemoveLast();
+                            vs.AddLast(F);
+                            GTk += V_Out;
+                            Gi_f.AddLast(V_Out);
+                            V_Out_Here = 0;
+                        }
+                        else break;
+                    }
                 }
-                //}
             }
 
             ch[0] = GTk;
