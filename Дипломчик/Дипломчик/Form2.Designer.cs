@@ -268,13 +268,13 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(6, 137);
+            this.chart1.Location = new System.Drawing.Point(6, 99);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(770, 205);
+            this.chart1.Size = new System.Drawing.Size(770, 243);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
             // 
