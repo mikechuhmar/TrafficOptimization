@@ -82,7 +82,8 @@ namespace Дипломчик
             
             button1.Enabled = false;
             textBox5.Enabled = false;
-
+            //MXP.Graph();
+            Graph();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -162,7 +163,7 @@ namespace Дипломчик
 
             Static.dataList = new List<Data>();
             MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4, ref chart1);
-            MXP.Graph();
+            //MXP.Graph();
 
             Static.dataList = new List<Data>();
             tbn = new TBMath_2();
@@ -659,6 +660,33 @@ namespace Дипломчик
                     Count_of_P += 1;
             }
             return Count_of_P;
+        }
+        public void Graph()
+        {
+            chart1.ChartAreas.Add("area");
+            chart1.ChartAreas["area"].AxisX.Minimum = 1;
+            chart1.ChartAreas["area"].AxisX.Maximum = 101;
+            chart1.ChartAreas["area"].AxisX.Interval = 2;
+            chart1.ChartAreas["area"].AxisY.Minimum = 0;
+            chart1.ChartAreas["area"].AxisY.Maximum = 20000;
+            chart1.ChartAreas["area"].AxisY.Interval = 1000;
+
+            chart1.Series.Add("Сумма входных пакетов");
+            chart1.Series.Add("Объем пакетов в буффере");
+            chart1.Series.Add("Объем вышедших пакетов");
+            chart1.Series.Add("Потери на входе мультиплексора");
+
+            chart1.Series["Сумма входных пакетов"].Color = System.Drawing.Color.Red;
+            chart1.Series["Объем пакетов в буффере"].Color = System.Drawing.Color.Green;
+            chart1.Series["Объем вышедших пакетов"].Color = System.Drawing.Color.Blue;
+            chart1.Series["Потери на входе мультиплексора"].Color = System.Drawing.Color.Purple;
+
+            chart1.Series["Сумма входных пакетов"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Объем пакетов в буффере"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Объем вышедших пакетов"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Потери на входе мультиплексора"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Legends.Add("legend");
+
         }
 
     }
