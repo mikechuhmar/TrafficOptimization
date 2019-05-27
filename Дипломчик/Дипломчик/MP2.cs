@@ -155,7 +155,24 @@ namespace Дипломчик
             OPT[1] = q_tk;
             return OPT;
         }
+        public static double[] res(double[] GI, double Q, double C, double q_prev, double t = 1)
+        {                                  
+            
+            double SUMM_Gi = GI.Sum();           
 
+            
+            double q = Math.Max(q_prev - C * t, 0) + Math.Min(SUMM_Gi, Q - Math.Max(q_prev - C * t, 0));//текущая заполненность буффера
+
+            //вычисление Ltk
+            double L = SUMM_Gi - Math.Min(SUMM_Gi, Q - Math.Max(q_prev - C * t, 0)); //потери на мультиплексоре
+                                                                                          //конец - вычисление Ltk
+
+            double[] res = new double[3];
+            res[0] = L;
+            res[1] = q;
+            res[2] = Q;
+            return res;
+        }
         public void ad_GI(int k, double[] gi)//добавление массива TB
         {
             //необходимо добавить условие по ограничению буффера

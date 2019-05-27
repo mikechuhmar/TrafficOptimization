@@ -210,6 +210,7 @@ namespace Дипломчик
                 masp[ikj] = new LinkedList<double>();
             }
             double V_SUMM = 0, Ro_SUMM = 0;
+            Vector max = new Vector(Static.LB_Count + Static.TB_Count);
             for (int k = 0; k <= Time_To_Model; k++)
             {
                 Data data = new Data();
@@ -249,7 +250,9 @@ namespace Дипломчик
                         tBStruct.addInput(V);
 
                         data.tBs.Add(tBStruct);
+                        max[t] = T;
                         t++;
+                        
                     }
                     if (TPe.ElementAt(z).Text.Contains("LB"))
                     {
@@ -274,6 +277,7 @@ namespace Дипломчик
                         lBStruct.addInput(V);
 
                         data.lBs.Add(lBStruct);
+                        max[t + l] = T;
                         l++;
                         
                     }
@@ -286,17 +290,17 @@ namespace Дипломчик
                 
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
-                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), TPe.Count, int.Parse(tbGA2.Text), Functions.J, Functions.genVector);
+                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), TPe.Count, int.Parse(tbGA2.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
                 }
                 if (comboBoxMethod.SelectedIndex == 2)
                 {
-                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), TPe.Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector);
+                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), TPe.Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
                 }
                 if (comboBoxMethod.SelectedIndex == 3)
                 {
-                    StochasticLiftAlgorithm algorithm = new StochasticLiftAlgorithm(TPe.Count, int.Parse(tbSLA1.Text), int.Parse(tbSLA2.Text), Functions.J, Functions.genVector);
+                    StochasticLiftAlgorithm algorithm = new StochasticLiftAlgorithm(TPe.Count, int.Parse(tbSLA1.Text), int.Parse(tbSLA2.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
                 }
 
@@ -430,7 +434,7 @@ namespace Дипломчик
             double inPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.V));
             double outPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.dataList.Sum(x => x.mult.L);
             double delay = Static.dataList.Sum(x => x.mult.q);
-            double L = outPackages + delay;
+            double L = Static.alfa * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma* Static.dataList.Sum(x => x.mult.q);
             MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages + "\nЗадержки: " + delay + "\nL: " + L);
             Static.prev_dataList = new List<Data>(Static.dataList);
             Static.dataList = new List<Data>();
@@ -653,6 +657,32 @@ namespace Дипломчик
                 //    SPAPage.Parent = tabControl1;
             }
             textBox5.Text = Convert.ToString(Count_Of_Page("LB"));
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Static.prev_dataList != null)
+                {
+                    if (int.Parse(textBox3.Text) != Static.prev_dataList.Count - 1)
+                    {
+                        cbPrevData.Checked = false;
+                        cbPrevData.Enabled = false;
+                    }
+                    else
+                    {
+                        cbPrevData.Enabled = true;
+                    }
+                }
+            }
+            catch
+            {
+                cbPrevData.Checked = false;
+                cbPrevData.Enabled = false;
+            }
+                    
+
         }
 
         public int Count_Of_Page(string vs)
