@@ -15,7 +15,7 @@ namespace Дипломчик
         List<Vector> particlesBest;
         List<Vector> points;
         List<Vector> speeds;
-        public SwarmParticlesAlgorithm(int amParticles, int amParams, int amSteps, double a1, double a2, Function func, GenVectorFunction genVectorFunction) : base(amParams, func, genVectorFunction)
+        public SwarmParticlesAlgorithm(int amParticles, int amParams, int amSteps, double a1, double a2, Function func, GenVectorFunction genVectorFunction, Vector max) : base(amParams, func, genVectorFunction, max)
         {
             this.amParticles = amParticles;
             this.amSteps = amSteps;
@@ -52,24 +52,36 @@ namespace Дипломчик
             Random rnd = new Random();
             for (int i = 0; i < amParticles; i++)
             {
+                
                 for (int j = 0; j < amParams; j++)
                 {
+
                     speeds[i][j] = speeds[i][j] + a1 * rnd.NextDouble() * (particlesBest[i][j] - points[i][j]) + a2 * rnd.NextDouble() * (groupBest[j] - points[i][j]);
+
                 }
                 points[i] = points[i] + speeds[i];
+                points[i] = new Vector(setEdge(points[i]));
                 if (func(points[i]) < func(particlesBest[i]))
                     particlesBest[i] = new Vector(points[i]);
             }
             groupBest = new Vector(particlesBest.OrderBy(x => func(x)).First());
+
         }
         public Vector result()
         {
             int i;
             CreateStartPoints();
+            foreach (var l in points)
+                Console.WriteLine("p  " + l.ToString());
+            Console.WriteLine("GR = " + groupBest.ToString());
             for (i = 0; i < amSteps; i++)
             {
                 Vector prevGroupBest = new Vector(groupBest);
                 ChangeNewPoints();
+                Console.WriteLine(i);
+                foreach(var l in points)
+                    Console.WriteLine("p  " + l.ToString());
+                Console.WriteLine("GR = " + groupBest.ToString());
             }
             Vector resultAlgorith = groupBest;
             return resultAlgorith;

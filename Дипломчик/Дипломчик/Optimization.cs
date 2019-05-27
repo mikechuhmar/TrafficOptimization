@@ -37,8 +37,13 @@ public class Functions
     public static double J(Vector vector)
     {
         Data data = Static.dataList.Last();
-        
-        double alfa = 5, beta = 2, gamma = 1;
+        double q_prev = 0;
+        Data prev;
+        if(Static.dataList.Count > 1)
+            q_prev = Static.dataList[Static.dataList.Count - 2].mult.q;
+
+
+
         double res = 0;
         double[] G = new double[Static.LB_Count + Static.TB_Count];
         double[] R = new double[Static.LB_Count + Static.TB_Count];
@@ -80,13 +85,15 @@ public class Functions
 
 
         }
-        MplexMath_2 mplex = new MplexMath_2(data.mult.C, data.mult.Q);
-        double[] MX = mplex.MX(G);
+        //MplexMath_2 mplex = new MplexMath_2(data.mult.C, data.mult.Q);
+        //double[] MX = mplex.MX(G);
+        
+        double[] MX = MplexMath_2.res(G, data.mult.Q, data.mult.C, q_prev);
         data.mult.addDecision(MX[1], MX[0]);
         //Console.WriteLine("q = " + MX[1]);
         //Console.WriteLine("_L = " + data.mult.L);
-        res += alfa * Static.dataList.Sum(x => x.mult.L) + beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + gamma * Static.dataList.Sum(x => x.mult.q);
-        data.J = res;
+        res += Static.alfa * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma * Static.dataList.Sum(x => x.mult.q);
+        //data.J = res;
         //Console.WriteLine(res);
         return res;
     }

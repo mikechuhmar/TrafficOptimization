@@ -23,7 +23,7 @@ namespace Дипломчик
 
         List<Vector> population;
         
-        public GeneticAlgorithm(int amIndividuals, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction): base(amGenes, func, genVectorFunction)
+        public GeneticAlgorithm(int amIndividuals, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction, Vector max): base(amGenes, func, genVectorFunction, max)
         {
             this.amIndividuals = amIndividuals;
             this.amPopulations = amPopulations;

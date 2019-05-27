@@ -10,7 +10,7 @@ namespace Дипломчик
     {
         int amIterations;
         int amInternalIterations;
-        public StochasticLiftAlgorithm(int amParams, int amIterations, int amInternalIterations, Function func, GenVectorFunction genVectorFunction): base(amParams, func, genVectorFunction)
+        public StochasticLiftAlgorithm(int amParams, int amIterations, int amInternalIterations, Function func, GenVectorFunction genVectorFunction, Vector max): base(amParams, func, genVectorFunction, max)
         {
             this.amIterations = amIterations;
             this.amInternalIterations = amInternalIterations;
@@ -27,22 +27,23 @@ namespace Дипломчик
             Vector res = genVectorFunction(rnd); 
             for (int i = 1; i < amIterations; i++)
             {
-                vector = genVectorFunction(rnd);
+                vector = new Vector(genVectorFunction(rnd));
                 for (int j = 1; j < amInternalIterations; j++)
                 {
-                    Vector next = new Vector(amParams);
+                    Vector next = new Vector();
                     for (int k = 0; k < amParams; k++)
                     {
-                        next[k] = rnd.Next(-(int)vector[k] / 10, (int)vector[k] / 10) * vector[k];
+                        next.Add(rnd.Next(-(int)vector[k] , (int)vector[k]) + vector[k]);
                     }
                     if (func(vector) > func(next))
                         vector = new Vector(next);
+                    Console.WriteLine("п: v = " + vector.ToString() + "n = " + next.ToString() + "j = " + func(vector) + " " + func(next));
 
 
                 }
                 if (func(res) > func(vector))
                     res = new Vector(vector);
-
+                Console.WriteLine("сп: " + res.ToString());
 
             }
             return res;

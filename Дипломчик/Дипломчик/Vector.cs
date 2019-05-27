@@ -45,6 +45,10 @@ namespace Дипломчик
         public Vector(int amount)
         {
             elements = new List<double>(amount);
+            for (int i =0; i < amount; i++)
+            {
+                elements.Add(0);
+            }
         }
         public Vector(Vector vector, double d)
         {
