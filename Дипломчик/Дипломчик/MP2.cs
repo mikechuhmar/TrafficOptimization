@@ -8,6 +8,7 @@ namespace Дипломчик
 {
     public class Buff_2
     {
+        
         public LinkedList<double> _items = new LinkedList<double>();
 
         public void Enqueue(double value)//Добавляет элемент в очередь.
@@ -90,7 +91,7 @@ namespace Дипломчик
         public double t;
         public double[] Gi;
         public bool hasRt;
-
+        bool graph;
         public double[] OPT = new double[2];
 
         public double L_tk;
@@ -136,15 +137,19 @@ namespace Дипломчик
 
             if (Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0)) != 0)
                 ad_GI(Gi.Count(), Gi);
-            Out_of_MX(j_c);
+            if(hasRt)
+                Out_of_MX(j_c);
             q_tk = Math.Max(q_tkm1 - C_T * t, 0) + Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0));//текущая заполненность буффера
 
             //вычисление Ltk
             L_tk = SUMM_Gi - Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0)); //потери на мультиплексоре
             //конец - вычисление Ltk
-            chart1.Series["Сумма входных пакетов"].Points.AddXY(j_c, SUMM_Gi);
-            chart1.Series["Объем пакетов в буффере"].Points.AddXY(j_c, summ());
-            chart1.Series["Потери на входе мультиплексора"].Points.AddXY(j_c, L_tk);
+            if (hasRt)
+            {
+                chart1.Series["Сумма входных пакетов"].Points.AddXY(j_c, SUMM_Gi);
+                chart1.Series["Объем пакетов в буффере"].Points.AddXY(j_c, summ());
+                chart1.Series["Потери на входе мультиплексора"].Points.AddXY(j_c, L_tk);
+            }
 
             OPT[0] = L_tk;
             OPT[1] = q_tk;
