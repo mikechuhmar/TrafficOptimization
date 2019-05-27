@@ -33,7 +33,13 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tBgamma = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tBbeta = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.tBalpha = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -102,7 +108,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.tBgamma);
+            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.tBbeta);
+            this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Controls.Add(this.tBalpha);
             this.tabPage1.Controls.Add(this.textBox5);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.richTextBox1);
@@ -129,6 +141,49 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(847, 396);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 17);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "Gamma";
+            // 
+            // tBgamma
+            // 
+            this.tBgamma.Location = new System.Drawing.Point(959, 391);
+            this.tBgamma.Name = "tBgamma";
+            this.tBgamma.Size = new System.Drawing.Size(96, 22);
+            this.tBgamma.TabIndex = 27;
+            this.tBgamma.Text = "3";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(847, 361);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(37, 17);
+            this.label17.TabIndex = 24;
+            this.label17.Text = "Beta";
+            // 
+            // tBbeta
+            // 
+            this.tBbeta.Location = new System.Drawing.Point(959, 356);
+            this.tBbeta.Name = "tBbeta";
+            this.tBbeta.Size = new System.Drawing.Size(96, 22);
+            this.tBbeta.TabIndex = 25;
+            this.tBbeta.Text = "4";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(847, 323);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(44, 17);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Alpha";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -137,6 +192,14 @@
             this.label13.Size = new System.Drawing.Size(142, 17);
             this.label13.TabIndex = 23;
             this.label13.Text = "Статус выполнения:";
+            // 
+            // tBalpha
+            // 
+            this.tBalpha.Location = new System.Drawing.Point(959, 318);
+            this.tBalpha.Name = "tBalpha";
+            this.tBalpha.Size = new System.Drawing.Size(96, 22);
+            this.tBalpha.TabIndex = 14;
+            this.tBalpha.Text = "5";
             // 
             // textBox5
             // 
@@ -156,7 +219,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(903, 299);
+            this.richTextBox1.Location = new System.Drawing.Point(859, 485);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(169, 110);
             this.richTextBox1.TabIndex = 6;
@@ -530,7 +593,7 @@
             this.tbSLA2.Name = "tbSLA2";
             this.tbSLA2.Size = new System.Drawing.Size(100, 22);
             this.tbSLA2.TabIndex = 10;
-            this.tbSLA2.Text = "100";
+            this.tbSLA2.Text = "10";
             // 
             // label15
             // 
@@ -621,5 +684,11 @@
         private System.Windows.Forms.TextBox tbSLA2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox tbSLA1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tBgamma;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tBbeta;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tBalpha;
     }
 }

@@ -60,7 +60,7 @@ namespace Дипломчик
 
                 }
                 points[i] = points[i] + speeds[i];
-                points[i] = new Vector(setEdge(points[i]));
+                //points[i] = new Vector(setEdge(points[i]));
                 if (func(points[i]) < func(particlesBest[i]))
                     particlesBest[i] = new Vector(points[i]);
             }

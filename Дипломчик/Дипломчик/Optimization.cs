@@ -89,10 +89,10 @@ public class Functions
         //double[] MX = mplex.MX(G);
         
         double[] MX = MplexMath_2.res(G, data.mult.Q, data.mult.C, q_prev);
-        data.mult.addDecision(MX[1], MX[0]);
+        data.mult.addDecision(MX[1], MX[0], MX[3]);
         //Console.WriteLine("q = " + MX[1]);
         //Console.WriteLine("_L = " + data.mult.L);
-        res += Static.alfa * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma * Static.dataList.Sum(x => x.mult.q);
+        res += Static.alpha * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma * Static.dataList.Sum(x => x.mult.q);
         //data.J = res;
         //Console.WriteLine(res);
         return res;

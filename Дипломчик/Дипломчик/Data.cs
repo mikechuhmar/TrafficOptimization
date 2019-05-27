@@ -66,7 +66,7 @@ namespace Дипломчик
     {
         public double Q, C;
         public double[] G;
-        public double q, L;
+        public double q, L, outG;
         
         public void addInit(double Q, double C)
         {
@@ -81,10 +81,11 @@ namespace Дипломчик
             
             
         }
-        public void addDecision(double q, double L)
+        public void addDecision(double q, double L, double outG)
         {
             this.q = q;
             this.L = L;
+            this.outG = outG;
         }
 
     }
@@ -113,7 +114,7 @@ namespace Дипломчик
             {
                 str += mult.G[i] + " ";
             }
-            str += " q = " + mult.q + " L = " + mult.L;
+            str += " q = " + mult.q + " L = " + mult.L + " out = " + mult.outG;
             str += "\n";
             return str;
 

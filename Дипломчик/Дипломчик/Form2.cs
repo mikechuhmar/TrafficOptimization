@@ -67,12 +67,13 @@ namespace Дипломчик
         {
             InitializeComponent();
         }
+        
         TabPage GAPage;
         TabPage SPAPage;
         TabPage SLAPage;
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+
             
             BUF = new Buff_2();
             button2.Enabled = false;
@@ -154,6 +155,9 @@ namespace Дипломчик
 
         private void button4_Click(object sender, EventArgs e)
         {
+            Static.alpha = int.Parse(tBalpha.Text);
+            Static.beta = int.Parse(tBbeta.Text);
+            Static.gamma = int.Parse(tBgamma.Text);
             richTextBox1.Clear();
 
             richTextBox2.Clear();
@@ -414,7 +418,12 @@ namespace Дипломчик
 
                 data.mult.addInput(Gi);
                 OPT = MXP.MX(Gi);
-                data.mult.addDecision(OPT[1], OPT[0]);
+                
+                double q_prev = 0;
+                if (Static.dataList.Count > 1)
+                    q_prev = Static.dataList[Static.dataList.Count - 2].mult.q;
+                double outGi = MplexMath_2.res(Gi, MXP.Q, MXP.C_T, q_prev)[3];
+                data.mult.addDecision(OPT[1], OPT[0], outGi);
                 //Console.WriteLine(Static.dataList.IndexOf(data));
                 Console.WriteLine(data.output());
                 Console.WriteLine(data.J);
@@ -433,9 +442,11 @@ namespace Дипломчик
 
             double inPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.V));
             double outPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.dataList.Sum(x => x.mult.L);
+
             double delay = Static.dataList.Sum(x => x.mult.q);
-            double L = Static.alfa * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma* Static.dataList.Sum(x => x.mult.q);
-            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages + "\nЗадержки: " + delay + "\nL: " + L);
+            double L = Static.alpha * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma* Static.dataList.Sum(x => x.mult.q);
+            //MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages + "\nЗадержки: " + delay + "\nL: " + L);
+            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено на корзинах: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nОтброшено на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nЗадержки: " + delay + "\nL: " + L + "\nВышло" + Static.dataList.Sum(x => x.mult.outG));
             Static.prev_dataList = new List<Data>(Static.dataList);
             Static.dataList = new List<Data>();
             cbPrevData.Enabled = true;

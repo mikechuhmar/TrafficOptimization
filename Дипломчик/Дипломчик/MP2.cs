@@ -167,10 +167,11 @@ namespace Дипломчик
             double L = SUMM_Gi - Math.Min(SUMM_Gi, Q - Math.Max(q_prev - C * t, 0)); //потери на мультиплексоре
                                                                                           //конец - вычисление Ltk
 
-            double[] res = new double[3];
+            double[] res = new double[4];
             res[0] = L;
             res[1] = q;
             res[2] = Q;
+            res[3] = Math.Min(q_prev, C * t);
             return res;
         }
         public void ad_GI(int k, double[] gi)//добавление массива TB

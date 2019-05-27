@@ -63,7 +63,7 @@ namespace Дипломчик
         {
             Location = new D.Point(250, 90),
             Name = "CIR",
-            Text = "2",
+            Text = "400",
             Size = new D.Size(50, 22)
         };
 
