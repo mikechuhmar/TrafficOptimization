@@ -8,7 +8,7 @@ namespace Дипломчик
 {
     class GeneticAlgorithm: Method
     {
-        int amChromosomes, amPopulations;
+        int amIndividuals, amPopulations;
         int amGenes
         {
             get
@@ -23,14 +23,14 @@ namespace Дипломчик
 
         List<Vector> population;
         
-        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction): base(amGenes, func, genVectorFunction)
+        public GeneticAlgorithm(int amIndividuals, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction): base(amGenes, func, genVectorFunction)
         {
-            this.amChromosomes = amChromosomes;
+            this.amIndividuals = amIndividuals;
             this.amPopulations = amPopulations;
         }
-        public GeneticAlgorithm(int amChromosomes, int amGenes, int amPopulations, Function func): base(amGenes, func)
+        public GeneticAlgorithm(int amIndividuals, int amGenes, int amPopulations, Function func): base(amGenes, func)
         {
-            this.amChromosomes = amChromosomes;
+            this.amIndividuals = amIndividuals;
             this.amPopulations = amPopulations;
         }
         
@@ -38,7 +38,7 @@ namespace Дипломчик
         {
             Random rnd = new Random();
             population = new List<Vector>();
-            for (int i = 0; i < amChromosomes; i++)
+            for (int i = 0; i < amIndividuals; i++)
             {
 
                 Vector chromosome = genVectorFunction(rand);
@@ -51,19 +51,19 @@ namespace Дипломчик
         {
             Random rnd1 = new Random();
             Random rnd2 = new Random();
-            for (int i = 0; i < amChromosomes; i++)
+            for (int i = 0; i < amIndividuals; i++)
             {
                 //Выбор родителей для размножения (репродукция)
                 Vector parent1 = new Vector();
                 Vector parent2 = new Vector();
                 int parentIndex1, parentIndex2;
 
-                parentIndex1 = rnd1.Next(0, amChromosomes);
-                parentIndex2 = rnd2.Next(0, amChromosomes);
+                parentIndex1 = rnd1.Next(0, amIndividuals);
+                parentIndex2 = rnd2.Next(0, amIndividuals);
 
                 if (parentIndex1 == parentIndex2)
                 {
-                    if (parentIndex2 == amChromosomes - 1)
+                    if (parentIndex2 == amIndividuals - 1)
                         parentIndex2--;
                     else
                         parentIndex2++;
@@ -94,9 +94,9 @@ namespace Дипломчик
         {
             Random rnd = new Random();
             double mutationProbability = 0.33;
-            for (int i = amChromosomes; i < population.Count * mutationProbability; i++)
+            for (int i = amIndividuals; i < population.Count * mutationProbability; i++)
             {
-                int numbMutChrom = rnd.Next(amChromosomes, population.Count);
+                int numbMutChrom = rnd.Next(amIndividuals, population.Count);
                 int numbMutGen = rnd.Next(0, amGenes);
                 population[numbMutChrom][numbMutGen] += rnd.Next(-10, 10) * rnd.NextDouble();
             }
@@ -104,7 +104,7 @@ namespace Дипломчик
         private void Selection()
         {
             var query = population.OrderBy(x => func(x)).ToList();
-            query.RemoveRange(amChromosomes, (population.Count) - amChromosomes);
+            query.RemoveRange(amIndividuals, (population.Count) - amIndividuals);
             population = new List<Vector>(query.ToList());
         }
         public Vector result()
