@@ -157,7 +157,12 @@ namespace Дипломчик
             richTextBox1.Clear();
 
             richTextBox2.Clear();
-            
+
+            chart1.Series["Сумма входных пакетов"].Points.Clear();
+            chart1.Series["Объем пакетов в буффере"].Points.Clear();
+            chart1.Series["Объем вышедших пакетов"].Points.Clear();
+            chart1.Series["Потери на входе мультиплексора"].Points.Clear();
+
             System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
             swatch.Start();
 
