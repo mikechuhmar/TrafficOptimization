@@ -20,7 +20,8 @@ namespace Дипломчик
         TBMath_2 tbn;
         MplexMath_2 MXP;
         Buff_2 BUF;
-        bool GA = false, SPA = false;
+        bool GA = false, SPA = false, SLA = false;
+        bool start = true;
         public static LinkedList<TabPage> TPe = new LinkedList<TabPage>();
         //public List<TabPage> TPe = new List<TabPage>();
         public void Enqueue(TabPage value)//Добавляет элемент в очередь.
@@ -68,6 +69,7 @@ namespace Дипломчик
         }
         TabPage GAPage;
         TabPage SPAPage;
+        TabPage SLAPage;
         private void Form2_Load(object sender, EventArgs e)
         {
             
@@ -77,10 +79,7 @@ namespace Дипломчик
             Start_modelling.Enabled = false;
             cbPrevData.Enabled = false;
             comboBoxMethod.SelectedIndex = 0;
-            GAPage = tabControl1.TabPages[1];
-            SPAPage = tabControl1.TabPages[2];
-            GAPage.Parent = null;
-            SPAPage.Parent = null;
+            
             button1.Enabled = false;
             textBox5.Enabled = false;
 
@@ -95,6 +94,7 @@ namespace Дипломчик
         {
             GAPage.Parent = null;
             SPAPage.Parent = null;
+            SLAPage.Parent = null;
             button2.Enabled = true;
             Start_modelling.Enabled = true;
 
@@ -145,6 +145,8 @@ namespace Дипломчик
                 GAPage.Parent = tabControl1;
             if (SPA)
                 SPAPage.Parent = tabControl1;
+            if (SLA)
+                SLAPage.Parent = tabControl1;
             //MessageBox.Show(Static.TB_Count.ToString());
         }
 
@@ -286,11 +288,15 @@ namespace Дипломчик
                     SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), TPe.Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector);
                     vector = new Vector(algorithm.result());
                 }
+                if (comboBoxMethod.SelectedIndex == 3)
+                {
+                    StochasticLiftAlgorithm algorithm = new StochasticLiftAlgorithm(TPe.Count, int.Parse(tbSLA1.Text), int.Parse(tbSLA2.Text), Functions.J, Functions.genVector);
+                    vector = new Vector(algorithm.result());
+                }
 
-                
 
                 //Вычисление выходящего трафика и потерь
-                
+
                 for (int z = 0, t = 0, l = 0; z <= TPe.Count - 1; z++)
                 {
 
@@ -435,6 +441,7 @@ namespace Дипломчик
                 
                 GAPage.Parent = null;
                 SPAPage.Parent = null;
+                SLAPage.Parent = null;
                 //Dequeue_F();
                 //tabControl1.TabPages.RemoveAt(TPe.Count() + 1);
                 //tabControl1.TabPages.Remove(TPe.Last());
@@ -461,17 +468,50 @@ namespace Дипломчик
                     GAPage.Parent = tabControl1;
                 if (SPA)
                     SPAPage.Parent = tabControl1;
+                if (SLA)
+                    SLAPage.Parent = tabControl1;
             }
         }
 
         private void comboBoxMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            if (comboBoxMethod.SelectedIndex == 0)
+            {
+                if (start)
+                {
+                    GAPage = tabControl1.TabPages[1];
+                    SPAPage = tabControl1.TabPages[2];
+                    SLAPage = tabControl1.TabPages[3];
+                    GA = false;
+
+                    GAPage.Parent = null;
+                    SPA = false;
+                    SPAPage.Parent = null;
+                    SLA = false;
+                    SLAPage.Parent = null;
+                    start = false;
+                }
+                else
+                {
+                    GA = false;
+
+                    GAPage.Parent = null;
+                    SPA = false;
+                    SPAPage.Parent = null;
+                    SLA = false;
+                    SLAPage.Parent = null;
+                }
+                
+            }
             if (comboBoxMethod.SelectedIndex == 1)
             {
                 GAPage.Parent = tabControl1;
                 GA = true;
                 SPA = false;
                 SPAPage.Parent = null;
+                SLA = false;
+                SLAPage.Parent = null;
             }
 
             if (comboBoxMethod.SelectedIndex == 2)
@@ -480,6 +520,17 @@ namespace Дипломчик
                 SPA = true;
                 GA = false;
                 GAPage.Parent = null;
+                SLA = false;
+                SLAPage.Parent = null;
+            }
+            if (comboBoxMethod.SelectedIndex == 3)
+            {
+                SLAPage.Parent = tabControl1;
+                SLA = true;
+                GA = false;
+                GAPage.Parent = null;
+                SPA = false;
+                SPAPage.Parent = null;
             }
         }
 
@@ -521,6 +572,7 @@ namespace Дипломчик
         {
             GAPage.Parent = null;
             SPAPage.Parent = null;
+            SLAPage.Parent = null;
             button1.Enabled = true;
             Start_modelling.Enabled = true;
 
@@ -563,6 +615,8 @@ namespace Дипломчик
                 GAPage.Parent = tabControl1;
             if (SPA)
                 SPAPage.Parent = tabControl1;
+            if (SLA)
+                SLAPage.Parent = tabControl1;
             //MessageBox.Show(Static.LB_Count.ToString());
         }
 

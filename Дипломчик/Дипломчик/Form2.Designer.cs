@@ -33,8 +33,10 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,7 +47,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -70,13 +71,18 @@
             this.tbSPA2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbSPA1 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbSLA2 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbSLA1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -87,6 +93,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -122,6 +129,15 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(399, 100);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(142, 17);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Статус выполнения:";
+            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(162, 121);
@@ -137,6 +153,14 @@
             this.label12.Size = new System.Drawing.Size(68, 17);
             this.label12.TabIndex = 21;
             this.label12.Text = "число LB";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(903, 299);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(169, 110);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
             // 
             // button4
             // 
@@ -173,7 +197,8 @@
             this.comboBoxMethod.Items.AddRange(new object[] {
             "Нет",
             "Генетический алгоритм",
-            "Алгоритм роя частиц"});
+            "Алгоритм роя частиц",
+            "Алгоритм стохастического подъёма"});
             this.comboBoxMethod.Location = new System.Drawing.Point(875, 269);
             this.comboBoxMethod.Name = "comboBoxMethod";
             this.comboBoxMethod.Size = new System.Drawing.Size(121, 24);
@@ -252,14 +277,6 @@
             this.chart1.Size = new System.Drawing.Size(770, 205);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(903, 299);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(169, 110);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
             // 
             // label3
             // 
@@ -483,14 +500,53 @@
             this.tbSPA1.TabIndex = 4;
             this.tbSPA1.Text = "10";
             // 
-            // label13
+            // tabPage4
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(399, 100);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(142, 17);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Статус выполнения:";
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.tbSLA2);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.tbSLA1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1078, 601);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Алгоритм стохастического подъёма";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(333, 177);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(226, 34);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Количество итераций алгоритма\r\nподъёма";
+            // 
+            // tbSLA2
+            // 
+            this.tbSLA2.Location = new System.Drawing.Point(595, 177);
+            this.tbSLA2.Name = "tbSLA2";
+            this.tbSLA2.Size = new System.Drawing.Size(100, 22);
+            this.tbSLA2.TabIndex = 10;
+            this.tbSLA2.Text = "100";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(333, 133);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(230, 17);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Количество итераций алгоритма ";
+            // 
+            // tbSLA1
+            // 
+            this.tbSLA1.Location = new System.Drawing.Point(595, 133);
+            this.tbSLA1.Name = "tbSLA1";
+            this.tbSLA1.Size = new System.Drawing.Size(100, 22);
+            this.tbSLA1.TabIndex = 8;
+            this.tbSLA1.Text = "100";
             // 
             // Form2
             // 
@@ -511,6 +567,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -557,5 +615,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tbSLA2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox tbSLA1;
     }
 }
