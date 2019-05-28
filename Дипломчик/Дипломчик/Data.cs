@@ -36,24 +36,24 @@ namespace Дипломчик
     }
     public struct LBStruct
     {
-        public double T, U;
+        public double B, b_prev, S;
         public double V;
-        public double Ro, G, R;
-        public LinkedList<double> B, G_f;
+        public double b, G, R;
+        public LinkedList<double> B_list, G_list;
 
-        public void addInit(double T, LinkedList<double> B, LinkedList<double> G_f)
+        public void addInit(double B, LinkedList<double> B_list, LinkedList<double> G_list)
         {
-            this.T = T;
-            this.B = new LinkedList<double>(B);
-            this.G_f = new LinkedList<double>(G_f);
+            this.B = B;
+            this.B_list = new LinkedList<double>(B_list);
+            this.G_list = new LinkedList<double>(G_list);
         }
         public void addInput(double V)
         {
             this.V = V;
         }
-        public void addOptimized(double U)
+        public void addOptimized(double S)
         {
-            this.U = U;
+            this.S = S;
         }
         public void addDecision(double G,  double R)
         {
