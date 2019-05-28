@@ -172,6 +172,7 @@ namespace Дипломчик
 
             Static.dataList = new List<Data>();
             MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4, ref chart1);
+            Leaky_Bucket_Algoritm lbn = new Leaky_Bucket_Algoritm();
             //MXP.Graph();
 
             Static.dataList = new List<Data>();
@@ -208,6 +209,8 @@ namespace Дипломчик
             double RoTk_LB = 0;
 
             LinkedList<double>[] masp = new LinkedList<double>[LB_COUNT];///////
+            richTextBox2.Text += "LB - количество" +LB_COUNT;
+            richTextBox2.Text += '\n';
             for (int ikj = 0; ikj < LB_COUNT; ikj++)
             {
                 //LinkedList<double> k = new LinkedList<double>();
@@ -372,7 +375,7 @@ namespace Дипломчик
                         V = lBStruct.V;
                         if (comboBoxMethod.SelectedIndex == 0)
                         {
-                            U = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[1]).Text);
+                            U = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[2]).Text);
 
                         }
                         else
@@ -382,7 +385,7 @@ namespace Дипломчик
 
                         lBStruct.addOptimized(U);
                         data.lBs[l] = lBStruct;
-                        Leaky_Bucket_Algoritm lbn = new Leaky_Bucket_Algoritm();
+                        
                         ch = lbn.LM(U, Tk, T, RoTk_LB, V, ref masp[lb_count - 1], ref Gi_f);
 
                         ((RichTextBox)TPe.ElementAt(z).Controls[10]).Text += "Шаг: " + k;
@@ -393,8 +396,8 @@ namespace Дипломчик
 
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
-                        //((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["Заполненность буфера"].Points.AddXY(k, ch[2]);
-                        //((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["Потери на входе LB"].Points.AddXY(k, ch[3]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["заполнение LB"].Points.AddXY(k, ch[2]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["потери"].Points.AddXY(k, ch[3]);
 
 
                         ((RichTextBox)TPe.ElementAt(z).Controls[10]).Text += " GTk: " + ch[0] + "; " + " VTk: " + ch[1] + "; " + "заполнение LB: " + ch[2] + "; " + "Потери" + ch[3];

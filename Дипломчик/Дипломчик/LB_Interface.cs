@@ -189,7 +189,7 @@ namespace Дипломчик
             chart1.Series["GTk"].Color = D.Color.Red;
             chart1.Series["VTk"].Color = D.Color.Green;
             chart1.Series["заполнение LB"].Color = D.Color.Blue;
-            chart1.Series["потери"].Color = D.Color.OrangeRed;
+            chart1.Series["потери"].Color = D.Color.Purple;
 
             chart1.Series["GTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Series["VTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
