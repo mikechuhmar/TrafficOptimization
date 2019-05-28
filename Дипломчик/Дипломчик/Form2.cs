@@ -162,12 +162,32 @@ namespace Дипломчик
 
             richTextBox2.Clear();
 
-            chart1.Series["Сумма входных пакетов"].Points.Clear();
-            chart1.Series["Объем пакетов в буффере"].Points.Clear();
-            chart1.Series["Объем вышедших пакетов"].Points.Clear();
-            chart1.Series["Потери на входе мультиплексора"].Points.Clear();
+            chart1.Series[0].Points.Clear();
+            chart1.Series[1].Points.Clear();
+            chart1.Series[2].Points.Clear();
+            chart1.Series[3].Points.Clear();
 
-            System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
+            for (int z = 0; z <= TPe.Count - 1; z++)
+            {
+                int k=0;
+                if (TPe.ElementAt(z).Text.Contains("TB"))
+                {
+                    k = 6;
+                }
+                if (TPe.ElementAt(z).Text.Contains("LB"))
+                {
+                    k = 8;
+                }
+
+                ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[k]).Series[0].Points.Clear();
+                ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[k]).Series[1].Points.Clear();
+                ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[k]).Series[2].Points.Clear();
+                ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[k]).Series[3].Points.Clear();
+            }
+                //chart1.Series[0].Points.Clear();
+
+
+                System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
             swatch.Start();
 
             Static.dataList = new List<Data>();
