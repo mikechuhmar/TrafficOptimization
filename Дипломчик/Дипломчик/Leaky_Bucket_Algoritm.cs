@@ -22,6 +22,7 @@ namespace Дипломчик
             if ((vs.ToArray().Sum() + V1) < T)
             {
                 vs.AddFirst(V1);
+                ch[3] = 0;
             }
             else ch[3] = V1;
             /*if (vs.Count != 0)
