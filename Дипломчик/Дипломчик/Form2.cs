@@ -406,7 +406,7 @@ namespace Дипломчик
 
 
                         Gi[z] = ch[0];
-                        lBStruct.addDecision(ch[0], ch[3]);
+                        lBStruct.addDecision(ch[0], ch[3], ch[2]);
                         //RoTk_1 = ch[3];
                         data.lBs[l] = lBStruct;
                         l++;
@@ -444,13 +444,14 @@ namespace Дипломчик
 
             swatch.Stop();
 
-            double inPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.V));
+            double inTB = Static.dataList.Sum(x => x.tBs.Sum(y => y.V));
+            double inLB = Static.dataList.Sum(x => x.lBs.Sum(y => y.V));
             double outPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.dataList.Sum(x => x.mult.L);
 
             double delay = Static.dataList.Sum(x => x.mult.q);
             double L = Static.alpha * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma* Static.dataList.Sum(x => x.mult.q);
             //MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages + "\nЗадержки: " + delay + "\nL: " + L);
-            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено на корзинах: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nОтброшено на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nЗадержки: " + delay + "\nL: " + L + "\nВышло" + Static.dataList.Sum(x => x.mult.outG));
+            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит на корзины: " + inTB + "\nОтброшено на корзинах: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nПоступило бит на вёдра: " + inLB + "\nОтброшено на вёдрах: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + "\nОтброшено на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nЗадержки: " + delay + "\nL: " + L + "\nВышло" + Static.dataList.Sum(x => x.mult.outG));
             Static.prev_dataList = new List<Data>(Static.dataList);
             Static.dataList = new List<Data>();
             cbPrevData.Enabled = true;

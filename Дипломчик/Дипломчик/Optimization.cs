@@ -79,7 +79,7 @@ public class Functions
             int indexLastData = Static.dataList.Count - 1;
             
             double[] M = lB.LM(U, 1, T, 1, V, ref B, ref G_f);
-            lBStruct.addDecision(M[0], M[3]);
+            lBStruct.addDecision(M[0], M[3], M[2]);
             data.lBs[i] = lBStruct;
             G[i + Static.TB_Count] = M[0];
 
