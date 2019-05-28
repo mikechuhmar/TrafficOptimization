@@ -26,7 +26,7 @@ public class Functions
         }
         for (int i = 0; i < data.lBs.Count; i++)
         {
-            int U = rand.Next(1, (int)data.lBs[i].B);
+            int U = rand.Next(1, (int)data.lBs[i].T);
 
             vector.Add(U);
 
@@ -71,10 +71,10 @@ public class Functions
         {
             double U = vector[i + Static.LB_Count];
             LBStruct lBStruct = data.lBs[i];
-            double T = lBStruct.B;
+            double T = lBStruct.T;
             double V = lBStruct.V;
-            LinkedList<double> B = new LinkedList<double>(lBStruct.B_list);
-            LinkedList<double> G_f = new LinkedList<double>(lBStruct.G_list);
+            LinkedList<double> B = new LinkedList<double>(lBStruct.B);
+            LinkedList<double> G_f = new LinkedList<double>(lBStruct.G_f);
             Leaky_Bucket_Algoritm lB = new Leaky_Bucket_Algoritm();
             int indexLastData = Static.dataList.Count - 1;
             
