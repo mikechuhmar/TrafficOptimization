@@ -405,7 +405,7 @@ namespace Дипломчик
 
 
                         Gi[z] = ch[0];
-                        lBStruct.addDecision(ch[0], ch[3]);
+                        lBStruct.addDecision(ch[0], ch[3], ch[2]);
                         //RoTk_1 = ch[3];
                         data.lBs[l] = lBStruct;
                         l++;

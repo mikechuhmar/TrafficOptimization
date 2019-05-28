@@ -46,6 +46,7 @@ namespace Дипломчик
             this.B = B;
             this.B_list = new LinkedList<double>(B_list);
             this.G_list = new LinkedList<double>(G_list);
+            b_prev = B_list.Sum();
         }
         public void addInput(double V)
         {
@@ -55,10 +56,11 @@ namespace Дипломчик
         {
             this.S = S;
         }
-        public void addDecision(double G,  double R)
+        public void addDecision(double G,  double R, double b)
         {
             this.G = G;
             this.R = R;
+            this.b = b;
             
         }
     }
@@ -104,10 +106,16 @@ namespace Дипломчик
         {
             string str = "";
             int tb_i = 1;
+            int lb_i = 1;
             foreach (TBStruct tB in tBs)
             {
                 str += "TB №" + tb_i + ": \n" + "Ro_prev = " + tB.Ro_prev + " U = " + tB.U + " T =  " + tB.T + " V =  " + tB.V + " Ro = " + tB.Ro + " G = " + tB.G + " R = " + tB.R + "\n";
                 tb_i++;
+            }
+            foreach (LBStruct lB in lBs)
+            {
+                str += "LB №" + lb_i + ": \n" + "b_prev = " + lB.b_prev + " S = " + lB.S + " T =  " + lB.B + " V =  " + lB.V + " b = " + lB.b + " G = " + lB.G + " R = " + lB.R + "\n";
+                lb_i++;
             }
             str += "Multiplexor: \n" + "Q = " + mult.Q + " C = " + mult.C + " G = ";
             for (int i = 0; i < mult.G.Length; i++)
