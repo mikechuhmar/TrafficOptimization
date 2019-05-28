@@ -11,7 +11,7 @@ namespace Дипломчик
         protected Function func;
         protected GenVectorFunction genVectorFunction;
         protected Random rand = new Random();
-        protected Vector min, max;
+        protected Vector max;
         protected int amParams;
         protected Vector setEdge(Vector vector)
         {
