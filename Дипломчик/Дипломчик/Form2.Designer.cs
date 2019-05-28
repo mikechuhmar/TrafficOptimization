@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
@@ -143,6 +142,7 @@
             // 
             // label18
             // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(847, 396);
             this.label18.Name = "label18";
@@ -152,6 +152,7 @@
             // 
             // tBgamma
             // 
+            this.tBgamma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tBgamma.Location = new System.Drawing.Point(959, 391);
             this.tBgamma.Name = "tBgamma";
             this.tBgamma.Size = new System.Drawing.Size(96, 22);
@@ -160,6 +161,7 @@
             // 
             // label17
             // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(847, 361);
             this.label17.Name = "label17";
@@ -169,6 +171,7 @@
             // 
             // tBbeta
             // 
+            this.tBbeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tBbeta.Location = new System.Drawing.Point(959, 356);
             this.tBbeta.Name = "tBbeta";
             this.tBbeta.Size = new System.Drawing.Size(96, 22);
@@ -177,6 +180,7 @@
             // 
             // label16
             // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(847, 323);
             this.label16.Name = "label16";
@@ -195,6 +199,8 @@
             // 
             // tBalpha
             // 
+            this.tBalpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tBalpha.Location = new System.Drawing.Point(959, 318);
             this.tBalpha.Name = "tBalpha";
             this.tBalpha.Size = new System.Drawing.Size(96, 22);
@@ -247,6 +253,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(875, 234);
             this.label5.Name = "label5";
@@ -256,6 +263,7 @@
             // 
             // comboBoxMethod
             // 
+            this.comboBoxMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxMethod.FormattingEnabled = true;
             this.comboBoxMethod.Items.AddRange(new object[] {
             "Нет",
@@ -307,7 +315,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(270, 71);
+            this.textBox4.Location = new System.Drawing.Point(276, 71);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(96, 22);
             this.textBox4.TabIndex = 10;
@@ -327,16 +335,12 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(6, 99);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(770, 243);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
@@ -352,7 +356,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(270, 38);
+            this.textBox2.Location = new System.Drawing.Point(276, 38);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(96, 22);
             this.textBox2.TabIndex = 9;

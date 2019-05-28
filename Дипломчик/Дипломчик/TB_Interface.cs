@@ -188,21 +188,24 @@ namespace Дипломчик
             chart1.ChartAreas["area"].AxisX.Maximum = 100;
             chart1.ChartAreas["area"].AxisX.Interval = 2;
             chart1.ChartAreas["area"].AxisY.Minimum = 0;
-            chart1.ChartAreas["area"].AxisY.Maximum = 20000;
+            chart1.ChartAreas["area"].AxisY.Maximum = 1000;
             chart1.ChartAreas["area"].AxisY.Interval = 500;
 
 
             chart1.Series.Add("GTk");
             chart1.Series.Add("VTk");
             chart1.Series.Add("RoTk");
+            chart1.Series.Add("потери");
 
             chart1.Series["GTk"].Color = D.Color.Red;
             chart1.Series["VTk"].Color = D.Color.Green;
             chart1.Series["RoTk"].Color = D.Color.Blue;
+            chart1.Series["потери"].Color = D.Color.Purple;
 
             chart1.Series["GTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Series["VTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Series["RoTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["потери"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Legends.Add("legend");
 
         }

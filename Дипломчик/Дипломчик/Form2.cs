@@ -346,6 +346,7 @@ namespace Дипломчик
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["GTk"].Points.AddXY(k, ch[0]);
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["VTk"].Points.AddXY(k, ch[1]);
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["RoTk"].Points.AddXY(k, ch[2]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["потери"].Points.AddXY(k, (ch[1]- ch[0]));
 
                         ((RichTextBox)TPe.ElementAt(z).Controls[8]).Text += "Шаг: " + k;
                         ((RichTextBox)TPe.ElementAt(z).Controls[8]).Text += "GTk: " + ch[0] + "; " + "VTk: " + ch[1] + "; " + "RoTk" + ch[2] + "; ";
