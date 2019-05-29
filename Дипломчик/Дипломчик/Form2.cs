@@ -206,7 +206,7 @@ namespace Дипломчик
 
             }
 
-            System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
+            
             for (int z = 0; z <= TPe.Count - 1; z++)
             {
                 int k=0;
@@ -227,7 +227,7 @@ namespace Дипломчик
                 //chart1.Series[0].Points.Clear();
 
 
-                System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
+            System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
             swatch.Start();
             System.Diagnostics.Stopwatch swatch1 = new System.Diagnostics.Stopwatch();
             Static.dataList = new List<Data>();
