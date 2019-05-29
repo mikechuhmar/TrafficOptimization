@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tBepsilon = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tBdelta = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.tBgamma = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tBbeta = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.tBalpha = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -81,6 +84,7 @@
             this.tbSLA2 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tbSLA1 = new System.Windows.Forms.TextBox();
+            this.tBalpha = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -102,18 +106,22 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1086, 630);
+            this.tabControl1.Size = new System.Drawing.Size(1124, 679);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tBalpha);
+            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.tBepsilon);
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.tBdelta);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.tBgamma);
             this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.tBbeta);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.tBalpha);
             this.tabPage1.Controls.Add(this.textBox5);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.richTextBox1);
@@ -135,27 +143,65 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1078, 601);
+            this.tabPage1.Size = new System.Drawing.Size(1116, 650);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Главная";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(734, 413);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(214, 34);
+            this.label20.TabIndex = 30;
+            this.label20.Text = "Вес суммарной длины очереди\r\nв мультиплексоре";
+            // 
+            // tBepsilon
+            // 
+            this.tBepsilon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBepsilon.Location = new System.Drawing.Point(1024, 413);
+            this.tBepsilon.Name = "tBepsilon";
+            this.tBepsilon.Size = new System.Drawing.Size(86, 22);
+            this.tBepsilon.TabIndex = 31;
+            this.tBepsilon.Text = "1";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(734, 384);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(246, 17);
+            this.label19.TabIndex = 28;
+            this.label19.Text = "Вес суммарной длины очереди в LB";
+            // 
+            // tBdelta
+            // 
+            this.tBdelta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBdelta.Location = new System.Drawing.Point(1024, 384);
+            this.tBdelta.Name = "tBdelta";
+            this.tBdelta.Size = new System.Drawing.Size(86, 22);
+            this.tBdelta.TabIndex = 29;
+            this.tBdelta.Text = "2";
             // 
             // label18
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(847, 396);
+            this.label18.Location = new System.Drawing.Point(734, 356);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 17);
+            this.label18.Size = new System.Drawing.Size(169, 17);
             this.label18.TabIndex = 26;
-            this.label18.Text = "Gamma";
+            this.label18.Text = "Вес суммы потерь на LB";
             // 
             // tBgamma
             // 
             this.tBgamma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBgamma.Location = new System.Drawing.Point(959, 391);
+            this.tBgamma.Location = new System.Drawing.Point(1024, 356);
             this.tBgamma.Name = "tBgamma";
-            this.tBgamma.Size = new System.Drawing.Size(96, 22);
+            this.tBgamma.Size = new System.Drawing.Size(86, 22);
             this.tBgamma.TabIndex = 27;
             this.tBgamma.Text = "3";
             // 
@@ -163,18 +209,18 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(847, 361);
+            this.label17.Location = new System.Drawing.Point(734, 328);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(37, 17);
+            this.label17.Size = new System.Drawing.Size(170, 17);
             this.label17.TabIndex = 24;
-            this.label17.Text = "Beta";
+            this.label17.Text = "Вес суммы потерь на TB";
             // 
             // tBbeta
             // 
             this.tBbeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBbeta.Location = new System.Drawing.Point(959, 356);
+            this.tBbeta.Location = new System.Drawing.Point(1024, 328);
             this.tBbeta.Name = "tBbeta";
-            this.tBbeta.Size = new System.Drawing.Size(96, 22);
+            this.tBbeta.Size = new System.Drawing.Size(86, 22);
             this.tBbeta.TabIndex = 25;
             this.tBbeta.Text = "4";
             // 
@@ -182,11 +228,11 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(847, 323);
+            this.label16.Location = new System.Drawing.Point(734, 303);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 17);
+            this.label16.Size = new System.Drawing.Size(260, 17);
             this.label16.TabIndex = 13;
-            this.label16.Text = "Alpha";
+            this.label16.Text = "Вес суммы потерь на мультиплексоре";
             // 
             // label13
             // 
@@ -196,16 +242,6 @@
             this.label13.Size = new System.Drawing.Size(142, 17);
             this.label13.TabIndex = 23;
             this.label13.Text = "Статус выполнения:";
-            // 
-            // tBalpha
-            // 
-            this.tBalpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBalpha.Location = new System.Drawing.Point(959, 318);
-            this.tBalpha.Name = "tBalpha";
-            this.tBalpha.Size = new System.Drawing.Size(96, 22);
-            this.tBalpha.TabIndex = 14;
-            this.tBalpha.Text = "5";
             // 
             // textBox5
             // 
@@ -225,9 +261,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(859, 485);
+            this.richTextBox1.Location = new System.Drawing.Point(734, 450);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(169, 110);
+            this.richTextBox1.Size = new System.Drawing.Size(376, 194);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             // 
@@ -255,7 +291,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(875, 234);
+            this.label5.Location = new System.Drawing.Point(845, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(141, 17);
             this.label5.TabIndex = 18;
@@ -268,11 +304,11 @@
             this.comboBoxMethod.Items.AddRange(new object[] {
             "Нет",
             "Генетический алгоритм",
-            "Алгоритм роя частиц",
+            "Метод роя частиц",
             "Алгоритм стохастического подъёма"});
-            this.comboBoxMethod.Location = new System.Drawing.Point(875, 269);
+            this.comboBoxMethod.Location = new System.Drawing.Point(827, 248);
             this.comboBoxMethod.Name = "comboBoxMethod";
-            this.comboBoxMethod.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxMethod.Size = new System.Drawing.Size(231, 24);
             this.comboBoxMethod.TabIndex = 17;
             this.comboBoxMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxMethod_SelectedIndexChanged);
             // 
@@ -292,7 +328,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox2.Location = new System.Drawing.Point(669, 21);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(386, 177);
+            this.richTextBox2.Size = new System.Drawing.Size(424, 177);
             this.richTextBox2.TabIndex = 15;
             this.richTextBox2.Text = "";
             // 
@@ -308,7 +344,7 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Location = new System.Drawing.Point(6, 247);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(782, 348);
+            this.groupBox1.Size = new System.Drawing.Size(722, 397);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры Мультиплексора";
@@ -335,13 +371,13 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(6, 99);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(770, 243);
+            this.chart1.Size = new System.Drawing.Size(710, 292);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
             // 
@@ -443,7 +479,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1078, 601);
+            this.tabPage2.Size = new System.Drawing.Size(1116, 650);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Генетический алгоритм";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -495,23 +531,23 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1078, 601);
+            this.tabPage3.Size = new System.Drawing.Size(1116, 650);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Алгоритм роя частиц";
+            this.tabPage3.Text = "Метод роя частиц";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(238, 234);
+            this.label10.Location = new System.Drawing.Point(238, 236);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 17);
+            this.label10.Size = new System.Drawing.Size(233, 34);
             this.label10.TabIndex = 11;
-            this.label10.Text = "alfa2";
+            this.label10.Text = "Постоянное ускорение в сторону \r\nположений всех частиц";
             // 
             // tbSPA4
             // 
-            this.tbSPA4.Location = new System.Drawing.Point(500, 234);
+            this.tbSPA4.Location = new System.Drawing.Point(500, 248);
             this.tbSPA4.Name = "tbSPA4";
             this.tbSPA4.Size = new System.Drawing.Size(100, 22);
             this.tbSPA4.TabIndex = 10;
@@ -522,9 +558,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(238, 190);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 17);
+            this.label11.Size = new System.Drawing.Size(233, 34);
             this.label11.TabIndex = 9;
-            this.label11.Text = "alfa1";
+            this.label11.Text = "Постоянное ускорение в сторону \r\nлучшего положения частицы";
             // 
             // tbSPA3
             // 
@@ -577,7 +613,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1078, 601);
+            this.tabPage4.Size = new System.Drawing.Size(1116, 650);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Алгоритм стохастического подъёма";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -616,14 +652,23 @@
             this.tbSLA1.TabIndex = 8;
             this.tbSLA1.Text = "100";
             // 
+            // tBalpha
+            // 
+            this.tBalpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBalpha.Location = new System.Drawing.Point(1024, 298);
+            this.tBalpha.Name = "tBalpha";
+            this.tBalpha.Size = new System.Drawing.Size(86, 22);
+            this.tBalpha.TabIndex = 32;
+            this.tBalpha.Text = "5";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 654);
+            this.ClientSize = new System.Drawing.Size(1148, 703);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Система оптимизации трафика";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -693,6 +738,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tBbeta;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tBepsilon;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tBdelta;
         private System.Windows.Forms.TextBox tBalpha;
     }
 }

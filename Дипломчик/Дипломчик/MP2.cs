@@ -127,12 +127,12 @@ namespace Дипломчик
 
             if (hasRt)
             {
-                richTextBox1.Text += "полученный трафик: ";
-                for (int j = 0; j < Gi.Count(); j++)
-                {
-                    richTextBox1.Text += Gi[j] + "; ";
-                }
-                richTextBox1.Text += '\n';
+                //richTextBox1.Text += "полученный трафик: ";
+                //for (int j = 0; j < Gi.Count(); j++)
+                //{
+                //    richTextBox1.Text += Gi[j] + "; ";
+                //}
+                //richTextBox1.Text += '\n';
             }
 
             if (Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0)) != 0)
@@ -184,16 +184,16 @@ namespace Дипломчик
                     Enqueue(gi[i]);
                     if (hasRt)
                     {
-                        richTextBox1.Text += "пакет добавлен, размер: " + gi[i];
-                        richTextBox1.Text += '\n';
+                        //richTextBox1.Text += "пакет добавлен, размер: " + gi[i];
+                        //richTextBox1.Text += '\n';
                     }
                 }
                 else
                 {
                     if (hasRt)
                     {
-                        richTextBox1.Text += "пакет отброшен";
-                        richTextBox1.Text += '\n';
+                        //richTextBox1.Text += "пакет отброшен";
+                        //richTextBox1.Text += '\n';
                     }
                 }
             }
@@ -218,8 +218,8 @@ namespace Дипломчик
                 Count_of_traf = Count_of_traf - Pop();
                 if (hasRt)
                 {
-                    richTextBox1.Text += "вышедший пакет " + Pop();
-                    richTextBox1.Text += '\n';
+                    //richTextBox1.Text += "вышедший пакет " + Pop();
+                    //richTextBox1.Text += '\n';
                     C_O += Pop();
                 }
                 Dequeue();

@@ -74,7 +74,7 @@ namespace Дипломчик
             ref System.Windows.Forms.ProgressBar pB1/*, ref System.Windows.Forms.DataVisualization.Charting.Chart c1*/)
         {
             C_text = tB8;
-            richTextBox1 = rT1;
+            //richTextBox1 = rT1;
             Q_text = tB9;
             //Q = Q_t;
             progressBar1 = pB1;
@@ -95,10 +95,10 @@ namespace Дипломчик
                 generator_GI(3);//подставить нв вход метода
                 SUMM_Gi = Gi.Sum();
                 
-                richTextBox1.Text += "полученный трафик " + Gi[0]+"; " + Gi[1] + "; " + Gi[2] + "; ";
-                richTextBox1.Text += '\n';
-                if ((Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0)))) != 0)
-                    ad_GI(3, Gi);
+                //richTextBox1.Text += "полученный трафик " + Gi[0]+"; " + Gi[1] + "; " + Gi[2] + "; ";
+                //richTextBox1.Text += '\n';
+                //if ((Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0)))) != 0)
+                //    ad_GI(3, Gi);
                 Out_of_MX();
                 q_tk = (Math.Max((q_tkm1 - C_T * t), 0)) + (Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0))));//текущая заполненность буффера
             }
@@ -141,8 +141,8 @@ namespace Дипломчик
             while((Count != 0) && (Pop() <= Count_of_traf))
             {                
                     Count_of_traf = Count_of_traf - Pop();
-                    richTextBox1.Text += "вышедший пакет " + Pop();
-                    richTextBox1.Text += '\n';
+                    //richTextBox1.Text += "вышедший пакет " + Pop();
+                    //richTextBox1.Text += '\n';
                     Dequeue();                
             }
         }

@@ -150,6 +150,26 @@ namespace Дипломчик
             if (SLA)
                 SLAPage.Parent = tabControl1;
             //MessageBox.Show(Static.TB_Count.ToString());
+            try
+            {
+                if (Static.prev_dataList != null)
+                {
+                    if (int.Parse(textBox3.Text) != Static.prev_dataList.Count - 1 || Static.TB_Count != Static.prev_dataList.Last().tBs.Count || Static.LB_Count != Static.prev_dataList.Last().lBs.Count)
+                    {
+                        cbPrevData.Checked = false;
+                        cbPrevData.Enabled = false;
+                    }
+                    else
+                    {
+                        cbPrevData.Enabled = true;
+                    }
+                }
+            }
+            catch
+            {
+                cbPrevData.Checked = false;
+                cbPrevData.Enabled = false;
+            }
         }
 
 
@@ -158,6 +178,8 @@ namespace Дипломчик
             Static.alpha = int.Parse(tBalpha.Text);
             Static.beta = int.Parse(tBbeta.Text);
             Static.gamma = int.Parse(tBgamma.Text);
+            Static.delta = int.Parse(tBdelta.Text);
+            Static.epsilon = int.Parse(tBepsilon.Text);
             richTextBox1.Clear();
 
             richTextBox2.Clear();
@@ -167,9 +189,26 @@ namespace Дипломчик
             chart1.Series["Объем вышедших пакетов"].Points.Clear();
             chart1.Series["Потери на входе мультиплексора"].Points.Clear();
 
+
+            for (int z = 0; z <= TPe.Count - 1; z++)
+            {
+
+
+                if (TPe.ElementAt(z).Text.Contains("TB"))
+                {
+                    ((RichTextBox)TPe.ElementAt(z).Controls[8]).Clear();                   
+                }
+                if (TPe.ElementAt(z).Text.Contains("LB"))
+                {
+                    ((RichTextBox)TPe.ElementAt(z).Controls[10]).Clear();
+                }
+
+
+            }
+
             System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
             swatch.Start();
-
+            System.Diagnostics.Stopwatch swatch1 = new System.Diagnostics.Stopwatch();
             Static.dataList = new List<Data>();
             MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4, ref chart1);
             Leaky_Bucket_Algoritm lbn = new Leaky_Bucket_Algoritm();
@@ -297,18 +336,24 @@ namespace Дипломчик
                 
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
-                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), TPe.Count, int.Parse(tbGA2.Text), Functions.J, Functions.genVector, max);
+                    swatch1.Start();
+                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), Static.LB_Count + Static.TB_Count, int.Parse(tbGA2.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
+                    swatch1.Stop();
                 }
                 if (comboBoxMethod.SelectedIndex == 2)
                 {
-                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), TPe.Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector, max);
+                    swatch1.Start();
+                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), Static.LB_Count + Static.TB_Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
+                    swatch1.Stop();
                 }
                 if (comboBoxMethod.SelectedIndex == 3)
                 {
-                    StochasticLiftAlgorithm algorithm = new StochasticLiftAlgorithm(TPe.Count, int.Parse(tbSLA1.Text), int.Parse(tbSLA2.Text), Functions.J, Functions.genVector, max);
+                    swatch1.Stop();
+                    StochasticLiftAlgorithm algorithm = new StochasticLiftAlgorithm(Static.LB_Count + Static.TB_Count, int.Parse(tbSLA1.Text), int.Parse(tbSLA2.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
+                    swatch1.Stop();
                 }
 
 
@@ -449,9 +494,12 @@ namespace Дипломчик
             double outPackages = Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.dataList.Sum(x => x.mult.L);
 
             double delay = Static.dataList.Sum(x => x.mult.q);
-            double L = Static.alpha * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma* Static.dataList.Sum(x => x.mult.q);
+            double J = Static.alpha * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma * Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + Static.delta * Static.dataList.Sum(x => x.lBs.Sum(y => y.b)) + Static.epsilon * Static.dataList.Sum(x => x.mult.q);
             //MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages + "\nЗадержки: " + delay + "\nL: " + L);
-            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит на корзины: " + inTB + "\nОтброшено на корзинах: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nПоступило бит на вёдра: " + inLB + "\nОтброшено на вёдрах: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + "\nОтброшено на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nЗадержки: " + delay + "\nL: " + L + "\nВышло" + Static.dataList.Sum(x => x.mult.outG));
+            string str = "Поступило бит на корзины: " + inTB + "\nОтброшено на корзинах: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nПоступило бит на вёдра: " + inLB + "\nОтброшено на вёдрах: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + "\nЗадержки на вёдрах: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.b)) + "\nОтброшено на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nЗадержки: " + delay + "\nJ: " + J + "\nВышло" + Static.dataList.Sum(x => x.mult.outG);
+            str = "Потери на всех TB: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nПотери на всех LB: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + "\nСумма очередей в LB: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.b)) + "\nПотери на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nСумма очередей в мультиплексоре: " + delay + "\nJ: " + J;
+            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch1.Elapsed.ToString() + "\n" + str);
+            richTextBox1.Text = str;
             Static.prev_dataList = new List<Data>(Static.dataList);
             Static.dataList = new List<Data>();
             cbPrevData.Enabled = true;
@@ -496,6 +544,26 @@ namespace Дипломчик
                     SPAPage.Parent = tabControl1;
                 if (SLA)
                     SLAPage.Parent = tabControl1;
+            }
+            try
+            {
+                if (Static.prev_dataList != null)
+                {
+                    if (int.Parse(textBox3.Text) != Static.prev_dataList.Count - 1 || Static.TB_Count != Static.prev_dataList.Last().tBs.Count || Static.LB_Count != Static.prev_dataList.Last().lBs.Count)
+                    {
+                        cbPrevData.Checked = false;
+                        cbPrevData.Enabled = false;
+                    }
+                    else
+                    {
+                        cbPrevData.Enabled = true;
+                    }
+                }
+            }
+            catch
+            {
+                cbPrevData.Checked = false;
+                cbPrevData.Enabled = false;
             }
         }
 
@@ -644,6 +712,26 @@ namespace Дипломчик
             if (SLA)
                 SLAPage.Parent = tabControl1;
             //MessageBox.Show(Static.LB_Count.ToString());
+            try
+            {
+                if (Static.prev_dataList != null)
+                {
+                    if (int.Parse(textBox3.Text) != Static.prev_dataList.Count - 1 || Static.TB_Count != Static.prev_dataList.Last().tBs.Count || Static.LB_Count != Static.prev_dataList.Last().lBs.Count)
+                    {
+                        cbPrevData.Checked = false;
+                        cbPrevData.Enabled = false;
+                    }
+                    else
+                    {
+                        cbPrevData.Enabled = true;
+                    }
+                }
+            }
+            catch
+            {
+                cbPrevData.Checked = false;
+                cbPrevData.Enabled = false;
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -673,6 +761,26 @@ namespace Дипломчик
                 //    SPAPage.Parent = tabControl1;
             }
             textBox5.Text = Convert.ToString(Count_Of_Page("LB"));
+            try
+            {
+                if (Static.prev_dataList != null)
+                {
+                    if (int.Parse(textBox3.Text) != Static.prev_dataList.Count - 1 || Static.TB_Count != Static.prev_dataList.Last().tBs.Count || Static.LB_Count != Static.prev_dataList.Last().lBs.Count)
+                    {
+                        cbPrevData.Checked = false;
+                        cbPrevData.Enabled = false;
+                    }
+                    else
+                    {
+                        cbPrevData.Enabled = true;
+                    }
+                }
+            }
+            catch
+            {
+                cbPrevData.Checked = false;
+                cbPrevData.Enabled = false;
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -681,7 +789,7 @@ namespace Дипломчик
             {
                 if (Static.prev_dataList != null)
                 {
-                    if (int.Parse(textBox3.Text) != Static.prev_dataList.Count - 1)
+                    if (int.Parse(textBox3.Text) != Static.prev_dataList.Count - 1 || Static.TB_Count != Static.prev_dataList.Last().tBs.Count || Static.LB_Count != Static.prev_dataList.Last().lBs.Count)
                     {
                         cbPrevData.Checked = false;
                         cbPrevData.Enabled = false;
