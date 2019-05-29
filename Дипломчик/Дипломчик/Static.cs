@@ -8,7 +8,7 @@ namespace Дипломчик
 {
     public static class Static
     {
-        public static double alpha = 5, beta = 4, gamma = 3;
+        public static double alpha = 5, beta = 3, gamma = 3, delta = 2, epsilon = 1;
         public static int TB_Count
         {
             get

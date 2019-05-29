@@ -83,7 +83,7 @@ namespace Дипломчик
             string str = "";
             foreach (var element in elements)
             {
-                str += (element - element % 0.001).ToString() + "    ";
+                str += (element - element % 1).ToString() + "    ";
             }
             return str;
         }
