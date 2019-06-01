@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Дипломчик
 {
@@ -409,10 +409,10 @@ namespace Дипломчик
 
                         R = ch[4];//потери на z токенбакете
 
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["GTk"].Points.AddXY(k, ch[0]);
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["VTk"].Points.AddXY(k, ch[1]);
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["RoTk"].Points.AddXY(k, ch[2]);
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["потери"].Points.AddXY(k, (ch[1]- ch[0]));
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Объем вышедших пакетов, бит"].Points.AddXY(k, ch[0]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Объём пакетов на входе, бит"].Points.AddXY(k, ch[1]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Количество токенов в TB, бит"].Points.AddXY(k, ch[2]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Потери, бит"].Points.AddXY(k, (ch[1]- ch[0]));
 
                         ((RichTextBox)TPe.ElementAt(z).Controls[8]).Text += "Шаг: " + k;
                         ((RichTextBox)TPe.ElementAt(z).Controls[8]).Text += "GTk: " + ch[0] + "; " + "VTk: " + ch[1] + "; " + "RoTk" + ch[2] + "; ";
@@ -461,10 +461,10 @@ namespace Дипломчик
                         //richTextBox2.Text += '\n';
                         lb_count--;////*****
 
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["GTk"].Points.AddXY(k, ch[0]);
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["VTk"].Points.AddXY(k, ch[1]);
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["заполнение LB"].Points.AddXY(k, ch[2]);
-                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["потери"].Points.AddXY(k, ch[3]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["Объем вышедших пакетов, бит"].Points.AddXY(k, ch[0]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["Объём пакетов на входе, бит"].Points.AddXY(k, ch[1]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["Заполнение буфера, бит"].Points.AddXY(k, ch[2]);
+                        ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["Потери, бит"].Points.AddXY(k, ch[3]);
 
 
                         ((RichTextBox)TPe.ElementAt(z).Controls[10]).Text += " GTk: " + ch[0] + "; " + " VTk: " + ch[1] + "; " + "заполнение LB: " + ch[2] + "; " + "Потери" + ch[3];
@@ -843,6 +843,12 @@ namespace Дипломчик
         }
         public void Graph()
         {
+            Axis ax = new Axis();
+            ax.Title = "Время моделирования, с";
+            chart1.ChartAreas[0].AxisX = ax;
+            Axis ay = new Axis();
+            ay.Title = "";
+            chart1.ChartAreas[0].AxisY = ay;
             chart1.ChartAreas.Add("area");
             chart1.ChartAreas["area"].AxisX.Minimum = 1;
             chart1.ChartAreas["area"].AxisX.Maximum = 101;
@@ -851,20 +857,25 @@ namespace Дипломчик
             chart1.ChartAreas["area"].AxisY.Maximum = 20000;
             chart1.ChartAreas["area"].AxisY.Interval = 1000;
 
-            chart1.Series.Add("Сумма входных пакетов");
-            chart1.Series.Add("Объем пакетов в буффере");
-            chart1.Series.Add("Объем вышедших пакетов");
-            chart1.Series.Add("Потери на входе мультиплексора");
+            string inPack = "Сумма входных пакетов, бит";
+            string bufMult = "Объем пакетов в буффере, бит";
+            string outPack = "Объем вышедших пакетов, бит";
+            string loseMult = "Потери на входе мультиплексора, бит";
 
-            chart1.Series["Сумма входных пакетов"].Color = System.Drawing.Color.Red;
-            chart1.Series["Объем пакетов в буффере"].Color = System.Drawing.Color.Green;
-            chart1.Series["Объем вышедших пакетов"].Color = System.Drawing.Color.Blue;
-            chart1.Series["Потери на входе мультиплексора"].Color = System.Drawing.Color.Purple;
+            chart1.Series.Add(inPack);
+            chart1.Series.Add(bufMult);
+            chart1.Series.Add(outPack);
+            chart1.Series.Add(loseMult);
 
-            chart1.Series["Сумма входных пакетов"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["Объем пакетов в буффере"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["Объем вышедших пакетов"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["Потери на входе мультиплексора"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series[inPack].Color = System.Drawing.Color.Red;
+            chart1.Series[bufMult].Color = System.Drawing.Color.Green;
+            chart1.Series[outPack].Color = System.Drawing.Color.Blue;
+            chart1.Series[loseMult].Color = System.Drawing.Color.Purple;
+
+            chart1.Series[inPack].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series[bufMult].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series[outPack].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series[loseMult].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Legends.Add("legend");
 
         }

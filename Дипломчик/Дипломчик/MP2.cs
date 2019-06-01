@@ -8,7 +8,11 @@ namespace Дипломчик
 {
     public class Buff_2
     {
-        
+        string inPack = "Сумма входных пакетов, бит";
+        string bufMult = "Объем пакетов в буффере, бит";
+        string outPack = "Объем вышедших пакетов, бит";
+        string loseMult = "Потери на входе мультиплексора, бит";
+
         public LinkedList<double> _items = new LinkedList<double>();
 
         public void Enqueue(double value)//Добавляет элемент в очередь.
@@ -146,9 +150,9 @@ namespace Дипломчик
             //конец - вычисление Ltk
             if (hasRt)
             {
-                chart1.Series["Сумма входных пакетов"].Points.AddXY(j_c, SUMM_Gi);
-                chart1.Series["Объем пакетов в буффере"].Points.AddXY(j_c, summ());
-                chart1.Series["Потери на входе мультиплексора"].Points.AddXY(j_c, L_tk);
+                chart1.Series["Сумма входных пакетов, бит"].Points.AddXY(j_c, SUMM_Gi);
+                chart1.Series["Объем пакетов в буффере, бит"].Points.AddXY(j_c, summ());
+                chart1.Series["Потери на входе мультиплексора, бит"].Points.AddXY(j_c, L_tk);
             }
 
             OPT[0] = L_tk;
@@ -224,7 +228,7 @@ namespace Дипломчик
                 }
                 Dequeue();
             }
-            chart1.Series["Объем вышедших пакетов"].Points.AddXY(j, C_O);
+            chart1.Series["Объем вышедших пакетов, бит"].Points.AddXY(j, C_O);
         }
 
         public void Graph()
@@ -235,22 +239,22 @@ namespace Дипломчик
             chart1.ChartAreas["area"].AxisX.Interval = 2;
             chart1.ChartAreas["area"].AxisY.Minimum = 0;
             chart1.ChartAreas["area"].AxisY.Maximum = 20000;
-            chart1.ChartAreas["area"].AxisY.Interval = 1000;
+            chart1.ChartAreas["area"].AxisY.Interval = 500;
 
-            chart1.Series.Add("Сумма входных пакетов");
-            chart1.Series.Add("Объем пакетов в буффере");
-            chart1.Series.Add("Объем вышедших пакетов");
-            chart1.Series.Add("Потери на входе мультиплексора");
+            chart1.Series.Add("Сумма входных пакетов, бит");
+            chart1.Series.Add("Объем пакетов в буффере, бит");
+            chart1.Series.Add("Объем вышедших пакетов, бит");
+            chart1.Series.Add("Потери на входе мультиплексора, бит");
 
-            chart1.Series["Сумма входных пакетов"].Color = System.Drawing.Color.Red;
-            chart1.Series["Объем пакетов в буффере"].Color = System.Drawing.Color.Green;
-            chart1.Series["Объем вышедших пакетов"].Color = System.Drawing.Color.Blue;
-            chart1.Series["Потери на входе мультиплексора"].Color = System.Drawing.Color.Purple;
+            chart1.Series["Сумма входных пакетов, бит"].Color = System.Drawing.Color.Red;
+            chart1.Series["Объем пакетов в буффере, бит"].Color = System.Drawing.Color.Green;
+            chart1.Series["Объем вышедших пакетов, бит"].Color = System.Drawing.Color.Blue;
+            chart1.Series["Потери на входе мультиплексора, бит"].Color = System.Drawing.Color.Purple;
 
-            chart1.Series["Сумма входных пакетов"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["Объем пакетов в буффере"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["Объем вышедших пакетов"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["Потери на входе мультиплексора"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Сумма входных пакетов, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Объем пакетов в буффере, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Объем вышедших пакетов, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Потери на входе мультиплексора, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Legends.Add("legend");
 
         }

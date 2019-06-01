@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Дипломчик
 {
@@ -183,6 +184,7 @@ namespace Дипломчик
 
         public void Graf_TB()
         {
+            
             chart1.ChartAreas.Add("area");
             chart1.ChartAreas["area"].AxisX.Minimum = 0;
             chart1.ChartAreas["area"].AxisX.Maximum = 100;
@@ -191,21 +193,27 @@ namespace Дипломчик
             chart1.ChartAreas["area"].AxisY.Maximum = 1000;
             chart1.ChartAreas["area"].AxisY.Interval = 500;
 
+            Axis ax = new Axis();
+            ax.Title = "Время моделирования";
+            chart1.ChartAreas[0].AxisX = ax;
+            Axis ay = new Axis();
+            ay.Title = "";
+            chart1.ChartAreas[0].AxisY = ay;
 
-            chart1.Series.Add("GTk");
-            chart1.Series.Add("VTk");
-            chart1.Series.Add("RoTk");
-            chart1.Series.Add("потери");
+            chart1.Series.Add("Объем вышедших пакетов, бит");
+            chart1.Series.Add("Объём пакетов на входе, бит");
+            chart1.Series.Add("Количество токенов в TB, бит");
+            chart1.Series.Add("Потери, бит");
 
-            chart1.Series["GTk"].Color = D.Color.Red;
-            chart1.Series["VTk"].Color = D.Color.Green;
-            chart1.Series["RoTk"].Color = D.Color.Blue;
-            chart1.Series["потери"].Color = D.Color.Purple;
+            chart1.Series["Объем вышедших пакетов, бит"].Color = D.Color.Red;
+            chart1.Series["Объём пакетов на входе, бит"].Color = D.Color.Green;
+            chart1.Series["Количество токенов в TB, бит"].Color = D.Color.Blue;
+            chart1.Series["Потери, бит"].Color = D.Color.Purple;
 
-            chart1.Series["GTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["VTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["RoTk"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["потери"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Объем вышедших пакетов, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Объём пакетов на входе, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Количество токенов в TB, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Потери, бит"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart1.Legends.Add("legend");
 
         }

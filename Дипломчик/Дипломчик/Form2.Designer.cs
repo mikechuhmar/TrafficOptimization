@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tBalpha = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.tBepsilon = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -84,7 +85,6 @@
             this.tbSLA2 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tbSLA1 = new System.Windows.Forms.TextBox();
-            this.tBalpha = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -148,15 +148,24 @@
             this.tabPage1.Text = "Главная";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tBalpha
+            // 
+            this.tBalpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBalpha.Location = new System.Drawing.Point(1024, 298);
+            this.tBalpha.Name = "tBalpha";
+            this.tBalpha.Size = new System.Drawing.Size(86, 22);
+            this.tBalpha.TabIndex = 32;
+            this.tBalpha.Text = "5";
+            // 
             // label20
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(734, 413);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(214, 34);
+            this.label20.Size = new System.Drawing.Size(186, 34);
             this.label20.TabIndex = 30;
-            this.label20.Text = "Вес суммарной длины очереди\r\nв мультиплексоре";
+            this.label20.Text = "Вес суммы длин очередей \r\nв мультиплексоре";
             // 
             // tBepsilon
             // 
@@ -173,9 +182,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(734, 384);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(246, 17);
+            this.label19.Size = new System.Drawing.Size(254, 17);
             this.label19.TabIndex = 28;
-            this.label19.Text = "Вес суммарной длины очереди в LB";
+            this.label19.Text = "Вес суммы длин очередей во всех LB";
             // 
             // tBdelta
             // 
@@ -192,9 +201,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(734, 356);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(169, 17);
+            this.label18.Size = new System.Drawing.Size(201, 17);
             this.label18.TabIndex = 26;
-            this.label18.Text = "Вес суммы потерь на LB";
+            this.label18.Text = "Вес суммы потерь на всех LB";
             // 
             // tBgamma
             // 
@@ -211,9 +220,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(734, 328);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(170, 17);
+            this.label17.Size = new System.Drawing.Size(202, 17);
             this.label17.TabIndex = 24;
-            this.label17.Text = "Вес суммы потерь на TB";
+            this.label17.Text = "Вес суммы потерь на всех TB";
             // 
             // tBbeta
             // 
@@ -243,15 +252,6 @@
             this.label13.TabIndex = 23;
             this.label13.Text = "Статус выполнения:";
             // 
-            // tBalpha
-            // 
-            this.tBalpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBalpha.Location = new System.Drawing.Point(959, 318);
-            this.tBalpha.Name = "tBalpha";
-            this.tBalpha.Size = new System.Drawing.Size(96, 22);
-            this.tBalpha.TabIndex = 14;
-            this.tBalpha.Text = "5";
-            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(162, 121);
@@ -270,6 +270,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(734, 450);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(376, 194);
@@ -315,9 +316,9 @@
             "Генетический алгоритм",
             "Метод роя частиц",
             "Алгоритм стохастического подъёма"});
-            this.comboBoxMethod.Location = new System.Drawing.Point(827, 248);
+            this.comboBoxMethod.Location = new System.Drawing.Point(737, 248);
             this.comboBoxMethod.Name = "comboBoxMethod";
-            this.comboBoxMethod.Size = new System.Drawing.Size(231, 24);
+            this.comboBoxMethod.Size = new System.Drawing.Size(373, 24);
             this.comboBoxMethod.TabIndex = 17;
             this.comboBoxMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxMethod_SelectedIndexChanged);
             // 
@@ -496,7 +497,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(192, 161);
+            this.label7.Location = new System.Drawing.Point(358, 252);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(161, 17);
             this.label7.TabIndex = 3;
@@ -504,24 +505,24 @@
             // 
             // tbGA2
             // 
-            this.tbGA2.Location = new System.Drawing.Point(454, 161);
+            this.tbGA2.Location = new System.Drawing.Point(620, 252);
             this.tbGA2.Name = "tbGA2";
             this.tbGA2.Size = new System.Drawing.Size(100, 22);
             this.tbGA2.TabIndex = 2;
-            this.tbGA2.Text = "100";
+            this.tbGA2.Text = "10";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(192, 117);
+            this.label6.Location = new System.Drawing.Point(358, 295);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(186, 17);
+            this.label6.Size = new System.Drawing.Size(223, 17);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Число особей в популяции";
+            this.label6.Text = "Количество особей в поколении";
             // 
             // tbGA1
             // 
-            this.tbGA1.Location = new System.Drawing.Point(454, 117);
+            this.tbGA1.Location = new System.Drawing.Point(620, 295);
             this.tbGA1.Name = "tbGA1";
             this.tbGA1.Size = new System.Drawing.Size(100, 22);
             this.tbGA1.TabIndex = 0;
@@ -548,15 +549,15 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(238, 236);
+            this.label10.Location = new System.Drawing.Point(335, 388);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(233, 34);
+            this.label10.Size = new System.Drawing.Size(241, 34);
             this.label10.TabIndex = 11;
-            this.label10.Text = "Постоянное ускорение в сторону \r\nположений всех частиц";
+            this.label10.Text = "Постоянное ускорение в сторону \r\nлучшего из всех положений частиц";
             // 
             // tbSPA4
             // 
-            this.tbSPA4.Location = new System.Drawing.Point(500, 248);
+            this.tbSPA4.Location = new System.Drawing.Point(597, 400);
             this.tbSPA4.Name = "tbSPA4";
             this.tbSPA4.Size = new System.Drawing.Size(100, 22);
             this.tbSPA4.TabIndex = 10;
@@ -565,7 +566,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(238, 190);
+            this.label11.Location = new System.Drawing.Point(335, 342);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(233, 34);
             this.label11.TabIndex = 9;
@@ -573,7 +574,7 @@
             // 
             // tbSPA3
             // 
-            this.tbSPA3.Location = new System.Drawing.Point(500, 190);
+            this.tbSPA3.Location = new System.Drawing.Point(597, 342);
             this.tbSPA3.Name = "tbSPA3";
             this.tbSPA3.Size = new System.Drawing.Size(100, 22);
             this.tbSPA3.TabIndex = 8;
@@ -582,7 +583,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(238, 146);
+            this.label8.Location = new System.Drawing.Point(335, 228);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(153, 17);
             this.label8.TabIndex = 7;
@@ -590,24 +591,24 @@
             // 
             // tbSPA2
             // 
-            this.tbSPA2.Location = new System.Drawing.Point(500, 146);
+            this.tbSPA2.Location = new System.Drawing.Point(597, 228);
             this.tbSPA2.Name = "tbSPA2";
             this.tbSPA2.Size = new System.Drawing.Size(100, 22);
             this.tbSPA2.TabIndex = 6;
-            this.tbSPA2.Text = "100";
+            this.tbSPA2.Text = "10";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(238, 102);
+            this.label9.Location = new System.Drawing.Point(335, 287);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 17);
+            this.label9.Size = new System.Drawing.Size(136, 17);
             this.label9.TabIndex = 5;
-            this.label9.Text = "Число частиц";
+            this.label9.Text = "Количество частиц";
             // 
             // tbSPA1
             // 
-            this.tbSPA1.Location = new System.Drawing.Point(500, 102);
+            this.tbSPA1.Location = new System.Drawing.Point(597, 287);
             this.tbSPA1.Name = "tbSPA1";
             this.tbSPA1.Size = new System.Drawing.Size(100, 22);
             this.tbSPA1.TabIndex = 4;
@@ -630,15 +631,15 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(333, 177);
+            this.label14.Location = new System.Drawing.Point(320, 311);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(226, 34);
+            this.label14.Size = new System.Drawing.Size(243, 34);
             this.label14.TabIndex = 11;
-            this.label14.Text = "Количество итераций алгоритма\r\nподъёма";
+            this.label14.Text = "Количество итераций внутреннего \r\nалгоритма подъёма";
             // 
             // tbSLA2
             // 
-            this.tbSLA2.Location = new System.Drawing.Point(595, 177);
+            this.tbSLA2.Location = new System.Drawing.Point(582, 323);
             this.tbSLA2.Name = "tbSLA2";
             this.tbSLA2.Size = new System.Drawing.Size(100, 22);
             this.tbSLA2.TabIndex = 10;
@@ -647,7 +648,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(333, 133);
+            this.label15.Location = new System.Drawing.Point(320, 267);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(230, 17);
             this.label15.TabIndex = 9;
@@ -655,20 +656,11 @@
             // 
             // tbSLA1
             // 
-            this.tbSLA1.Location = new System.Drawing.Point(595, 133);
+            this.tbSLA1.Location = new System.Drawing.Point(582, 267);
             this.tbSLA1.Name = "tbSLA1";
             this.tbSLA1.Size = new System.Drawing.Size(100, 22);
             this.tbSLA1.TabIndex = 8;
-            this.tbSLA1.Text = "100";
-            // 
-            // tBalpha
-            // 
-            this.tBalpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBalpha.Location = new System.Drawing.Point(1024, 298);
-            this.tBalpha.Name = "tBalpha";
-            this.tBalpha.Size = new System.Drawing.Size(86, 22);
-            this.tBalpha.TabIndex = 32;
-            this.tBalpha.Text = "5";
+            this.tbSLA1.Text = "10";
             // 
             // Form2
             // 
