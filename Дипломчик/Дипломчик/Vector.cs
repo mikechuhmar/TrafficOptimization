@@ -137,6 +137,8 @@ namespace Дипломчик
             return var;
         }
 
+        
+
         public IEnumerator GetEnumerator()
         {
             return ((IEnumerable)elements).GetEnumerator();

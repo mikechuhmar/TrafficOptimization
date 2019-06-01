@@ -92,7 +92,8 @@ public class Functions
         data.mult.addDecision(MX[1], MX[0], MX[3]);
         //Console.WriteLine("q = " + MX[1]);
         //Console.WriteLine("_L = " + data.mult.L);
-        res += Static.alpha * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma * Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + Static.delta * Static.dataList.Sum(x => x.lBs.Sum(y => y.b)) + Static.epsilon * Static.dataList.Sum(x => x.mult.q);
+        //res += Static.alpha * Static.dataList.Sum(x => x.mult.L) + Static.beta * Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + Static.gamma * Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + Static.delta * Static.dataList.Sum(x => x.lBs.Sum(y => y.b)) + Static.epsilon * Static.dataList.Sum(x => x.mult.q);
+        res = Static.alpha * Static.dataList.Last().mult.L + Static.beta * Static.dataList.Last().tBs.Sum(x => x.R) + Static.gamma * Static.dataList.Last().lBs.Sum(y => y.R) + Static.dataList.Last().lBs.Sum(y => y.b) + Static.epsilon * Static.dataList.Last().mult.q;
         //data.J = res;
         //Console.WriteLine(res);
         return res;
