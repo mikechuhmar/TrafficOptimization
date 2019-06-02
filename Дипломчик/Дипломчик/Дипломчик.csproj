@@ -81,7 +81,6 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="GeneticAlgorithm.cs" />
-    <Compile Include="IMethod.cs" />
     <Compile Include="Leaky_Bucket_Algoritm.cs" />
     <Compile Include="Method.cs" />
     <Compile Include="MP.cs">

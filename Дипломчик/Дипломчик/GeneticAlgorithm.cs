@@ -120,13 +120,14 @@ namespace Дипломчик
                 //Создание новых особей
                 for (int j = 0; j < crossoverPoint; j++)
                 {
-                    child1.Add(parent1[j]);
-                    child2.Add(parent2[j]);
+                    child1[j] = parent1[j];
+                    child2[j] = parent2[j];
                 }
                 for (int j = crossoverPoint; j < amGenes; j++)
                 {
-                    child1.Add(parent2[j]);
-                    child2.Add(parent1[j]);
+                    
+                    child1[j] = parent2[j];
+                    child2[j] = parent1[j];
                 }
 
                 population.Add(child1);

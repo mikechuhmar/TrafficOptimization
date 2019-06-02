@@ -353,7 +353,7 @@ namespace Дипломчик
                 data.mult = new MultStruct();
                 data.mult.addInit(MXP.Q, MXP.C_T);
                 Static.dataList.Add(data);
-                Console.WriteLine("ooo");
+                //Console.WriteLine("ooo");
                 
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
@@ -409,6 +409,7 @@ namespace Дипломчик
 
                         R = ch[4];//потери на z токенбакете
 
+                        
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Объем вышедших пакетов, бит"].Points.AddXY(k, ch[0]);
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Объём пакетов на входе, бит"].Points.AddXY(k, ch[1]);
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Количество токенов в TB, бит"].Points.AddXY(k, ch[2]);
@@ -495,8 +496,8 @@ namespace Дипломчик
                 double outGi = MplexMath_2.res(Gi, MXP.Q, MXP.C_T, q_prev)[3];
                 data.mult.addDecision(OPT[1], OPT[0], outGi);
                 //Console.WriteLine(Static.dataList.IndexOf(data));
-                Console.WriteLine(data.output());
-                Console.WriteLine(data.J);
+                //Console.WriteLine(data.output());
+                //Console.WriteLine(data.J);
                 cbPrevData.Show();
             }
 
