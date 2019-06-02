@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Дипломчик
+namespace OptimizationSystem
 {
     class TBMath_2
     {

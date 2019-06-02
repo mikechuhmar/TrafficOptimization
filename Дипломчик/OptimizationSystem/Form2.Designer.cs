@@ -1,4 +1,4 @@
-﻿namespace Дипломчик
+﻿namespace OptimizationSystem
 {
     partial class Form2
     {

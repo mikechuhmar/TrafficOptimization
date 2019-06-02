@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace Дипломчик
+namespace OptimizationSystem
 {
 
     public partial class Form2 : Form

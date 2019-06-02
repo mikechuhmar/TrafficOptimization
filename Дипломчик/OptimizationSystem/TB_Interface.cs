@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace Дипломчик
+namespace OptimizationSystem
 {
     
         using F = System.Windows.Forms;

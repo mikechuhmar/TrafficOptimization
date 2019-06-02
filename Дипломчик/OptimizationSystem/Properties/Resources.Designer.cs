@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Дипломчик.Properties
+namespace OptimizationSystem.Properties
 {
 
 
