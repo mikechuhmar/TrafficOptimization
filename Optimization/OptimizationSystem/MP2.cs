@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 
 namespace OptimizationSystem
 {
+    //Класс буфера 
     public class Buff_2
-    {
-        string inPack = "Сумма входных пакетов, бит";
-        string bufMult = "Объем пакетов в буффере, бит";
-        string outPack = "Объем вышедших пакетов, бит";
-        string loseMult = "Потери на входе мультиплексора, бит";
+    {       
 
         public LinkedList<double> _items = new LinkedList<double>();
-
         public void Enqueue(double value)//Добавляет элемент в очередь.
         {
             _items.AddFirst(value);
         }
-
         public double Dequeue()//Удаляет первый помещенный элемент из очереди и возвращает его. 
         {
             if (_items.Count == 0)
@@ -95,11 +90,8 @@ namespace OptimizationSystem
         public double t;
         public double[] Gi;
         public bool hasRt;
-        bool graph;
         public double[] OPT = new double[2];
-
         public double L_tk;
-
 
         public MplexMath_2(ref System.Windows.Forms.TextBox tB8, ref System.Windows.Forms.RichTextBox rT1, ref System.Windows.Forms.TextBox tB9
             , ref System.Windows.Forms.DataVisualization.Charting.Chart c1)
@@ -127,17 +119,7 @@ namespace OptimizationSystem
             int j_c=0;                                    ///ТЕКУЩИЙ ШАГ МОДЕЛИРОВАНИЯ, НЕОБХОДИМО КАК ТО ОПРЕДЕЛИТЬ!!!
             q_tkm1 = summ();
             Gi = GI;
-            SUMM_Gi = Gi.Sum();
-
-            if (hasRt)
-            {
-                //richTextBox1.Text += "полученный трафик: ";
-                //for (int j = 0; j < Gi.Count(); j++)
-                //{
-                //    richTextBox1.Text += Gi[j] + "; ";
-                //}
-                //richTextBox1.Text += '\n';
-            }
+            SUMM_Gi = Gi.Sum();          
 
             if (Math.Min(SUMM_Gi, Q - Math.Max(q_tkm1 - C_T * t, 0)) != 0)
                 ad_GI(Gi.Count(), Gi);
@@ -186,20 +168,7 @@ namespace OptimizationSystem
                 if (gi[i] + summ() <= Q)
                 {
                     Enqueue(gi[i]);
-                    if (hasRt)
-                    {
-                        //richTextBox1.Text += "пакет добавлен, размер: " + gi[i];
-                        //richTextBox1.Text += '\n';
-                    }
-                }
-                else
-                {
-                    if (hasRt)
-                    {
-                        //richTextBox1.Text += "пакет отброшен";
-                        //richTextBox1.Text += '\n';
-                    }
-                }
+                }                
             }
         }
 

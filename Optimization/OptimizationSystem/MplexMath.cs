@@ -71,14 +71,11 @@ namespace OptimizationSystem
 
 
         public MplexMath(ref System.Windows.Forms.TextBox tB8, ref System.Windows.Forms.RichTextBox rT1, ref System.Windows.Forms.TextBox tB9,
-            ref System.Windows.Forms.ProgressBar pB1/*, ref System.Windows.Forms.DataVisualization.Charting.Chart c1*/)
+            ref System.Windows.Forms.ProgressBar pB1)
         {
             C_text = tB8;
-            //richTextBox1 = rT1;
             Q_text = tB9;
-            //Q = Q_t;
             progressBar1 = pB1;
-            //chart1 = c1;
             progressBar1.Maximum = 100;
             progressBar1.Value = 0;
 
@@ -92,13 +89,8 @@ namespace OptimizationSystem
             {
                 progressBar1.Value++;
                 q_tkm1 = summ();
-                generator_GI(3);//подставить нв вход метода
+                generator_GI(3);
                 SUMM_Gi = Gi.Sum();
-                
-                //richTextBox1.Text += "полученный трафик " + Gi[0]+"; " + Gi[1] + "; " + Gi[2] + "; ";
-                //richTextBox1.Text += '\n';
-                //if ((Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0)))) != 0)
-                //    ad_GI(3, Gi);
                 Out_of_MX();
                 q_tk = (Math.Max((q_tkm1 - C_T * t), 0)) + (Math.Min((SUMM_Gi), (Math.Max((Q - (q_tkm1 - C_T * t)), 0))));//текущая заполненность буффера
             }
@@ -106,9 +98,8 @@ namespace OptimizationSystem
 
         }
 
-        public void ad_GI(int k, double[] gi)//добавление массива TB
+        public void ad_GI(int k, double[] gi)//добавление трафика
         {
-            //необходимо добавить условие по ограничению буффера
             for (int i = 0; i < k; i++)
             {
                 if (gi[i]+ summ()<=Q)
@@ -141,8 +132,6 @@ namespace OptimizationSystem
             while((Count != 0) && (Pop() <= Count_of_traf))
             {                
                     Count_of_traf = Count_of_traf - Pop();
-                    //richTextBox1.Text += "вышедший пакет " + Pop();
-                    //richTextBox1.Text += '\n';
                     Dequeue();                
             }
         }

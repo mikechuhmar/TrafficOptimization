@@ -13,10 +13,9 @@ namespace OptimizationSystem
         {
 
         }
+        //Вычисление выходных данных LB
         public double[] LM(double V_Out, double Tk, double T, double RoTk_LB, double V1, ref LinkedList<double> vs, ref LinkedList<double> Gi_f)
-        //public double[] M(double volume, double S, double Ro, double V1)
         {
-
             double GTk = 0;
             double[] ch = new double[4];
             double F;
@@ -58,11 +57,9 @@ namespace OptimizationSystem
                     }
                 }
             }
-
             ch[0] = GTk;
             ch[1] = V1;
             ch[2] = vs.ToArray().Sum();
-
             return ch;
         }
     }

@@ -83,12 +83,6 @@
     <Compile Include="GeneticAlgorithm.cs" />
     <Compile Include="Leaky_Bucket_Algoritm.cs" />
     <Compile Include="Method.cs" />
-    <Compile Include="MP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MP.Designer.cs">
-      <DependentUpon>MP.cs</DependentUpon>
-    </Compile>
     <Compile Include="MP2.cs" />
     <Compile Include="MplexMath.cs" />
     <Compile Include="Optimization.cs" />
@@ -112,9 +106,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MP.resx">
-      <DependentUpon>MP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
