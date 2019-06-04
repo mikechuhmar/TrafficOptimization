@@ -18,7 +18,7 @@ namespace OptimizationSystem
         //Рассчёт выходных данных TB
         public double[] M(double Tk, double T, double U, double RoTk_1, double V1)
         {
-            double RoTk
+            double RoTk;
             double I, GTk, V;
             double[] ch = new double[5];
             RoTk = RoTk_1 + Math.Min(U, (T - RoTk_1));
@@ -37,13 +37,7 @@ namespace OptimizationSystem
             ch[3] = RoTk_1;
             return ch;
         }
-
-        //public TBMath_2(double CIR, double Nt, double T)
-        //{
-        //    this.CIR = CIR;
-        //    this.Nt = Nt;
-        //    this.T = T;
-        //}
+        
 
         public TBMath_2(double U, double T)
         {
