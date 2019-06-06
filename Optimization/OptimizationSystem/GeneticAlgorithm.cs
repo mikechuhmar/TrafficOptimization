@@ -130,14 +130,7 @@ namespace OptimizationSystem
             CreateStartGeneration();
             for (i = 0; i < amPopulations; i++)
             {
-                Vector prevMin = population.First();
-                Console.WriteLine("\n" + i.ToString() + ":");
-                Console.WriteLine(prevMin.ToString());
-                foreach (var p in population)
-                {
-                    Console.WriteLine(p.ToString());
-                    Console.WriteLine(func(p).ToString());
-                }
+                Vector prevMin = population.First();                
                 Crossover();
                 Mutation();
                 CreateNewGeneration();
