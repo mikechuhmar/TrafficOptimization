@@ -428,7 +428,7 @@ namespace OptimizationSystem
             //MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\nПоступило бит: " + inPackages + "\nОтброшено бит: " + outPackages + "\nЗадержки: " + delay + "\nL: " + L);
             string str = "Поступило бит на корзины: " + inTB + "\nОтброшено на корзинах: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nПоступило бит на вёдра: " + inLB + "\nОтброшено на вёдрах: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + "\nЗадержки на вёдрах: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.b)) + "\nОтброшено на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nЗадержки: " + delay + "\nJ: " + J + "\nВышло" + Static.dataList.Sum(x => x.mult.outG);
             str = "Потери на всех TB: " + Static.dataList.Sum(x => x.tBs.Sum(y => y.R)) + "\nПотери на всех LB: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.R)) + "\nСумма очередей в LB: " + Static.dataList.Sum(x => x.lBs.Sum(y => y.b)) + "\nПотери на мультиплексоре: " + Static.dataList.Sum(x => x.mult.L) + "\nСумма очередей в мультиплексоре: " + delay + "\nJ: " + J;
-            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch1.Elapsed.ToString() + "\n" + str);
+            MessageBox.Show("Моделирование закончено \nВремя моделирования: " + swatch.Elapsed.ToString() + "\n" + str);
             richTextBox1.Text = str;
             Static.prev_dataList = new List<Data>(Static.dataList);
             Static.dataList = new List<Data>();
