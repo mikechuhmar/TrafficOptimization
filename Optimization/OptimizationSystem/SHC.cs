@@ -2,13 +2,13 @@
 
 namespace OptimizationSystem
 {
-    class StochasticLiftAlgorithm: Method
+    class SHC: OptimizationMethod
     {
         int amIterations;
         int amInternalIterations;
 
         //Конструктор
-        public StochasticLiftAlgorithm(int amParams, int amIterations, int amInternalIterations, Function func, GenVectorFunction genVectorFunction, Vector max): base(amParams, func, genVectorFunction, max)
+        public SHC(int amParams, int amIterations, int amInternalIterations, Function func, GenVectorFunction genVectorFunction, Vector max): base(amParams, func, genVectorFunction, max)
         {
             this.amIterations = amIterations;
             this.amInternalIterations = amInternalIterations;

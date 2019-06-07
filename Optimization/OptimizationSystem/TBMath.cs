@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace OptimizationSystem
 {
-    class TBMath_2
+    class TBMath
     {
         public double U, T;
-        public TBMath_2()
+        public TBMath()
         {
 
         }
         
         //Рассчёт выходных данных TB
-        public double[] M(double Tk, double T, double U, double RoTk_1, double V1)
+        public double[] res(double Tk, double T, double U, double RoTk_1, double V1)
         {
             double RoTk;
             double I, GTk, V;
@@ -39,13 +39,13 @@ namespace OptimizationSystem
         }
         
 
-        public TBMath_2(double U, double T)
+        public TBMath(double U, double T)
         {
             this.U = U;
             this.T = T;
         }
 
-        public double[] M(double Tk, double RoTk_1, double V)
+        public double[] res(double Tk, double RoTk_1, double V)
         {
             double RoTk;
             double I, GTk;

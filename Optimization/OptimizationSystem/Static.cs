@@ -8,11 +8,11 @@ namespace OptimizationSystem
 {
     public static class Static
     {
-        public static double alpha = 5, beta = 3, gamma = 3, delta = 2, epsilon = 1;
+        public static int alpha = 5, beta = 3, gamma = 3, delta = 2, epsilon = 1;
         public static int TB_Count
         {
             get
-            {
+            {                
                 return Form2.TPe.Count(x => x.Text.Contains("TB"));
             }
         }
@@ -24,7 +24,6 @@ namespace OptimizationSystem
             }
         }
         public static List<Data> dataList;
-        public static Data currentData;
         public static List<Data> prev_dataList = null;
     }
 }

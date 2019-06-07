@@ -80,18 +80,17 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="GeneticAlgorithm.cs" />
-    <Compile Include="Leaky_Bucket_Algoritm.cs" />
-    <Compile Include="Method.cs" />
-    <Compile Include="MP2.cs" />
+    <Compile Include="GA.cs" />
+    <Compile Include="LBMath.cs" />
+    <Compile Include="OptimizationMethod.cs" />
     <Compile Include="MplexMath.cs" />
     <Compile Include="Optimization.cs" />
-    <Compile Include="ParticleSwarmAlgorithm.cs" />
+    <Compile Include="PSO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Static.cs" />
-    <Compile Include="StochasticLiftAlgorithm.cs" />
-    <Compile Include="Token_Bucket_Algoritm.cs" />
+    <Compile Include="SHC.cs" />
+    <Compile Include="TBMath.cs" />
     <Compile Include="TB_Interface.cs" />
     <Compile Include="Vector.cs" />
     <EmbeddedResource Include="Start_Form.resx">

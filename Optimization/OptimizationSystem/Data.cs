@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OptimizationSystem
@@ -32,20 +33,39 @@ namespace OptimizationSystem
             this.Ro = Ro;
             this.R = R;
         }
+        public static double [] compute(double T, double U, double Ro_prev, double V)
+        {
+            double RoTk;
+            double I, GTk;
+            double[] ch = new double[5];
+            RoTk = Ro_prev + Math.Min(U, (T - Ro_prev));
+            if (V <= (Ro_prev + Math.Min(U, (T - Ro_prev))))
+                I = 1;
+            else I = 0;
+            GTk = V * I;
+            ch[0] = GTk;
+            ch[1] = V;
+            ch[2] = RoTk;
+            ch[4] = V - GTk;
+            RoTk = RoTk - GTk;
+            Ro_prev = RoTk;
+
+            ch[3] = Ro_prev;
+            return ch;
+        }
     }
     public struct LBStruct
     {
         public double B, b_prev, S;
         public double V;
         public double b, G, R;
-        public LinkedList<double> B_list, G_list;
+        public LinkedList<double> buff_list;
         //Начальная инициализация
-        public void addInit(double B, LinkedList<double> B_list, LinkedList<double> G_list)
+        public void addInit(double B, LinkedList<double> buff_list)
         {
             this.B = B;
-            this.B_list = new LinkedList<double>(B_list);
-            this.G_list = new LinkedList<double>(G_list);
-            b_prev = B_list.Sum();
+            this.buff_list = new LinkedList<double>(buff_list);
+            b_prev = buff_list.Sum();
         }
         //Добавление поступающего трафика
         public void addInput(double V)
@@ -63,6 +83,50 @@ namespace OptimizationSystem
             this.G = G;
             this.R = R;
             this.b = b;            
+        }
+
+        public static double [] compute(double S, double B, double V, LinkedList<double> buff_list)
+        {
+            double GTk = 0;
+            double[] ch = new double[4];
+            double F;
+
+            if ((buff_list.ToArray().Sum() + V) < B)
+            {
+                buff_list.AddFirst(V);
+            }
+            else ch[3] = V;
+            int y = 20;
+            double V_Out_Here = S;
+
+            if (buff_list.Count != 0)
+            {
+                while ((buff_list.Count != 0) && (V_Out_Here > 0))
+                {
+                    if (buff_list.Last.Value <= S)
+                    {
+                        GTk += buff_list.Last.Value;
+                        S = S - buff_list.Last.Value;
+                        buff_list.RemoveLast();
+                    }
+                    else
+                    {
+                        if ((S > y) && (buff_list.Last.Value > y))
+                        {
+                            F = buff_list.Last.Value - S;
+                            buff_list.RemoveLast();
+                            buff_list.AddLast(F);
+                            GTk += S;
+                            V_Out_Here = 0;
+                        }
+                        else break;
+                    }
+                }
+            }
+            ch[0] = GTk;
+            ch[1] = V;
+            ch[2] = buff_list.ToArray().Sum();
+            return ch;
         }
     }
     public struct MultStruct
@@ -91,7 +155,24 @@ namespace OptimizationSystem
             this.L = L;
             this.outG = outG;
         }
+        public static double[] compute(double[] G, double Q, double C, double q_prev)
+        {
+            double SUMM_Gi = G.Sum();
 
+
+            double q = Math.Max(q_prev - C, 0) + Math.Min(SUMM_Gi, Q - Math.Max(q_prev - C, 0));//текущая заполненность буффера
+
+            //вычисление Ltk
+            double L = SUMM_Gi - Math.Min(SUMM_Gi, Q - Math.Max(q_prev - C, 0)); //потери на мультиплексоре
+                                                                                     //конец - вычисление Ltk
+
+            double[] res = new double[4];
+            res[0] = L;
+            res[1] = q;
+            res[2] = Q;
+            res[3] = Math.Min(q_prev, C);
+            return res;
+        }
     }
     public class Data
     {

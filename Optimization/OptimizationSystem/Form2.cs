@@ -17,9 +17,9 @@ namespace OptimizationSystem
 
         public static int LB_COUNT = 0;
         public static int TB_COUNT = 0;
-        TBMath_2 tbn;
-        MplexMath_2 MXP;
-        Buff_2 BUF;
+        TBMath tbn;
+        MplexMath MXP;
+        Buff BUF;
         bool GA = false, SPA = false, SLA = false;
         bool start = true;
         public static LinkedList<TabPage> TPe = new LinkedList<TabPage>();
@@ -77,7 +77,7 @@ namespace OptimizationSystem
         {
 
             
-            BUF = new Buff_2();
+            BUF = new Buff();
             button2.Enabled = false;
             Start_modelling.Enabled = false;
             cbPrevData.Enabled = false;
@@ -211,14 +211,14 @@ namespace OptimizationSystem
             swatch.Start();
             System.Diagnostics.Stopwatch swatch1 = new System.Diagnostics.Stopwatch();
             Static.dataList = new List<Data>();
-            MXP = new MplexMath_2(ref textBox2, ref richTextBox1, ref textBox4, ref chart1);
-            Leaky_Bucket_Algoritm lbn = new Leaky_Bucket_Algoritm();
+            MXP = new MplexMath(ref textBox2, ref richTextBox1, ref textBox4, ref chart1);
+            LBMath lbn = new LBMath();
             Static.dataList = new List<Data>();
-            tbn = new TBMath_2();
+            tbn = new TBMath();
             Random rand = new Random();            
             double T = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[0]).Text);
             double U = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[1]).Text);
-            tbn = new TBMath_2(U, T);
+            tbn = new TBMath(U, T);
             double Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(0).Controls[2]).Text);
             double V;
             double RoTk_1=0;
@@ -279,7 +279,7 @@ namespace OptimizationSystem
                         LBStruct lBStruct = new LBStruct();
                         T = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[0]).Text);
                         Tk = Convert.ToDouble(((TextBox)TPe.ElementAt(z).Controls[3]).Text);
-                        lBStruct.addInit(T, masp[lb_count - 1], Gi_f);
+                        lBStruct.addInit(T, masp[lb_count - 1]);
                         Gen_Hight = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[16]).Text);
                         Gen_Low = Convert.ToInt32(((TextBox)TPe.ElementAt(z).Controls[17]).Text);
                         if (!cbPrevData.Checked)
@@ -299,21 +299,21 @@ namespace OptimizationSystem
                 if (comboBoxMethod.SelectedIndex == 1)
                 {
                     swatch1.Start();
-                    GeneticAlgorithm algorithm = new GeneticAlgorithm(int.Parse(tbGA1.Text), Static.LB_Count + Static.TB_Count, int.Parse(tbGA2.Text), Functions.J, Functions.genVector, max);
+                    GA algorithm = new GA(int.Parse(tbGA1.Text), Static.LB_Count + Static.TB_Count, int.Parse(tbGA2.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
                     swatch1.Stop();
                 }
                 if (comboBoxMethod.SelectedIndex == 2)
                 {
                     swatch1.Start();
-                    SwarmParticlesAlgorithm algorithm = new SwarmParticlesAlgorithm(int.Parse(tbSPA1.Text), Static.LB_Count + Static.TB_Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector, max);
+                    PSO algorithm = new PSO(int.Parse(tbSPA1.Text), Static.LB_Count + Static.TB_Count, int.Parse(tbSPA2.Text), double.Parse(tbSPA3.Text), double.Parse(tbSPA4.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
                     swatch1.Stop();
                 }
                 if (comboBoxMethod.SelectedIndex == 3)
                 {
                     swatch1.Stop();
-                    StochasticLiftAlgorithm algorithm = new StochasticLiftAlgorithm(Static.LB_Count + Static.TB_Count, int.Parse(tbSLA1.Text), int.Parse(tbSLA2.Text), Functions.J, Functions.genVector, max);
+                    SHC algorithm = new SHC(Static.LB_Count + Static.TB_Count, int.Parse(tbSLA1.Text), int.Parse(tbSLA2.Text), Functions.J, Functions.genVector, max);
                     vector = new Vector(algorithm.result());
                     swatch1.Stop();
                 }
@@ -340,7 +340,7 @@ namespace OptimizationSystem
                         }
                         tBStruct.addOptimized(U);
                         data.tBs[t] = tBStruct;
-                        ch = tbn.M(Tk, T, U, RoTk_1, V);
+                        ch = tbn.res(Tk, T, U, RoTk_1, V);
                         ((TextBox)TPe.ElementAt(z).Controls[7]).Text = Convert.ToString(ch[3]);
                         R = ch[4];                        
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[6]).Series["Объем вышедших пакетов, бит"].Points.AddXY(k, ch[0]);
@@ -384,7 +384,7 @@ namespace OptimizationSystem
                         lBStruct.addOptimized(U);
                         data.lBs[l] = lBStruct;
                         
-                        ch = lbn.LM(U, Tk, T, RoTk_LB, V, ref masp[lb_count - 1], ref Gi_f);
+                        ch = lbn.res(U, Tk, T, RoTk_LB, V, ref masp[lb_count - 1], ref Gi_f);
                         ((RichTextBox)TPe.ElementAt(z).Controls[10]).Text += "Шаг: " + k;                        
                         lb_count--;
                         ((System.Windows.Forms.DataVisualization.Charting.Chart)TPe.ElementAt(z).Controls[8]).Series["Объем вышедших пакетов, бит"].Points.AddXY(k, ch[0]);
@@ -408,12 +408,12 @@ namespace OptimizationSystem
                 }
 
                 data.mult.addInput(Gi);
-                OPT = MXP.MX(Gi);
+                OPT = MXP.res(Gi);
                 
                 double q_prev = 0;
                 if (Static.dataList.Count > 1)
                     q_prev = Static.dataList[Static.dataList.Count - 2].mult.q;
-                double outGi = MplexMath_2.res(Gi, MXP.Q, MXP.C_T, q_prev)[3];
+                double outGi = MplexMath.res(Gi, MXP.Q, MXP.C_T, q_prev)[3];
                 data.mult.addDecision(OPT[1], OPT[0], outGi);
                 cbPrevData.Show();
             }

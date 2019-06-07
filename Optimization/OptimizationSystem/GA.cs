@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace OptimizationSystem
 {
-    class GeneticAlgorithm: Method
+    class GA: OptimizationMethod
     {
         int amIndividuals, amPopulations;
         int amGenes
@@ -21,7 +21,7 @@ namespace OptimizationSystem
         List<Vector> population;
 
         //Конструктор
-        public GeneticAlgorithm(int amIndividuals, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction, Vector max): base(amGenes, func, genVectorFunction, max)
+        public GA(int amIndividuals, int amGenes, int amPopulations, Function func, GenVectorFunction genVectorFunction, Vector max): base(amGenes, func, genVectorFunction, max)
         {
             this.amIndividuals = amIndividuals;
             this.amPopulations = amPopulations;

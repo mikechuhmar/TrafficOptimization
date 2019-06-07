@@ -2,7 +2,7 @@
 
 namespace OptimizationSystem
 {
-    class Method
+    class OptimizationMethod
     {
         protected Function func;
         protected GenVectorFunction genVectorFunction;
@@ -11,7 +11,7 @@ namespace OptimizationSystem
         protected int amParams;
        
         //Конструктор
-        public Method(int amParams, Function func, GenVectorFunction genVectorFunction, Vector max)
+        public OptimizationMethod(int amParams, Function func, GenVectorFunction genVectorFunction, Vector max)
         {
             this.amParams = amParams;
             this.func = func;

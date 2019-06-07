@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace OptimizationSystem
 {
-    class SwarmParticlesAlgorithm: Method
+    class PSO: OptimizationMethod
     {
         int amParticles;
         int amSteps;
@@ -14,7 +14,7 @@ namespace OptimizationSystem
         List<Vector> points;
         List<Vector> speeds;
         //Конструктор
-        public SwarmParticlesAlgorithm(int amParticles, int amParams, int amSteps, double a1, double a2, Function func, GenVectorFunction genVectorFunction, Vector max) : base(amParams, func, genVectorFunction, max)
+        public PSO(int amParticles, int amParams, int amSteps, double a1, double a2, Function func, GenVectorFunction genVectorFunction, Vector max) : base(amParams, func, genVectorFunction, max)
         {
             this.amParticles = amParticles;
             this.amSteps = amSteps;
