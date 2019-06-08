@@ -21,7 +21,6 @@ public class Functions
             int U = rand.Next(0, (int)data.lBs[i].B);
             vector.Add(U);
         }
-        Console.WriteLine(vector);
         return vector;
     }
     //Целевая функция
