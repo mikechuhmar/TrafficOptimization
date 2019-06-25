@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tBalpha = new System.Windows.Forms.TextBox();
@@ -155,7 +155,7 @@
             this.tBalpha.Name = "tBalpha";
             this.tBalpha.Size = new System.Drawing.Size(86, 22);
             this.tBalpha.TabIndex = 32;
-            this.tBalpha.Text = "5";
+            this.tBalpha.Text = "1";
             // 
             // label20
             // 
@@ -193,7 +193,7 @@
             this.tBdelta.Name = "tBdelta";
             this.tBdelta.Size = new System.Drawing.Size(86, 22);
             this.tBdelta.TabIndex = 29;
-            this.tBdelta.Text = "2";
+            this.tBdelta.Text = "1";
             // 
             // label18
             // 
@@ -212,7 +212,7 @@
             this.tBgamma.Name = "tBgamma";
             this.tBgamma.Size = new System.Drawing.Size(86, 22);
             this.tBgamma.TabIndex = 27;
-            this.tBgamma.Text = "3";
+            this.tBgamma.Text = "1";
             // 
             // label17
             // 
@@ -231,7 +231,7 @@
             this.tBbeta.Name = "tBbeta";
             this.tBbeta.Size = new System.Drawing.Size(86, 22);
             this.tBbeta.TabIndex = 25;
-            this.tBbeta.Text = "4";
+            this.tBbeta.Text = "1";
             // 
             // label16
             // 
@@ -381,10 +381,10 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(6, 99);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(710, 292);
@@ -430,14 +430,14 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(63, 22);
             this.textBox3.TabIndex = 5;
-            this.textBox3.Text = "50";
+            this.textBox3.Text = "100";
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // Start_modelling
             // 
             this.Start_modelling.Location = new System.Drawing.Point(409, 55);
             this.Start_modelling.Name = "Start_modelling";
-            this.Start_modelling.Size = new System.Drawing.Size(118, 42);
+            this.Start_modelling.Size = new System.Drawing.Size(132, 42);
             this.Start_modelling.TabIndex = 4;
             this.Start_modelling.Text = "Начать моделирование";
             this.Start_modelling.UseVisualStyleBackColor = true;
@@ -497,34 +497,38 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(358, 252);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(348, 212);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(161, 17);
+            this.label7.Size = new System.Drawing.Size(203, 20);
             this.label7.TabIndex = 3;
             this.label7.Text = "Количество поколений";
             // 
             // tbGA2
             // 
-            this.tbGA2.Location = new System.Drawing.Point(620, 252);
+            this.tbGA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbGA2.Location = new System.Drawing.Point(656, 212);
             this.tbGA2.Name = "tbGA2";
-            this.tbGA2.Size = new System.Drawing.Size(100, 22);
+            this.tbGA2.Size = new System.Drawing.Size(100, 27);
             this.tbGA2.TabIndex = 2;
             this.tbGA2.Text = "10";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(358, 295);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(348, 255);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(223, 17);
+            this.label6.Size = new System.Drawing.Size(282, 20);
             this.label6.TabIndex = 1;
             this.label6.Text = "Количество особей в поколении";
             // 
             // tbGA1
             // 
-            this.tbGA1.Location = new System.Drawing.Point(620, 295);
+            this.tbGA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbGA1.Location = new System.Drawing.Point(656, 255);
             this.tbGA1.Name = "tbGA1";
-            this.tbGA1.Size = new System.Drawing.Size(100, 22);
+            this.tbGA1.Size = new System.Drawing.Size(100, 27);
             this.tbGA1.TabIndex = 0;
             this.tbGA1.Text = "10";
             // 
@@ -549,68 +553,76 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(335, 388);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(321, 337);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(241, 34);
+            this.label10.Size = new System.Drawing.Size(306, 40);
             this.label10.TabIndex = 11;
             this.label10.Text = "Постоянное ускорение в сторону \r\nлучшего из всех положений частиц";
             // 
             // tbSPA4
             // 
-            this.tbSPA4.Location = new System.Drawing.Point(597, 400);
+            this.tbSPA4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSPA4.Location = new System.Drawing.Point(657, 350);
             this.tbSPA4.Name = "tbSPA4";
-            this.tbSPA4.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA4.Size = new System.Drawing.Size(100, 27);
             this.tbSPA4.TabIndex = 10;
             this.tbSPA4.Text = "1";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(335, 342);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(321, 279);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(233, 34);
+            this.label11.Size = new System.Drawing.Size(294, 40);
             this.label11.TabIndex = 9;
             this.label11.Text = "Постоянное ускорение в сторону \r\nлучшего положения частицы";
             // 
             // tbSPA3
             // 
-            this.tbSPA3.Location = new System.Drawing.Point(597, 342);
+            this.tbSPA3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSPA3.Location = new System.Drawing.Point(657, 292);
             this.tbSPA3.Name = "tbSPA3";
-            this.tbSPA3.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA3.Size = new System.Drawing.Size(100, 27);
             this.tbSPA3.TabIndex = 8;
             this.tbSPA3.Text = "1";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(335, 228);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(321, 178);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(153, 17);
+            this.label8.Size = new System.Drawing.Size(194, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "Количество итераций";
             // 
             // tbSPA2
             // 
-            this.tbSPA2.Location = new System.Drawing.Point(597, 228);
+            this.tbSPA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSPA2.Location = new System.Drawing.Point(657, 178);
             this.tbSPA2.Name = "tbSPA2";
-            this.tbSPA2.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA2.Size = new System.Drawing.Size(100, 27);
             this.tbSPA2.TabIndex = 6;
             this.tbSPA2.Text = "10";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(335, 287);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(321, 237);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(136, 17);
+            this.label9.Size = new System.Drawing.Size(173, 20);
             this.label9.TabIndex = 5;
             this.label9.Text = "Количество частиц";
             // 
             // tbSPA1
             // 
-            this.tbSPA1.Location = new System.Drawing.Point(597, 287);
+            this.tbSPA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSPA1.Location = new System.Drawing.Point(657, 237);
             this.tbSPA1.Name = "tbSPA1";
-            this.tbSPA1.Size = new System.Drawing.Size(100, 22);
+            this.tbSPA1.Size = new System.Drawing.Size(100, 27);
             this.tbSPA1.TabIndex = 4;
             this.tbSPA1.Text = "10";
             // 
@@ -631,34 +643,38 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(320, 311);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(316, 249);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(243, 34);
+            this.label14.Size = new System.Drawing.Size(310, 40);
             this.label14.TabIndex = 11;
             this.label14.Text = "Количество итераций внутреннего \r\nалгоритма подъёма";
             // 
             // tbSLA2
             // 
-            this.tbSLA2.Location = new System.Drawing.Point(582, 323);
+            this.tbSLA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSLA2.Location = new System.Drawing.Point(649, 261);
             this.tbSLA2.Name = "tbSLA2";
-            this.tbSLA2.Size = new System.Drawing.Size(100, 22);
+            this.tbSLA2.Size = new System.Drawing.Size(100, 27);
             this.tbSLA2.TabIndex = 10;
             this.tbSLA2.Text = "10";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(320, 267);
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(316, 205);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(230, 17);
+            this.label15.Size = new System.Drawing.Size(294, 20);
             this.label15.TabIndex = 9;
             this.label15.Text = "Количество итераций алгоритма ";
             // 
             // tbSLA1
             // 
-            this.tbSLA1.Location = new System.Drawing.Point(582, 267);
+            this.tbSLA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSLA1.Location = new System.Drawing.Point(649, 205);
             this.tbSLA1.Name = "tbSLA1";
-            this.tbSLA1.Size = new System.Drawing.Size(100, 22);
+            this.tbSLA1.Size = new System.Drawing.Size(100, 27);
             this.tbSLA1.TabIndex = 8;
             this.tbSLA1.Text = "10";
             // 

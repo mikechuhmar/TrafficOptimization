@@ -84,7 +84,7 @@
     <Compile Include="LBMath.cs" />
     <Compile Include="OptimizationMethod.cs" />
     <Compile Include="MplexMath.cs" />
-    <Compile Include="Optimization.cs" />
+    <Compile Include="Functions.cs" />
     <Compile Include="PSO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
